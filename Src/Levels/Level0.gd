@@ -50,3 +50,7 @@ func spawn_player(ghost_no = -1):
 		new_player.add_child(camera)
 		camera.position = Vector2(0,0)
 	
+
+
+func _on_ButtonClear_button_up():
+	Ghosts.clear_ghosts()

@@ -24,11 +24,14 @@ func is_ghost():
 
 func setup_and_start(ghost_no):
 	state.ghost_no = ghost_no
+	
+	if ghost_no != -1:
+		data_record = Ghosts.data[ghost_no]
 
 func _physics_process(delta):
 	if is_ghost():
 		# Ghost
-		pass
+		process_ghost(delta)
 	else:
 		# Player
 		process_movement(delta)
@@ -39,6 +42,15 @@ func _physics_process(delta):
 		# Restart
 		process_restart()
 
+func process_ghost(delta):
+	# TODO: make this timestamp based
+	
+	var movement = data_record.pop_front()
+	$Label.set_text(str(movement))
+	
+	if movement:
+		position = movement.pos
+	
 
 func add_data_record():
 	data_record.append({"t": Ghosts.get_time(), "pos": position})
