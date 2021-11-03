@@ -35,6 +35,7 @@ func setup_and_start(ghost_no):
 		data_record = Ghosts.data[ghost_no].duplicate()
 		print("data size: " + str(data_record.size()))
 		self.collision_layer = 8
+		$Sprite.modulate = Color("#aaffffff")
 	else:
 		self.collision_layer = 4
 
