@@ -16,6 +16,7 @@ func add_ghost(blob):
 	data.append(blob)
 
 func clear_ghosts():
+	print("clear")
 	data = []
 
 

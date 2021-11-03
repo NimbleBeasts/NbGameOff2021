@@ -23,10 +23,12 @@ func is_ghost():
 	return false if state.ghost_no == -1 else true
 
 func setup_and_start(ghost_no):
+	print("setup: " + str(ghost_no))
 	state.ghost_no = ghost_no
 	
 	if ghost_no != -1:
-		data_record = Ghosts.data[ghost_no]
+		data_record = Ghosts.data[ghost_no].duplicate()
+		print("data size: " + str(data_record.size()))
 
 func _physics_process(delta):
 	if is_ghost():
@@ -67,7 +69,7 @@ func process_movement(delta):
 		state.has_jumped = false
 		state.air_time = 0
 	else:
-		state.air_time += 1 # TODO: use delta
+		state.air_time += 1 # TODO: use delta - anyway do we need air time? xD
 
 	if Input.is_action_just_pressed('ui_jump') and on_floor_or_ghost and not state.jumping:
 		state.velocity.y =- JUMP_FORCE
@@ -99,6 +101,7 @@ func process_movement(delta):
 
 func process_restart():
 	if Input.is_action_just_pressed('ui_restart'):
+		print("restart-----")
 		Ghosts.add_ghost(data_record)
 		Events.emit_signal("restart_level")
 		
