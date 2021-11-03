@@ -12,6 +12,7 @@ var counter = 0
 var state = {
 	"ghost_no": -1,
 	"dead": false,
+	"last_record_id": 0,
 	
 	# Movement
 	"velocity": Vector2(0,0),
@@ -82,17 +83,27 @@ func process_ghost(delta):
 	# TODO: make this timestamp based
 	
 	var data_line = data_record.pop_front()
-	$Label.set_text(str(data_line))
-	
+
 	if data_line:
+		# Animation frame
+		if data_line.get("anim"):
+			$AnimationPlayer.play(data_line.anim)
+			#Read next line to lower delta
+			data_line = data_record.pop_front() 
+			if not data_line:
+				return
+		# Movement frame
 		if data_line.get("pos"):
 			position = data_line.pos
-		else:
-			$AnimationPlayer.play(data_line.anim)
+			$Label.set_text("Pos:" + str(position))
+			$Label2.set_text("Timestamp:" + str(data_line.t))
+			$Label3.set_text("Delta:" + str(data_line.t - Ghosts.get_time()))
+
 			
 	else:
 		state.velocity.y += DEFAULT_GRAVITY.y
 		state.velocity = move_and_slide(state.velocity, Vector2(0, -1))
+		self.collision_layer = 8 #collide like player
 
 
 func add_movement_record():
@@ -165,7 +176,7 @@ func process_restart():
 		add_animation_record("idle") #reset to idle before stopping
 		print("restart-----")
 		Ghosts.add_ghost(data_record)
-		Events.emit_signal("restart_level")
+		restart()
 		
 
 func is_on_floor_or_ghost():
@@ -183,10 +194,14 @@ func get_direction_input():
 	input.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
 	return input
 
+func restart():
+	Ghosts.stop_time()
+	Ghosts.clear_time()
+	Events.emit_signal("restart_level")
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	match anim_name:
 		"die":
-			Events.emit_signal("restart_level")
+			restart()
 		_:
 			pass

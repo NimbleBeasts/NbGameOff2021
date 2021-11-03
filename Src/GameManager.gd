@@ -65,14 +65,17 @@ func _backToMenu():
 
 # Event Hook: New Game
 func _newGame():
+	Ghosts.clear_ghosts()
 	if levelNode:
 		unloadLevel()
 	loadLevel(0)
 	switchTo(Types.GameStates.Game)
 
 func _restartLevel():
-	# TODO: idk
-	_newGame()
+	if levelNode:
+		unloadLevel()
+	loadLevel(0)
+	switchTo(Types.GameStates.Game)
 
 # Event Hook: Update user config for sound
 func setSoundVolume(value):

@@ -17,6 +17,8 @@ func _ready():
 	# Level must contain a spawn
 	assert($PlayerSpawn)
 	
+	Ghosts.start_time()
+	
 	# Set camera until player appears
 	spawn_camera()
 	
