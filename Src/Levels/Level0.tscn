@@ -36,7 +36,7 @@ position = Vector2( 16, 288 )
 position = Vector2( -160, 240 )
 
 [node name="PathLine" type="Line2D" parent="Objects/Enemy"]
-points = PoolVector2Array( -24, -8, 24, -8 )
+points = PoolVector2Array( -24, 0, 24, 0 )
 width = 1.0
 script = ExtResource( 8 )
 
