@@ -27,6 +27,7 @@ Global="*res://Src/_Autoloads/Global.gd"
 Types="*res://Src/_Autoloads/Types.gd"
 Events="*res://Src/_Autoloads/Events.gd"
 Debug="*res://Src/_Autoloads/Debug.gd"
+Ghosts="*res://Src/_Autoloads/Ghosts.gd"
 
 [debug]
 
@@ -67,6 +68,11 @@ texture={
 ui_jump={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_restart={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
  ]
 }
 

@@ -15,8 +15,9 @@ var state = {
 	"jumping": false,
 	"has_jumped": false,
 	"air_time": 0,
-	
 }
+
+var data_record = []
 
 func is_ghost():
 	return false if state.ghost_no == -1 else true
@@ -31,7 +32,17 @@ func _physics_process(delta):
 	else:
 		# Player
 		process_movement(delta)
+		
+		# Record movement
+		add_data_record()
+		
+		# Restart
+		process_restart()
 
+
+func add_data_record():
+	data_record.append({"t": Ghosts.get_time(), "pos": position})
+	$Label.set_text("Data: " + str(data_record.size()))
 
 func process_movement(delta):
 	var input_direction = get_direction_input()
@@ -74,6 +85,12 @@ func process_movement(delta):
 	state.velocity.y += DEFAULT_GRAVITY.y
 	state.velocity = move_and_slide(state.velocity, Vector2(0, -1))
 
+func process_restart():
+	if Input.is_action_just_pressed('ui_restart'):
+		Ghosts.add_ghost(data_record)
+		Events.emit_signal("restart_level")
+		
+
 func is_on_floor_or_ghost():
 	var collision = is_on_floor()
 	
@@ -82,7 +99,6 @@ func is_on_floor_or_ghost():
 		pass
 
 	return collision
-	
 
 func get_direction_input():
 	var input = Vector2(0, 0)

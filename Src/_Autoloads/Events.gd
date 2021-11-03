@@ -11,6 +11,9 @@ const DEBUG_OUTPUT_ON_SIGNAL_CONNECT = false
 # Level Management
 signal new_game()
 
+# Restart
+signal restart_level()
+
 # Sound
 signal play_sound(sound, volume, pos)
 # Music

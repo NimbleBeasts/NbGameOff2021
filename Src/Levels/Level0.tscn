@@ -54,6 +54,6 @@ position = Vector2( 0, 64 )
 position = Vector2( 16, 288 )
 
 [node name="PlayerSpawn" parent="." instance=ExtResource( 4 )]
-position = Vector2( 64, 240 )
+position = Vector2( 56, 128 )
 
 [connection signal="button_up" from="ButtonBack" to="." method="_on_ButtonBack_button_up"]

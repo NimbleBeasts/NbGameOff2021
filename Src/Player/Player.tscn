@@ -19,8 +19,9 @@ offset = Vector2( 0, -12 )
 position = Vector2( 0, -12 )
 shape = SubResource( 1 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 0, -24 )
-current = true
-smoothing_enabled = true
-smoothing_speed = 10.0
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
