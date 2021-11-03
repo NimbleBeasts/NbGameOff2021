@@ -8,8 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Line2D",
+"class": "PathLine",
+"language": "GDScript",
+"path": "res://Src/Enemies/PathLine.gd"
+} ]
 _global_script_class_icons={
+"PathLine": ""
 }
 
 [application]
