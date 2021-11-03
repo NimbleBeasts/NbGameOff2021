@@ -4,15 +4,20 @@
 [ext_resource path="res://Src/Objects/Ladder.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 5, 8 )
+extents = Vector2( 5, 16 )
 
 [node name="Ladder" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-offset = Vector2( 0, -8 )
+offset = Vector2( 0, -16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -8 )
+position = Vector2( 0, -16 )
 shape = SubResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_Ladder_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Ladder_body_exited"]

@@ -3,5 +3,4 @@
 [node name="Camera" type="Camera2D"]
 position = Vector2( 0, -24 )
 current = true
-smoothing_enabled = true
-smoothing_speed = 10.0
+smoothing_speed = 12.0
