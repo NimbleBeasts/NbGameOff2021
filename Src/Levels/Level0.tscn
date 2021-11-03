@@ -3,7 +3,7 @@
 [ext_resource path="res://Src/Levels/Level0.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Tileset/Tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Src/Objects/Ladder.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Src/Player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Src/Player/PlayerSpawn.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Src/Objects/Spike.tscn" type="PackedScene" id=5]
 
 [node name="Level0" type="Node2D"]
@@ -33,9 +33,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 72, 240 )
-
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="Ladder" parent="Objects" instance=ExtResource( 3 )]
@@ -55,5 +52,8 @@ position = Vector2( 0, 64 )
 
 [node name="Spike" parent="Objects" instance=ExtResource( 5 )]
 position = Vector2( 16, 288 )
+
+[node name="PlayerSpawn" parent="." instance=ExtResource( 4 )]
+position = Vector2( 64, 240 )
 
 [connection signal="button_up" from="ButtonBack" to="." method="_on_ButtonBack_button_up"]
