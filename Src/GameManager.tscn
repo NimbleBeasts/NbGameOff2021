@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Src/GameManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Menu/nbSplash.png" type="Texture" id=2]
 [ext_resource path="res://Src/Menu/Menu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Src/AudioPlayer/AudioPlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://default_environment.tres" type="Environment" id=5]
+[ext_resource path="res://Src/Hud/HUD.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "start"
@@ -23,6 +24,7 @@ tracks/0/keys = {
 }
 
 [node name="GameManager" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -47,6 +49,11 @@ render_target_update_mode = 3
 audio_listener_enable_2d = true
 
 [node name="LevelHolder" type="Node2D" parent="gameViewport/Viewport"]
+pause_mode = 1
+
+[node name="HudLayer" type="CanvasLayer" parent="gameViewport/Viewport"]
+
+[node name="HUD" parent="gameViewport/Viewport/HudLayer" instance=ExtResource( 6 )]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="gameViewport/Viewport"]
 environment = ExtResource( 5 )

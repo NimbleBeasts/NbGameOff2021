@@ -74,10 +74,10 @@ __meta__ = {
 }
 
 [node name="ButtonClear" type="Button" parent="DummyHud"]
-margin_left = 296.0
-margin_top = 8.0
-margin_right = 389.0
-margin_bottom = 28.0
+margin_left = 536.0
+margin_top = 32.0
+margin_right = 629.0
+margin_bottom = 52.0
 text = "Clear Ghosts"
 __meta__ = {
 "_edit_use_anchors_": false

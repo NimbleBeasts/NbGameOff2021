@@ -1,0 +1,152 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Src/Hud/HUD.gd" type="Script" id=1]
+[ext_resource path="res://Src/Hud/HudGhostIndicator.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Hud/player_slot.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Hud/ghost_add.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Hud/ghost_hover.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Hud/ghost_click.png" type="Texture" id=6]
+[ext_resource path="res://Src/Hud/DefaultButton.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "popup"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Bg:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.258824, 0.321569, 0.396078, 0 ), Color( 0.160784, 0.176471, 0.231373, 0.784314 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GhostBox:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 4 ), Vector2( 0, 4 ), Vector2( 0, 170 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GhostBox/HudPlayerIndicator:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("GhostBox/SaveGhostButton:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DiscardButton:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("WipeButton:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+
+[node name="HUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/popup = SubResource( 1 )
+
+[node name="Bg" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.258824, 0.321569, 0.396078, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DiscardButton" parent="." instance=ExtResource( 7 )]
+visible = false
+margin_left = 272.0
+margin_top = 128.0
+margin_right = 368.0
+margin_bottom = 152.0
+text = "Discard Record"
+
+[node name="GhostBox" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+margin_top = 4.0
+margin_bottom = 28.0
+custom_constants/separation = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HudPlayerIndicator" parent="GhostBox" instance=ExtResource( 2 )]
+margin_left = 308.0
+margin_right = 332.0
+margin_bottom = 24.0
+texture = ExtResource( 3 )
+
+[node name="SaveGhostButton" type="TextureButton" parent="GhostBox"]
+visible = false
+margin_left = 308.0
+margin_right = 332.0
+margin_bottom = 24.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 5 )
+texture_focused = ExtResource( 5 )
+
+[node name="WipeButton" parent="." instance=ExtResource( 7 )]
+visible = false
+margin_left = 272.0
+margin_top = 208.0
+margin_right = 368.0
+margin_bottom = 232.0
+text = "Remove Ghosts"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="button_up" from="DiscardButton" to="." method="_on_DiscardButton_button_up"]
+[connection signal="button_up" from="GhostBox/SaveGhostButton" to="." method="_on_SaveGhostButton_button_up"]
+[connection signal="button_up" from="WipeButton" to="." method="_on_WipeButton_button_up"]

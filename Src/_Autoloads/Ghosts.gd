@@ -14,10 +14,12 @@ func get_number_of_ghosts():
 
 func add_ghost(blob):
 	data.append(blob)
+	Events.emit_signal("ghost_added")
 
 func clear_ghosts():
 	print("clear")
 	data = []
+	Events.emit_signal("ghost_clear")
 
 
 # Timestamp

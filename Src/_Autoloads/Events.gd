@@ -11,6 +11,12 @@ const DEBUG_OUTPUT_ON_SIGNAL_CONNECT = false
 # Level Management
 signal new_game()
 
+# Ghost Signals
+signal ghost_added()
+signal ghost_clear()
+signal ghost_spawn(id)
+signal ghost_dialogue_popup(callback)
+
 # Restart
 signal restart_level()
 

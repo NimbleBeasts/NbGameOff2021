@@ -46,11 +46,14 @@ func spawn_player(ghost_no = -1):
 	$Objects.add_child(new_player)
 	new_player.setup_and_start(ghost_no)
 	
-	#Attach camera to player
+	# Attach camera to player
 	if ghost_no == -1:
 		remove_child(camera)
 		new_player.add_child(camera)
 		camera.position = Vector2(0,0)
+
+	# Update HUD
+	Events.emit_signal("ghost_spawn", ghost_no)
 	
 
 

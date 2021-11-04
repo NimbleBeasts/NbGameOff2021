@@ -174,9 +174,12 @@ func set_ladder_area(val):
 func process_restart():
 	if Input.is_action_just_pressed('ui_restart'):
 		add_animation_record("idle") #reset to idle before stopping
-		print("restart-----")
+		Events.emit_signal("ghost_dialogue_popup", funcref(self, "restart_callback"))
+
+func restart_callback(result):
+	if result:
 		Ghosts.add_ghost(data_record)
-		restart()
+	restart()
 		
 
 func is_on_floor_or_ghost():
