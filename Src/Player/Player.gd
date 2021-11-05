@@ -5,14 +5,20 @@ const DEFAULT_GRAVITY = Vector2(0, 10)
 const JUMP_FORCE = 250
 const STOP_FORCE_FLOOR = 700
 const STOP_FORCE_AIR = 80
+const STOP_FORCE_LADDER = 800
 const WALK_FORCE = 1600
+const LADDER_FORCE = 1200
 const MAX_SPEED = 140
+const LADDER_CORRECTION_SPEED = 120
+
+enum PlayerState {Normal, Ladder}
 
 var counter = 0
 var state = {
 	"ghost_no": -1,
 	"dead": false,
 	"last_record_id": 0,
+	"current_state": PlayerState.Normal,
 	
 	# Movement
 	"velocity": Vector2(0,0),
@@ -20,7 +26,6 @@ var state = {
 	"has_jumped": false,
 	"air_time": 0,
 	"ladder_area": null,
-	"is_on_ladder": false,
 }
 
 var data_record = []
@@ -42,36 +47,58 @@ func setup_and_start(ghost_no):
 
 func _physics_process(delta):
 	if is_ghost():
-		# Ghost
+		# Ghost-Mode
 		process_ghost(delta)
-	
 	elif not state.dead:
-		# Player
+		# Player-Mode
 		var input_direction = get_direction_input()
 		
+		# Update Animation
 		update_animation()
 		
-		process_movement(delta, input_direction)
+		# State Checks
+		#check_enter_ladder_state(input_direction) # TODO: I hate ladders - maybe Ill never implement this :D
+		
+		# Process State
+		match state.current_state:
+			PlayerState.Normal:
+				process_movement(delta, input_direction)
+			PlayerState.Ladder:
+				process_ladder(delta, input_direction)
+			_:
+				pass
+		
 		
 		# Record movement
 		add_movement_record()
 		
 		# Handle restart request
 		process_restart()
+		
+		if state.current_state == PlayerState.Ladder:
+			$Label2.set_text("Ladder")
+		else:
+			$Label2.set_text("Normal")
 
-
+func check_enter_ladder_state(input):
+	if state.ladder_area and state.current_state != PlayerState.Ladder:
+		if input.y != 0:
+			state.current_state = PlayerState.Ladder
 
 func update_animation():
 	var anim = ""
 	
-	if abs(state.velocity.x) > 0.1:
-		anim = "walk"
+	if state.current_state == PlayerState.Ladder:
+		pass
 	else:
-		anim = "idle"
-	if state.velocity.y > 16:
-		anim = "falling"
-	elif state.velocity.y < 0:
-		anim = "jump"
+		if abs(state.velocity.x) > 0.1:
+			anim = "walk"
+		else:
+			anim = "idle"
+		if state.velocity.y > 16:
+			anim = "falling"
+		elif state.velocity.y < 0:
+			anim = "jump"
 	
 	if $AnimationPlayer.current_animation != anim:
 		$AnimationPlayer.play(anim)
@@ -116,10 +143,43 @@ func add_animation_record(anim):
 		data_record.append({"t": Ghosts.get_time(), "anim": anim})
 		$Label.set_text("Data: " + str(data_record.size()))
 
-func process_movement(delta, input_direction):
-	if state.is_on_ladder:
+func process_ladder(delta, input_direction):
+	var on_floor_or_ghost = is_on_floor_or_ghost()
+	
+	if state.ladder_area:
+		if position.x != state.ladder_area.global_position.x:
+			if position.x < state.ladder_area.global_position.x:
+				position.x += LADDER_CORRECTION_SPEED*delta
+			else:
+				position.x -= LADDER_CORRECTION_SPEED*delta
+			
+			if abs(state.ladder_area.global_position.x - position.x) < 2:
+				position.x = state.ladder_area.global_position.x
+			return
+
+	# Quit ladder on jump
+	if Input.is_action_just_pressed('ui_jump'):
+		state.current_state = PlayerState.Normal
 		return
 	
+	# Stop movement
+	if input_direction.y == 0.0:
+		var stop_force = STOP_FORCE_LADDER*delta
+		if state.velocity.y > 0:
+			state.velocity.y = max(state.velocity.x - stop_force, 0)
+		elif state.velocity.y < 0:
+			state.velocity.y = min(state.velocity.x + stop_force, 0)
+	# Accelarete
+	else:
+		state.velocity.y += input_direction.y * delta * LADDER_FORCE
+		if state.velocity.y > MAX_SPEED:
+			state.velocity.y = MAX_SPEED
+		elif state.velocity.y < -MAX_SPEED:
+			state.velocity.y = -MAX_SPEED
+	
+	state.velocity = move_and_slide(state.velocity, Vector2(0, -1))
+
+func process_movement(delta, input_direction):
 	var on_floor_or_ghost = is_on_floor_or_ghost()
 	
 	# Jumping

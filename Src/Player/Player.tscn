@@ -136,4 +136,6 @@ anims/idle = SubResource( 4 )
 anims/jump = SubResource( 5 )
 anims/walk = SubResource( 6 )
 
+[node name="Tween" type="Tween" parent="."]
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
