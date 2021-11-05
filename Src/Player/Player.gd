@@ -258,7 +258,6 @@ func process_movement(delta, input_direction):
 
 func shoot():
 	#state.has_bullet = false
-	print("shoot")
 	var direction: int
 	
 	if $SpriteHolder.scale.x == -1:

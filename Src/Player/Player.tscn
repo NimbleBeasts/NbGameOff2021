@@ -97,7 +97,7 @@ texture = ExtResource( 1 )
 offset = Vector2( 0, -16 )
 
 [node name="Pos" type="Position2D" parent="SpriteHolder/Sprite"]
-position = Vector2( 8, -16 )
+position = Vector2( 8, -13 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -14 )

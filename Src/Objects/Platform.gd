@@ -14,13 +14,13 @@ func _ready():
 	tween_values[0] = position
 	match direction:
 		Types.Direction.Top:
-			tween_values[1] = Vector2(position.x, position.y - tiles * 16)
+			tween_values[1] = Vector2(position.x, position.y - tiles * 8)
 		Types.Direction.Down:
-			tween_values[1] = Vector2(position.x, position.y + tiles * 16)
+			tween_values[1] = Vector2(position.x, position.y + tiles * 8)
 		Types.Direction.Left:
-			tween_values[1] = Vector2(position.x - tiles * 16, position.y)
+			tween_values[1] = Vector2(position.x - tiles * 8, position.y)
 		Types.Direction.Right:
-			tween_values[1] = Vector2(position.x + tiles * 16, position.y)
+			tween_values[1] = Vector2(position.x + tiles * 8, position.y)
 	tween_start()
 
 func tween_start():

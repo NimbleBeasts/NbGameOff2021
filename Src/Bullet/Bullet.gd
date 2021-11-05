@@ -25,3 +25,16 @@ func _on_Bullet_body_entered(body):
 	else:
 		if body.has_method("die"):
 			body.die()
+			
+		alive = false
+		$AnimationPlayer.play("explode")
+
+
+func _on_Bullet_area_entered(area):
+	_on_Bullet_body_entered(area)
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	queue_free()
+
+

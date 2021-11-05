@@ -56,14 +56,16 @@ func _process(delta):
 		if position.y > 2000:
 			queue_free()
 
+func die():
+	state.dead = true
+	$AnimationPlayer.play("die")
 
 func _on_Enemy_body_entered(body):
 	if not state.dead:
 		var contact = body.position - position
 		if abs(contact.x) < abs(contact.y) or body.is_ghost(): # Just to make sure we have no delta issue
 			# Head first
-			state.dead = true
-			$AnimationPlayer.play("die")
+			die()
 		else:
 			# Body first
 			body.die()

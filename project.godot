@@ -101,6 +101,7 @@ ui_shoot={
 2d_physics/layer_2="objects"
 2d_physics/layer_3="player"
 2d_physics/layer_4="ghosts"
+2d_physics/layer_5="enemies"
 
 [rendering]
 
