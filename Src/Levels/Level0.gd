@@ -1,6 +1,6 @@
 extends Node2D
 
-const GHOST_SPAWN_DELAY = 1.0
+const GHOST_SPAWN_DELAY = 2.0
 
 var camera_scene = preload("res://Src/Camera/Camera.tscn")
 var player_scene = preload("res://Src/Player/Player.tscn")

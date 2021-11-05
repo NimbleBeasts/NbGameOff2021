@@ -30,10 +30,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 4 ), Vector2( 0, 4 ), Vector2( 0, 170 ) ]
+"values": [ Vector2( 0, 4 ), Vector2( 0, 80 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("GhostBox/HudPlayerIndicator:visible")
@@ -106,10 +106,10 @@ __meta__ = {
 
 [node name="DiscardButton" parent="." instance=ExtResource( 7 )]
 visible = false
-margin_left = 272.0
-margin_top = 128.0
-margin_right = 368.0
-margin_bottom = 152.0
+margin_left = 112.0
+margin_top = 40.0
+margin_right = 208.0
+margin_bottom = 64.0
 text = "Discard Record"
 
 [node name="GhostBox" type="HBoxContainer" parent="."]
@@ -123,15 +123,15 @@ __meta__ = {
 }
 
 [node name="HudPlayerIndicator" parent="GhostBox" instance=ExtResource( 2 )]
-margin_left = 308.0
-margin_right = 332.0
+margin_left = 148.0
+margin_right = 172.0
 margin_bottom = 24.0
 texture = ExtResource( 3 )
 
 [node name="SaveGhostButton" type="TextureButton" parent="GhostBox"]
 visible = false
-margin_left = 308.0
-margin_right = 332.0
+margin_left = 148.0
+margin_right = 172.0
 margin_bottom = 24.0
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 6 )
@@ -140,10 +140,10 @@ texture_focused = ExtResource( 5 )
 
 [node name="WipeButton" parent="." instance=ExtResource( 7 )]
 visible = false
-margin_left = 272.0
-margin_top = 208.0
-margin_right = 368.0
-margin_bottom = 232.0
+margin_left = 112.0
+margin_top = 120.0
+margin_right = 208.0
+margin_bottom = 144.0
 text = "Remove Ghosts"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

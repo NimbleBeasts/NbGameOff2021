@@ -41,8 +41,8 @@ gdscript/warnings/return_value_discarded=false
 
 [display]
 
-window/size/width=640
-window/size/height=360
+window/size/width=320
+window/size/height=180
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
@@ -100,4 +100,5 @@ quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
 2d/snapping/use_gpu_pixel_snap=true
 2d/options/use_software_skinning=false
+environment/default_clear_color=Color( 0.109804, 0.0862745, 0.0941176, 1 )
 environment/default_environment="res://default_env.tres"

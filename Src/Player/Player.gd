@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var ghost_sprite = preload("res://Assets/Player/Ghost.png")
+
 const MAX_RECORD_FRAMES = 120000 # at least -> movement = 60 fps * (5min*60s) + anim changes
 const DEFAULT_GRAVITY = Vector2(0, 10)
 const JUMP_FORCE = 250
@@ -41,7 +43,8 @@ func setup_and_start(ghost_no):
 		data_record = Ghosts.data[ghost_no].duplicate()
 		print("data size: " + str(data_record.size()))
 		self.collision_layer = 8
-		$Sprite.modulate = Color("#aaffffff")
+		#$Sprite.modulate = Color("#aaffffff")
+		$Sprite.texture = ghost_sprite
 	else:
 		self.collision_layer = 4
 
@@ -52,6 +55,7 @@ func _physics_process(delta):
 	elif not state.dead:
 		# Player-Mode
 		var input_direction = get_direction_input()
+		
 		
 		# Update Animation
 		update_animation()
@@ -121,6 +125,11 @@ func process_ghost(delta):
 				return
 		# Movement frame
 		if data_line.get("pos"):
+			if position.x > data_line.pos.x:
+				$Sprite.flip_h = true
+			elif position.x < data_line.pos.x:
+				$Sprite.flip_h = false
+			
 			position = data_line.pos
 			$Label.set_text("Pos:" + str(position))
 			$Label2.set_text("Timestamp:" + str(data_line.t))
@@ -215,6 +224,11 @@ func process_movement(delta, input_direction):
 			state.velocity.x = MAX_SPEED
 		elif state.velocity.x < -MAX_SPEED:
 			state.velocity.x = -MAX_SPEED
+	
+	if input_direction.x == -1:
+		$Sprite.flip_h = true
+	elif input_direction.x == 1:
+		$Sprite.flip_h = false
 	
 	state.velocity.y += DEFAULT_GRAVITY.y
 	state.velocity = move_and_slide(state.velocity, Vector2(0, -1))

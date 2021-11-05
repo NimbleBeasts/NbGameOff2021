@@ -37,6 +37,7 @@ const NB_PLUGIN_CONFIG = {
 }
 
 const supportedResolutions = [
+	Vector2(320, 180), #<- original
 	Vector2(640, 360), #<- original
 	Vector2(1280, 720), #our default
 	Vector2(1366, 768), #7.47%
