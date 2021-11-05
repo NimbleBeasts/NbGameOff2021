@@ -41,12 +41,12 @@ width = 1.0
 script = ExtResource( 8 )
 
 [node name="Platform" parent="Objects" instance=ExtResource( 7 )]
-position = Vector2( 272, 152 )
+position = Vector2( 376, 160 )
 direction = 2
 tiles = 4
 
 [node name="Platform2" parent="Objects" instance=ExtResource( 7 )]
-position = Vector2( 336, 152 )
+position = Vector2( 440, 160 )
 direction = 1
 tiles = 4
 

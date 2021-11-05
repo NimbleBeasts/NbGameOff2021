@@ -14,6 +14,7 @@ const MAX_SPEED = 140
 const LADDER_CORRECTION_SPEED = 120
 
 enum PlayerState {Normal, Ladder}
+enum RecordEvent {Move, Anim, Shoot}
 
 var counter = 0
 var state = {
@@ -28,6 +29,7 @@ var state = {
 	"has_jumped": false,
 	"air_time": 0,
 	"ladder_area": null,
+	"has_bullet": true,
 }
 
 var data_record = []
@@ -36,7 +38,7 @@ func is_ghost():
 	return false if state.ghost_no == -1 else true
 
 func setup_and_start(ghost_no):
-	print("setup: " + str(ghost_no))
+	print("spawn_player: " + str(ghost_no))
 	state.ghost_no = ghost_no
 	
 	if is_ghost():
@@ -44,9 +46,11 @@ func setup_and_start(ghost_no):
 		print("data size: " + str(data_record.size()))
 		self.collision_layer = 8
 		#$Sprite.modulate = Color("#aaffffff")
-		$Sprite.texture = ghost_sprite
+		$SpriteHolder/Sprite.texture = ghost_sprite
 	else:
 		self.collision_layer = 4
+
+
 
 func _physics_process(delta):
 	if is_ghost():
@@ -108,6 +112,19 @@ func update_animation():
 		$AnimationPlayer.play(anim)
 		add_animation_record(anim)
 
+func _add_record(type, payload):
+	if data_record.size() < MAX_RECORD_FRAMES:
+		data_record.append({"e": type, "p": payload, "t": Ghosts.get_time()})
+		$Label.set_text("Data: " + str(data_record.size()))
+
+func add_movement_record():
+	_add_record(RecordEvent.Move, position)
+
+func add_animation_record(anim):
+	_add_record(RecordEvent.Anim, anim)
+
+func add_shoot_record():
+	_add_record(RecordEvent.Shoot, null)
 
 
 func process_ghost(delta):
@@ -115,22 +132,35 @@ func process_ghost(delta):
 	
 	var data_line = data_record.pop_front()
 
-	if data_line:
+	if data_line and state.dead == false:
+		#{"e": type, "p": payload, "t": Ghosts.get_time()}
+		
 		# Animation frame
-		if data_line.get("anim"):
-			$AnimationPlayer.play(data_line.anim)
+		if data_line.e == RecordEvent.Anim:
+			$AnimationPlayer.play(data_line.p)
+			
 			#Read next line to lower delta
 			data_line = data_record.pop_front() 
 			if not data_line:
 				return
-		# Movement frame
-		if data_line.get("pos"):
-			if position.x > data_line.pos.x:
-				$Sprite.flip_h = true
-			elif position.x < data_line.pos.x:
-				$Sprite.flip_h = false
+
+		# Event frame
+		if data_line.e == RecordEvent.Shoot:
+			shoot()
 			
-			position = data_line.pos
+			#Read next line to lower delta
+			data_line = data_record.pop_front() 
+			if not data_line:
+				return
+
+		# Movement frame
+		if data_line.e == RecordEvent.Move:
+			if position.x > data_line.p.x:
+				$SpriteHolder.scale.x = -1
+			elif position.x < data_line.p.x:
+				$SpriteHolder.scale.x = 1
+			
+			position = data_line.p
 			$Label.set_text("Pos:" + str(position))
 			$Label2.set_text("Timestamp:" + str(data_line.t))
 			$Label3.set_text("Delta:" + str(data_line.t - Ghosts.get_time()))
@@ -141,16 +171,6 @@ func process_ghost(delta):
 		state.velocity = move_and_slide(state.velocity, Vector2(0, -1))
 		self.collision_layer = 8 #collide like player
 
-
-func add_movement_record():
-	if data_record.size() < MAX_RECORD_FRAMES:
-		data_record.append({"t": Ghosts.get_time(), "pos": position})
-		$Label.set_text("Data: " + str(data_record.size()))
-
-func add_animation_record(anim):
-	if data_record.size() < MAX_RECORD_FRAMES:
-		data_record.append({"t": Ghosts.get_time(), "anim": anim})
-		$Label.set_text("Data: " + str(data_record.size()))
 
 func process_ladder(delta, input_direction):
 	var on_floor_or_ghost = is_on_floor_or_ghost()
@@ -167,7 +187,7 @@ func process_ladder(delta, input_direction):
 			return
 
 	# Quit ladder on jump
-	if Input.is_action_just_pressed('ui_jump'):
+	if Input.is_action_just_pressed("ui_jump"):
 		state.current_state = PlayerState.Normal
 		return
 	
@@ -200,10 +220,13 @@ func process_movement(delta, input_direction):
 	else:
 		state.air_time += 1 # TODO: use delta - anyway do we need air time? xD
 
-	if Input.is_action_just_pressed('ui_jump') and on_floor_or_ghost and not state.jumping:
+	if Input.is_action_just_pressed("ui_jump") and on_floor_or_ghost and not state.jumping:
 		state.velocity.y =- JUMP_FORCE
 		state.jumping = true
 		state.has_jumped = true
+	
+	if Input.is_action_just_pressed("ui_shoot") and state.has_bullet:
+		shoot()
 	
 	# Stop movement
 	if input_direction == Vector2(0.0, 0.0):
@@ -226,12 +249,28 @@ func process_movement(delta, input_direction):
 			state.velocity.x = -MAX_SPEED
 	
 	if input_direction.x == -1:
-		$Sprite.flip_h = true
+		$SpriteHolder.scale.x = -1
 	elif input_direction.x == 1:
-		$Sprite.flip_h = false
+		$SpriteHolder.scale.x = 1
 	
 	state.velocity.y += DEFAULT_GRAVITY.y
 	state.velocity = move_and_slide(state.velocity, Vector2(0, -1))
+
+func shoot():
+	#state.has_bullet = false
+	print("shoot")
+	var direction: int
+	
+	if $SpriteHolder.scale.x == -1:
+		direction = Types.Direction.Right
+	else:
+		direction = Types.Direction.Left
+	
+	Events.emit_signal("shoot_bullet", self, direction, $SpriteHolder/Sprite/Pos.global_position)
+	
+	# Add to records if player
+	if state.ghost_no == -1:
+		add_shoot_record()
 
 
 func die():
@@ -279,6 +318,9 @@ func restart():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	match anim_name:
 		"die":
-			restart()
+			if not is_ghost():
+				restart()
+			else:
+				queue_free()
 		_:
 			pass

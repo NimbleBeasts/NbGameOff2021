@@ -17,6 +17,9 @@ signal ghost_clear()
 signal ghost_spawn(id)
 signal ghost_dialogue_popup(callback)
 
+# Bullet
+signal shoot_bullet(player, direction, pos)
+
 # Restart
 signal restart_level()
 

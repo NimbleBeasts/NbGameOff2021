@@ -4,6 +4,7 @@ const GHOST_SPAWN_DELAY = 2.0
 
 var camera_scene = preload("res://Src/Camera/Camera.tscn")
 var player_scene = preload("res://Src/Player/Player.tscn")
+var bullet_scene = preload("res://Src/Bullet/Bullet.tscn")
 
 var camera
 
@@ -27,6 +28,14 @@ func _ready():
 		spawn_player(i)
 	
 	spawn_player()
+	
+	Events.connect("shoot_bullet", self, "spawn_bullet")
+
+
+func spawn_bullet(emitter, direction, pos):
+	var bullet = bullet_scene.instance()
+	$Objects.add_child(bullet)
+	bullet.shoot(emitter, direction, pos)
 
 func spawn_camera():
 	camera = camera_scene.instance()
