@@ -1,0 +1,112 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Hud/Portrait.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Hud/dialogue_next.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Hud/dialogue_done.png" type="Texture" id=3]
+[ext_resource path="res://Src/Hud/DialogueBox.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "pop_in"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Box:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -48 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ false ],
+"method": "_set_popup_state"
+}, {
+"args": [ true ],
+"method": "_set_popup_state"
+} ]
+}
+
+[node name="DialogueBox" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharacterTimer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="Box" type="Control" parent="."]
+anchor_right = 1.0
+margin_top = -48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bg" type="ColorRect" parent="Box"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.278431, 0.254902, 0.419608, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PortraitTexture" type="TextureRect" parent="Box"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="Box"]
+margin_left = 48.0
+margin_top = 8.0
+margin_right = 312.0
+margin_bottom = 40.0
+bbcode_enabled = true
+bbcode_text = "Text: Test"
+text = "Text: Test"
+
+[node name="NextTexture" type="TextureRect" parent="Box"]
+margin_left = 304.0
+margin_top = 32.0
+margin_right = 312.0
+margin_bottom = 40.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DoneTexture" type="TextureRect" parent="Box"]
+margin_left = 304.0
+margin_top = 32.0
+margin_right = 312.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/pop_in = SubResource( 1 )
+
+[connection signal="timeout" from="CharacterTimer" to="." method="_on_CharacterTimer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

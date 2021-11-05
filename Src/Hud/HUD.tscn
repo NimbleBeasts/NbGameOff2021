@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Src/Hud/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Src/Hud/HudGhostIndicator.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Assets/Hud/ghost_hover.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Hud/ghost_click.png" type="Texture" id=6]
 [ext_resource path="res://Src/Hud/DefaultButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Src/Hud/DialogueBox.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "popup"
@@ -33,7 +34,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 4 ), Vector2( 0, 80 ) ]
+"values": [ Vector2( 0, 154 ), Vector2( 0, 80 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("GhostBox/HudPlayerIndicator:visible")
@@ -96,6 +97,8 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/popup = SubResource( 1 )
 
+[node name="DialogueBox" parent="." instance=ExtResource( 8 )]
+
 [node name="Bg" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -114,8 +117,8 @@ text = "Discard Record"
 
 [node name="GhostBox" type="HBoxContainer" parent="."]
 anchor_right = 1.0
-margin_top = 4.0
-margin_bottom = 28.0
+margin_top = 154.0
+margin_bottom = 178.0
 custom_constants/separation = 2
 alignment = 1
 __meta__ = {
@@ -125,7 +128,6 @@ __meta__ = {
 [node name="HudPlayerIndicator" parent="GhostBox" instance=ExtResource( 2 )]
 margin_left = 148.0
 margin_right = 172.0
-margin_bottom = 24.0
 texture = ExtResource( 3 )
 
 [node name="SaveGhostButton" type="TextureButton" parent="GhostBox"]

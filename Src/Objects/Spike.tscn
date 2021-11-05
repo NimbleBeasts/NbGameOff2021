@@ -4,7 +4,7 @@
 [ext_resource path="res://Src/Objects/Spike.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3, 3 )
+extents = Vector2( 5, 3 )
 
 [node name="Spike" type="Area2D"]
 collision_layer = 0

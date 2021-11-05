@@ -21,12 +21,12 @@ tracks/0/keys = {
 }
 
 [node name="HudGhostIndicator" type="TextureRect"]
-margin_right = 16.0
-margin_bottom = 16.0
+margin_right = 24.0
+margin_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 16, 16 )
-rect_pivot_offset = Vector2( 8, 0 )
+rect_pivot_offset = Vector2( 12, 24 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
