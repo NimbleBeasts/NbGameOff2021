@@ -1,5 +1,7 @@
 extends Node
 
+var spawner_id = 0
+
 # Timestamp
 var timestamp = {
 	"processing": false,
@@ -9,6 +11,7 @@ var timestamp = {
 # Recorded ghost data
 var data = []
 
+
 func get_number_of_ghosts():
 	return data.size()
 
@@ -17,7 +20,7 @@ func add_ghost(blob):
 	Events.emit_signal("ghost_added")
 
 func clear_ghosts():
-	print("clear")
+	print("Ghosts.clear_ghosts")
 	data = []
 	Events.emit_signal("ghost_clear")
 

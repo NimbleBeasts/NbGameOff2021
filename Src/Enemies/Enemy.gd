@@ -20,7 +20,7 @@ func _ready():
 		path_points.append(point.x + position.x)
 
 	update_direction()
-	print(path_points)
+	#print(path_points)
 
 
 func update_direction():

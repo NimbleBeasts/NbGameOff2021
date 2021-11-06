@@ -34,6 +34,19 @@ var state = {
 
 var data_record = []
 
+func _ready():
+	Events.connect("ghost_clear", self, "ghost_clear")
+
+func spawn_activated(pos):
+	data_record = []
+	global_position.x = pos.x
+	state.velocity = Vector2(0, 0)
+	add_movement_record()
+
+func ghost_clear():
+	if is_ghost():
+		queue_free()
+
 func is_ghost():
 	return false if state.ghost_no == -1 else true
 

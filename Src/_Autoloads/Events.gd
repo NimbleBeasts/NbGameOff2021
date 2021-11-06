@@ -16,6 +16,7 @@ signal ghost_added()
 signal ghost_clear()
 signal ghost_spawn(id)
 signal ghost_dialogue_popup(callback)
+signal ghost_set_spawner(id)
 
 # Dialogue
 signal dialogue_popup(character, text, last_diag, callback)

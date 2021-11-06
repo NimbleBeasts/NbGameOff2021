@@ -25,7 +25,7 @@ func remove_body(body):
 	if id != -1:
 		bodies_on_button.remove(id)
 
-	print(bodies_on_button)
+	#print(bodies_on_button)
 	if bodies_on_button.size() == 0:
 		triggered = false
 		$AnimationPlayer.play_backwards("trigger")

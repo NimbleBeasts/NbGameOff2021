@@ -93,6 +93,7 @@ script = ExtResource( 2 )
 [node name="SpriteHolder" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="SpriteHolder"]
+z_index = 50
 texture = ExtResource( 1 )
 offset = Vector2( 0, -16 )
 
