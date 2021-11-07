@@ -56,7 +56,7 @@ func setup_and_start(ghost_no):
 	state.ghost_no = ghost_no
 	
 	if is_ghost():
-		data_record = Ghosts.data[ghost_no].duplicate()
+		data_record = GameData.data[ghost_no].duplicate()
 		print("data size: " + str(data_record.size()))
 		self.collision_layer = 8
 		#$Sprite.modulate = Color("#aaffffff")
@@ -128,7 +128,7 @@ func update_animation():
 
 func _add_record(type, payload):
 	if data_record.size() < MAX_RECORD_FRAMES:
-		data_record.append({"e": type, "p": payload, "t": Ghosts.get_time()})
+		data_record.append({"e": type, "p": payload, "t": GameData.get_time()})
 		$Label.set_text("Data: " + str(data_record.size()))
 
 func add_movement_record():
@@ -147,7 +147,7 @@ func process_ghost(delta):
 	var data_line = data_record.pop_front()
 
 	if data_line and state.dead == false:
-		#{"e": type, "p": payload, "t": Ghosts.get_time()}
+		#{"e": type, "p": payload, "t": GameData.get_time()}
 		
 		# Animation frame
 		if data_line.e == RecordEvent.Anim:
@@ -177,7 +177,7 @@ func process_ghost(delta):
 			position = data_line.p
 			$Label.set_text("Pos:" + str(position))
 			$Label2.set_text("Timestamp:" + str(data_line.t))
-			$Label3.set_text("Delta:" + str(data_line.t - Ghosts.get_time()))
+			$Label3.set_text("Delta:" + str(data_line.t - GameData.get_time()))
 
 			
 	else:
@@ -304,7 +304,7 @@ func process_restart():
 
 func restart_callback(result):
 	if result:
-		Ghosts.add_ghost(data_record)
+		GameData.add_ghost(data_record)
 	restart()
 		
 
@@ -324,8 +324,8 @@ func get_direction_input():
 	return input
 
 func restart():
-	Ghosts.stop_time()
-	Ghosts.clear_time()
+	GameData.stop_time()
+	GameData.clear_time()
 	Events.emit_signal("restart_level")
 
 func _on_AnimationPlayer_animation_finished(anim_name):

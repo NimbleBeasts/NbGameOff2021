@@ -21,6 +21,9 @@ signal ghost_set_spawner(id)
 # Dialogue
 signal dialogue_popup(character, text, last_diag, callback)
 
+signal test_event()
+
+
 # Bullet
 signal shoot_bullet(player, direction, pos)
 

@@ -39,10 +39,11 @@ Global="*res://Src/_Autoloads/Global.gd"
 Types="*res://Src/_Autoloads/Types.gd"
 Events="*res://Src/_Autoloads/Events.gd"
 Debug="*res://Src/_Autoloads/Debug.gd"
-Ghosts="*res://Src/_Autoloads/Ghosts.gd"
+GameData="*res://Src/_Autoloads/GameData.gd"
 
 [debug]
 
+gdscript/warnings/unused_argument=false
 gdscript/warnings/return_value_discarded=false
 
 [display]

@@ -36,7 +36,7 @@ func _ghost_dialogue_popup(callback_ref):
 	$AnimationPlayer.play("popup")
 
 func _on_WipeButton_button_up():
-	Ghosts.clear_ghosts()
+	GameData.clear_ghosts()
 	callback.call_func(false)
 	$AnimationPlayer.play_backwards("popup")
 

@@ -78,7 +78,7 @@ trigger_nodes = [ NodePath("../Door"), NodePath("../Door2") ]
 [node name="DiagCaller" parent="Objects" instance=ExtResource( 12 )]
 position = Vector2( 56, 360 )
 delay_timer = 0.2
-texts = [ "TEXT_1", "TEXT_2" ]
+text_id = "tut1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/DiagCaller"]
 shape = SubResource( 1 )

@@ -65,7 +65,7 @@ func _backToMenu():
 
 # Event Hook: New Game
 func _newGame():
-	Ghosts.new_level()
+	GameData.new_level()
 	_restartLevel()
 
 func _restartLevel():

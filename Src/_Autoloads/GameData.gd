@@ -2,6 +2,14 @@ extends Node
 
 var spawner_id = 0
 
+
+const message_data = [
+	{"id": "tut1", "data": [
+		{"char": Types.CharacterType.Tutorial, "text": "TEXT_1", "events": []},
+		{"char": Types.CharacterType.Player, "text": "TEXT_2", "events": ["test_event"]},
+	]}
+]
+
 # Timestamp
 var timestamp = {
 	"processing": false,
@@ -16,7 +24,7 @@ var dialogue_nodes = []
 
 func new_level():
 	dialogue_nodes = []
-	var data = []
+	data = []
 	timestamp.processing = false
 	timestamp.time = 0.0
 
@@ -28,7 +36,7 @@ func add_ghost(blob):
 	Events.emit_signal("ghost_added")
 
 func clear_ghosts():
-	print("Ghosts.clear_ghosts")
+	print("GameData.clear_ghosts")
 	data = []
 	Events.emit_signal("ghost_clear")
 

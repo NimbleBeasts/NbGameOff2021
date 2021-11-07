@@ -23,16 +23,16 @@ func _ready():
 	
 	Events.connect("shoot_bullet", self, "spawn_bullet")
 	Events.connect("ghost_set_spawner", self, "set_active_spawner")
-	Ghosts.start_time()
+	GameData.start_time()
 	
 	# Set last spawn
-	set_active_spawner(Ghosts.spawner_id, false)
+	set_active_spawner(GameData.spawner_id, false)
 	
 	# Set camera until player appears
 	spawn_camera()
 	
 	# Spawn ghosts & Player
-	for i in range(0, Ghosts.get_number_of_ghosts()):
+	for i in range(0, GameData.get_number_of_ghosts()):
 		spawn_player(i)
 	
 	spawn_player()
@@ -43,7 +43,7 @@ func _physics_process(delta):
 		Events.emit_signal("menu_back")
 
 func set_active_spawner(id, clear_ghosts = true):
-	Ghosts.spawner_id = id
+	GameData.spawner_id = id
 	
 	# Search for spawn node
 	for spawn in $Spawns.get_children():
@@ -54,7 +54,7 @@ func set_active_spawner(id, clear_ghosts = true):
 	
 	if clear_ghosts:
 		# Remove all ghosts
-		Ghosts.clear_ghosts()
+		GameData.clear_ghosts()
 
 func spawn_bullet(emitter, direction, pos):
 	var bullet = bullet_scene.instance()
@@ -67,7 +67,7 @@ func spawn_camera():
 	add_child(camera)
 
 func spawn_player(ghost_no = -1):
-	var delay = GHOST_SPAWN_DELAY * Ghosts.get_number_of_ghosts() if ghost_no == -1 else GHOST_SPAWN_DELAY * ghost_no
+	var delay = GHOST_SPAWN_DELAY * GameData.get_number_of_ghosts() if ghost_no == -1 else GHOST_SPAWN_DELAY * ghost_no
 	
 	# Instance player
 	var new_player = player_scene.instance()
@@ -92,4 +92,4 @@ func spawn_player(ghost_no = -1):
 
 
 func _on_ButtonClear_button_up():
-	Ghosts.clear_ghosts()
+	GameData.clear_ghosts()

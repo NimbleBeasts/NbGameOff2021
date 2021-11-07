@@ -7,6 +7,9 @@ pause_mode = 2
 collision_layer = 0
 collision_mask = 4
 script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "dialogues are stored in GameData.gd"
+}
 
 [node name="DelayTimer" type="Timer" parent="."]
 one_shot = true
