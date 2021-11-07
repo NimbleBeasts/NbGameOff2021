@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=11 format=2]
 
-[ext_resource path="res://Assets/Fonts/MenuFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Menu/Button/inactiveButton.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Fonts/default_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Assets/Menu/Button/hoverButton.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Menu/Button/activeButton.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Menu/Button/pressedButton.png" type="Texture" id=6]
@@ -42,13 +42,13 @@ margin_top = 4.0
 margin_bottom = 4.0
 
 [resource]
-default_font = ExtResource( 1 )
+default_font = ExtResource( 3 )
 Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
-Button/fonts/font = ExtResource( 1 )
+Button/fonts/font = ExtResource( 3 )
 Button/styles/disabled = SubResource( 1 )
 Button/styles/focus = SubResource( 2 )
 Button/styles/hover = SubResource( 3 )

@@ -54,7 +54,7 @@ window/stretch/aspect="keep"
 
 [gui]
 
-theme/custom_font="res://Assets/Fonts/DevLog_Default16.tres"
+theme/custom_font="res://Assets/Fonts/default_font.tres"
 
 [importer_defaults]
 
