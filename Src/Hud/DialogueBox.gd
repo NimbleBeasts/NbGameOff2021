@@ -9,6 +9,9 @@ var callback = null
 var text_anim_done = false
 var active = false
 
+var portraits = [preload("res://Assets/Hud/PortraitTutor.png"), preload("res://Assets/Hud/PortraitPlayer.png")]
+var names = ["Tutor","Player"]
+
 func _ready():
 	Events.connect("dialogue_popup", self, "_popup")
 
@@ -39,10 +42,8 @@ func _popup(character, text, last_diag, callback_function):
 	active = true
 	var char_name = ""
 	# Set Portrait
-	if character == Types.CharacterType.Tutorial:
-		char_name = "Tutorial"
-	else:
-		char_name = "Player"
+	char_name = names[character]
+	$Box/PortraitTexture.texture = portraits[character]
 	
 	text_buffer = text
 	last_dialogue = last_diag
