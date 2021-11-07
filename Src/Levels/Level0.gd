@@ -38,6 +38,9 @@ func _ready():
 	spawn_player()
 	
 
+func _physics_process(delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		Events.emit_signal("menu_back")
 
 func set_active_spawner(id, clear_ghosts = true):
 	Ghosts.spawner_id = id

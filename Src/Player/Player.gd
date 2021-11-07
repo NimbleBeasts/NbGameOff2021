@@ -3,14 +3,15 @@ extends KinematicBody2D
 var ghost_sprite = preload("res://Assets/Player/Ghost.png")
 
 const MAX_RECORD_FRAMES = 120000 # at least -> movement = 60 fps * (5min*60s) + anim changes
-const DEFAULT_GRAVITY = Vector2(0, 10)
-const JUMP_FORCE = 250
-const STOP_FORCE_FLOOR = 700
-const STOP_FORCE_AIR = 80
+
+const DEFAULT_GRAVITY = Vector2(0, 9)
+const JUMP_FORCE = 175
+const STOP_FORCE_FLOOR = 550
+const STOP_FORCE_AIR = 20
 const STOP_FORCE_LADDER = 800
-const WALK_FORCE = 1600
+const WALK_FORCE = 1200
 const LADDER_FORCE = 1200
-const MAX_SPEED = 140
+const MAX_SPEED = 96
 const LADDER_CORRECTION_SPEED = 120
 
 enum PlayerState {Normal, Ladder}

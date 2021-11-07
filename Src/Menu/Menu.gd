@@ -27,6 +27,7 @@ func switchTo(to):
 	match to:
 		MenuState.Main:
 			$Main.show()
+			$Main/ButtonPlay.grab_focus()
 		MenuState.Settings:
 			updateSettings()
 			$Settings.show()

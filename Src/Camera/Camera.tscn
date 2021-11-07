@@ -3,4 +3,7 @@
 [node name="Camera" type="Camera2D"]
 position = Vector2( 0, -24 )
 current = true
-smoothing_speed = 12.0
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+drag_margin_left = 0.1
+drag_margin_right = 0.1

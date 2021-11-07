@@ -12,7 +12,7 @@ var active = false
 func _ready():
 	Events.connect("dialogue_popup", self, "_popup")
 
-	_popup(Types.CharacterType.Tutorial, "Text test alala asd asd asd as asd", false, funcref(self, "testcbk"))
+	#_popup(Types.CharacterType.Tutorial, "Text test alala asd asd asd as asd", false, funcref(self, "testcbk"))
 
 func testcbk():
 	print("testcbk")
