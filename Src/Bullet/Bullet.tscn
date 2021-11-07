@@ -23,6 +23,7 @@ tracks/0/keys = {
 }
 
 [node name="Bullet" type="Area2D"]
+collision_layer = 0
 collision_mask = 31
 script = ExtResource( 2 )
 

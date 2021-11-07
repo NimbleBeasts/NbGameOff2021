@@ -1,6 +1,6 @@
 # Enemy Types
 
-| Working-Title | walking | destroyed by jump | destroyed by slap | misc                                              |
+| Working-Title | walking | destroyed by jump | destroyed by shot | misc                                              |
 | ------------- | ------- | ----------------- | ----------------- | ------------------------------------------------- |
 | Normal guy    | x       | x                 | x                 | -                                                 |
 | Fall guy      | -       | -                 | x                 | stucked until detection, falling down             |

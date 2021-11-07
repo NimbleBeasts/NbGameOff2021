@@ -10,9 +10,19 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Area2D",
+"class": "BaseEnemyHitzone",
+"language": "GDScript",
+"path": "res://Src/Enemies/EnemyHitzone.gd"
+}, {
+"base": "Area2D",
 "class": "DiagCaller",
 "language": "GDScript",
 "path": "res://Src/Objects/DiagCaller.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "FallGuy",
+"language": "GDScript",
+"path": "res://Src/Enemies/FallGuy.gd"
 }, {
 "base": "Line2D",
 "class": "PathLine",
@@ -20,7 +30,9 @@ _global_script_classes=[ {
 "path": "res://Src/Enemies/PathLine.gd"
 } ]
 _global_script_class_icons={
+"BaseEnemyHitzone": "",
 "DiagCaller": "",
+"FallGuy": "",
 "PathLine": ""
 }
 
