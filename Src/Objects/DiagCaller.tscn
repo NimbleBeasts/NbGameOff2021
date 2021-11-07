@@ -3,6 +3,7 @@
 [ext_resource path="res://Src/Objects/DiagCaller.gd" type="Script" id=1]
 
 [node name="DiagCaller" type="Area2D"]
+pause_mode = 2
 collision_layer = 0
 collision_mask = 4
 script = ExtResource( 1 )

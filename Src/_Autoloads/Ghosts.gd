@@ -11,6 +11,14 @@ var timestamp = {
 # Recorded ghost data
 var data = []
 
+# Store already triggered dialogues
+var dialogue_nodes = []
+
+func new_level():
+	dialogue_nodes = []
+	var data = []
+	timestamp.processing = false
+	timestamp.time = 0.0
 
 func get_number_of_ghosts():
 	return data.size()

@@ -14,12 +14,12 @@ func _ready():
 
 	#_popup(Types.CharacterType.Tutorial, "Text test alala asd asd asd as asd", false, funcref(self, "testcbk"))
 
-func testcbk():
-	print("testcbk")
-	_popup(Types.CharacterType.Tutorial, "Text2 test alala asd asd asd as asd", true, funcref(self, "testcbk2"))
-
-func testcbk2():
-	print("end")
+#func testcbk():
+#	print("testcbk")
+#	_popup(Types.CharacterType.Tutorial, "Text2 test alala asd asd asd as asd", true, funcref(self, "testcbk2"))
+#
+#func testcbk2():
+#	print("end")
 
 func _physics_process(delta):
 	if active:
@@ -29,10 +29,10 @@ func _physics_process(delta):
 			else:
 				if last_dialogue:
 					$AnimationPlayer.play_backwards("pop_in")
+					get_tree().paused = false
+
 				active = false
 				callback.call_func()
-			
-
 
 
 func _popup(character, text, last_diag, callback_function):
@@ -62,6 +62,7 @@ func _popup(character, text, last_diag, callback_function):
 	else:
 		_on_AnimationPlayer_animation_finished("")
 	
+	get_tree().paused = true
 	
 func _set_popup_state(state):
 	popup_state = state

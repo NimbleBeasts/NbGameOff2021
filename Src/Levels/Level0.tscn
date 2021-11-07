@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Src/Levels/Level0.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Tileset/Tileset.tres" type="TileSet" id=2]
@@ -11,6 +11,10 @@
 [ext_resource path="res://Src/Buttons/ButtonVertical.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Src/Door/Door.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Src/Buttons/ButtonPressure.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Src/Objects/DiagCaller.tscn" type="PackedScene" id=12]
+[ext_resource path="res://icon.png" type="Texture" id=13]
+
+[sub_resource type="RectangleShape2D" id=1]
 
 [node name="Level0" type="Node2D"]
 script = ExtResource( 1 )
@@ -70,6 +74,19 @@ position = Vector2( 512, 168 )
 [node name="ButtonPressure" parent="Objects" instance=ExtResource( 11 )]
 position = Vector2( 184, 240 )
 trigger_nodes = [ NodePath("../Door"), NodePath("../Door2") ]
+
+[node name="DiagCaller" parent="Objects" instance=ExtResource( 12 )]
+position = Vector2( 56, 360 )
+delay_timer = 0.2
+texts = [ "TEXT_1", "TEXT_2" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/DiagCaller"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Objects/DiagCaller"]
+position = Vector2( 0, -1.14441e-05 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 13 )
 
 [node name="Spawns" type="Node2D" parent="."]
 

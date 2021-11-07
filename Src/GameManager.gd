@@ -65,11 +65,8 @@ func _backToMenu():
 
 # Event Hook: New Game
 func _newGame():
-	Ghosts.clear_ghosts()
-	if levelNode:
-		unloadLevel()
-	loadLevel(0)
-	switchTo(Types.GameStates.Game)
+	Ghosts.new_level()
+	_restartLevel()
 
 func _restartLevel():
 	if levelNode:
