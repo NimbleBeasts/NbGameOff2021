@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "DiagCaller",
+"language": "GDScript",
+"path": "res://Src/Objects/DiagCaller.gd"
+}, {
 "base": "Line2D",
 "class": "PathLine",
 "language": "GDScript",
 "path": "res://Src/Enemies/PathLine.gd"
 } ]
 _global_script_class_icons={
+"DiagCaller": "",
 "PathLine": ""
 }
 
@@ -103,8 +109,13 @@ ui_shoot={
 2d_physics/layer_4="ghosts"
 2d_physics/layer_5="enemies"
 
+[locale]
+
+translations=PoolStringArray( "res://Localization/translations.en.translation", "res://Localization/translations.fr.translation", "res://Localization/translations.de.translation" )
+
 [rendering]
 
+quality/driver/driver_name="GLES2"
 2d/options/use_nvidia_rect_flicker_workaround=true
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0

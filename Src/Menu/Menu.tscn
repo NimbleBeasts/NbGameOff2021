@@ -1,8 +1,10 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Src/Menu/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Menu/nbSplash.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Menu/Slider/SliderTheme.tres" type="Theme" id=3]
+[ext_resource path="res://Assets/Menu/CountryFlagsHover.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Menu/CountryFlags.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Fonts/MenuFont.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Src/Menu/DevLogViewer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Fonts/DevLog_Mono16.tres" type="DynamicFont" id=9]
@@ -71,28 +73,48 @@ __meta__ = {
 
 [node name="ButtonPlay" parent="Main" instance=ExtResource( 12 )]
 margin_left = 8.0
-margin_top = 8.0
-margin_right = 64.0
-margin_bottom = 32.0
-text = "Play"
+margin_top = 32.0
+margin_right = 80.0
+margin_bottom = 56.0
+text = "M_PLAY"
+clip_text = true
 
 [node name="ButtonSettings" parent="Main" instance=ExtResource( 12 )]
 margin_left = 8.0
-margin_top = 40.0
-margin_right = 65.0
-margin_bottom = 64.0
-text = "Settings"
+margin_top = 64.0
+margin_right = 80.0
+margin_bottom = 88.0
+text = "M_SETTINGS"
+clip_text = true
+
+[node name="ButtonLanguage" type="TextureButton" parent="Main"]
+margin_left = 288.0
+margin_top = 8.0
+margin_right = 312.0
+margin_bottom = 24.0
+texture_hover = ExtResource( 4 )
+texture_focused = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Main/ButtonLanguage"]
+show_behind_parent = true
+texture = ExtResource( 5 )
+centered = false
+hframes = 3
 
 [node name="ButtonExit" parent="Main" instance=ExtResource( 12 )]
 margin_left = 8.0
 margin_top = 136.0
-margin_right = 64.0
+margin_right = 80.0
 margin_bottom = 160.0
-text = "Exit"
+text = "M_EXIT"
+clip_text = true
 
 [node name="LogWindow" type="ColorRect" parent="Main"]
-margin_left = 72.0
-margin_top = 8.0
+margin_left = 88.0
+margin_top = 32.0
 margin_right = 312.0
 margin_bottom = 160.0
 color = Color( 0, 0, 0, 0.388235 )
@@ -229,11 +251,11 @@ margin_top = 45.0
 margin_right = 312.0
 margin_bottom = 123.0
 theme = SubResource( 3 )
+custom_fonts/font = ExtResource( 7 )
 custom_styles/selected_focus = SubResource( 4 )
 custom_styles/bg_focus = SubResource( 5 )
 custom_styles/selected = SubResource( 6 )
 custom_styles/bg = SubResource( 7 )
-custom_fonts/font = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -327,10 +349,8 @@ __meta__ = {
 }
 
 [node name="Version" type="RichTextLabel" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -64.0
-margin_right = -4.0
+margin_left = 328.0
+margin_right = 388.0
 margin_bottom = 16.0
 custom_fonts/normal_font = ExtResource( 7 )
 bbcode_enabled = true
@@ -339,6 +359,7 @@ text = "Version"
 
 [connection signal="button_up" from="Main/ButtonPlay" to="." method="_on_ButtonPlay_button_up"]
 [connection signal="button_up" from="Main/ButtonSettings" to="." method="_on_ButtonSettings_button_up"]
+[connection signal="button_up" from="Main/ButtonLanguage" to="." method="_on_ButtonLanguage_button_up"]
 [connection signal="button_up" from="Main/ButtonExit" to="." method="_on_ButtonExit_button_up"]
 [connection signal="value_changed" from="Settings/TabContainer/General/BrightnessSlider" to="." method="_on_BrightnessSlider_value_changed"]
 [connection signal="value_changed" from="Settings/TabContainer/General/ContrastSlider" to="." method="_on_ContrastSlider_value_changed"]

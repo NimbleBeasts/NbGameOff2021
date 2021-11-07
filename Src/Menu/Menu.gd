@@ -1,6 +1,7 @@
 extends Control
 
 enum MenuState {Main, Settings}
+const flags = ["en", "fr", "de"]
 
 func _ready():
 	# Event Hooks
@@ -8,6 +9,10 @@ func _ready():
 	Events.connect("cfg_switch_fullscreen", self, "_switchFullscreen")
 
 	$Version.bbcode_text = "[right]"+ Global.getVersionString() + "[/right]"
+
+	# Set Language
+	TranslationServer.set_locale(Global.userConfig.language)
+	$Main/ButtonLanguage/Sprite.frame = flags.find(TranslationServer.get_locale())
 
 	switchTo(MenuState.Main)
 
@@ -20,6 +25,11 @@ func _ready():
 		if resolution == res:
 			var id = $Settings/TabContainer/Graphics/ResolutionList.get_item_count() - 1
 			$Settings/TabContainer/Graphics/ResolutionList.select(id, true)
+
+
+	
+
+
 # Menu State Transition
 func switchTo(to):
 	hideAllMenuScenes()
@@ -138,3 +148,17 @@ func _on_ContrastSlider_value_changed(value):
 	Events.emit_signal("cfg_change_contrast", value)
 
 
+func _on_ButtonLanguage_button_up():
+	var availableLocale = TranslationServer.get_loaded_locales()
+	var id = availableLocale.find(TranslationServer.get_locale()) + 1
+	
+	if id >= availableLocale.size():
+		id = 0
+	
+	TranslationServer.set_locale(availableLocale[id])
+	$Main/ButtonLanguage/Sprite.frame = flags.find(TranslationServer.get_locale())
+	
+	Global.userConfig.language = TranslationServer.get_locale()
+	Global.saveConfig()
+	Events.emit_signal("play_sound", "menu_click")
+	print("Language: " + tr("TEST_ENTRY"))
