@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Src/Enemies/FallGuy.gd"
 }, {
+"base": "Area2D",
+"class": "NormalGuy",
+"language": "GDScript",
+"path": "res://Src/Enemies/NormalGuy.gd"
+}, {
 "base": "Line2D",
 "class": "PathLine",
 "language": "GDScript",
@@ -33,6 +38,7 @@ _global_script_class_icons={
 "BaseEnemyHitzone": "",
 "DiagCaller": "",
 "FallGuy": "",
+"NormalGuy": "",
 "PathLine": ""
 }
 
