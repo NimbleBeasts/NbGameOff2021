@@ -56,10 +56,10 @@ func set_active_spawner(id, clear_ghosts = true):
 		# Remove all ghosts
 		GameData.clear_ghosts()
 
-func spawn_bullet(emitter, direction, pos):
+func spawn_bullet(emitter, direction, pos, type):
 	var bullet = bullet_scene.instance()
 	$Objects.add_child(bullet)
-	bullet.shoot(emitter, direction, pos)
+	bullet.shoot(emitter, direction, pos, type)
 
 func spawn_camera():
 	camera = camera_scene.instance()

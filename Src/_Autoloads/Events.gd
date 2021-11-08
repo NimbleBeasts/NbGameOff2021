@@ -25,7 +25,7 @@ signal test_event()
 
 
 # Bullet
-signal shoot_bullet(player, direction, pos)
+signal shoot_bullet(player, direction, pos, type)
 
 
 

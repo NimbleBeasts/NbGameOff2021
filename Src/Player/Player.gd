@@ -279,7 +279,7 @@ func shoot():
 	else:
 		direction = Types.Direction.Left
 	
-	Events.emit_signal("shoot_bullet", self, direction, $SpriteHolder/Sprite/Pos.global_position)
+	Events.emit_signal("shoot_bullet", self, direction, $SpriteHolder/Sprite/Pos.global_position, Types.BulletType.Normal)
 	
 	# Add to records if player
 	if state.ghost_no == -1:

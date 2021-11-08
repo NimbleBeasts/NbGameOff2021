@@ -4,6 +4,7 @@ class_name BaseEnemyHitzone
 signal die()
 
 export(bool) var vulnerable_to_jump = false
+export(bool) var vulnerable_to_bullet = false
 
 var parent = null
 
@@ -30,4 +31,5 @@ func _on_BaseEnemyHitzone_body_entered(body):
 
 
 func die():
-	emit_signal("die")
+	if vulnerable_to_bullet:
+		emit_signal("die")

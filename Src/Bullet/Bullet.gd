@@ -10,7 +10,7 @@ func _physics_process(delta):
 	if alive:
 		position.x += inc*BULLET_SPEED*delta
 
-func shoot(player, direction, pos):
+func shoot(player, direction, pos, type = Types.BulletType.Normal):
 	emitter = player
 	if direction == Types.Direction.Right:
 		$Sprite.flip_h = true
