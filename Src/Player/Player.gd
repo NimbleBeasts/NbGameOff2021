@@ -6,6 +6,7 @@ const MAX_RECORD_FRAMES = 120000 # at least -> movement = 60 fps * (5min*60s) + 
 
 const DEFAULT_GRAVITY = Vector2(0, 9)
 const JUMP_FORCE = 180
+const JUMP_FORCE_EXTERNAL = 280
 const STOP_FORCE_FLOOR = 550
 const STOP_FORCE_AIR = 20
 const STOP_FORCE_LADDER = 800
@@ -238,7 +239,7 @@ func process_movement(delta, input_direction):
 	if (Input.is_action_just_pressed("ui_jump") or state.extern_jump ) and on_floor_or_ghost and not state.jumping:
 		
 		if state.extern_jump:
-			state.velocity.y =- JUMP_FORCE * 2
+			state.velocity.y =- JUMP_FORCE_EXTERNAL
 			state.extern_jump = false
 		else:
 			state.velocity.y =- JUMP_FORCE
