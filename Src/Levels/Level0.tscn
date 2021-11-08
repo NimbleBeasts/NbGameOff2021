@@ -96,6 +96,9 @@ position = Vector2( 152, 200 )
 [node name="ShootGuy" parent="Objects" instance=ExtResource( 15 )]
 position = Vector2( 16, 288 )
 
+[node name="ShootGuy2" parent="Objects" instance=ExtResource( 15 )]
+position = Vector2( 160, 176 )
+
 [node name="Spawns" type="Node2D" parent="."]
 
 [node name="PlayerSpawn" parent="Spawns" instance=ExtResource( 4 )]

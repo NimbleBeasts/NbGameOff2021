@@ -5,4 +5,4 @@ enum GameStates {Menu, Game, Settings}
 
 enum CharacterType {Tutorial, Player}
 
-enum BulletType {Normal, Plasma}
+enum BulletType {Normal = 0, Plasma = 1}
