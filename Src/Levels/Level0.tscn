@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Src/Levels/Level0.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Tileset/Tileset.tres" type="TileSet" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Src/Enemies/FallGuy.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Src/Enemies/ShootGuy.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Src/Enemies/NormalGuy.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Src/Enemies/BounceGuy.tscn" type="PackedScene" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -101,10 +102,17 @@ position = Vector2( 16, 288 )
 position = Vector2( 16, 176 )
 
 [node name="NormalGuy" parent="Objects" instance=ExtResource( 16 )]
-position = Vector2( 144, 240 )
+position = Vector2( 144, 176 )
 
 [node name="PathLine" type="Line2D" parent="Objects/NormalGuy"]
 points = PoolVector2Array( -24, 0, 24, 0 )
+script = ExtResource( 8 )
+
+[node name="BounceGuy" parent="Objects" instance=ExtResource( 17 )]
+position = Vector2( 144, 240 )
+
+[node name="PathLine" type="Line2D" parent="Objects/BounceGuy"]
+points = PoolVector2Array( -16, 0, 16, 0 )
 script = ExtResource( 8 )
 
 [node name="Spawns" type="Node2D" parent="."]

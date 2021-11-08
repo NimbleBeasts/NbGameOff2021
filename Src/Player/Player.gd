@@ -31,6 +31,7 @@ var state = {
 	"air_time": 0,
 	"ladder_area": null,
 	"has_bullet": true,
+	"extern_jump": false,
 }
 
 var data_record = []
@@ -234,8 +235,13 @@ func process_movement(delta, input_direction):
 	else:
 		state.air_time += 1 # TODO: use delta - anyway do we need air time? xD
 
-	if Input.is_action_just_pressed("ui_jump") and on_floor_or_ghost and not state.jumping:
-		state.velocity.y =- JUMP_FORCE
+	if (Input.is_action_just_pressed("ui_jump") or state.extern_jump ) and on_floor_or_ghost and not state.jumping:
+		
+		if state.extern_jump:
+			state.velocity.y =- JUMP_FORCE * 2
+			state.extern_jump = false
+		else:
+			state.velocity.y =- JUMP_FORCE
 		state.jumping = true
 		state.has_jumped = true
 	
@@ -285,6 +291,8 @@ func shoot():
 	if state.ghost_no == -1:
 		add_shoot_record()
 
+func set_jump():
+	state.extern_jump = true
 
 func die():
 	state.dead = true
