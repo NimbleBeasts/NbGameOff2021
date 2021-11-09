@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Src/Menu/MenuLevelSelectionTile.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Menu/LevelScreenshots/Screenshots.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Menu/LevelButtons_Normal.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Menu/LevelButtons_Hover.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Menu/LevelButtons_Focus.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Menu/LevelButtons_Disabled.png" type="Texture" id=6]
+
+[node name="MenuLevelSelectionTile" type="TextureButton"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 4 )
+texture_disabled = ExtResource( 6 )
+texture_focused = ExtResource( 5 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BgTexture" type="TextureRect" parent="."]
+show_behind_parent = true
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+margin_left = 4.0
+margin_right = -4.0
+margin_bottom = 18.0
+text = "Level 1"

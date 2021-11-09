@@ -9,7 +9,9 @@ const DEBUG_OUTPUT_ON_SIGNAL_CONNECT = false
 ###############################################################################
 
 # Level Management
-signal new_game()
+signal new_game() #not used
+signal load_level(id)
+signal restart_level()
 
 # Ghost Signals
 signal ghost_added()
@@ -28,9 +30,6 @@ signal test_event()
 signal shoot_bullet(player, direction, pos, type)
 
 
-
-# Restart
-signal restart_level()
 
 # Sound
 signal play_sound(sound, volume, pos)

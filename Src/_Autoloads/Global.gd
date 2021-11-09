@@ -47,7 +47,9 @@ const supportedResolutions = [
 	]
 # Level Array
 const levels = [
-	"res://Src/Levels/Level0.tscn",
+	"res://Src/Levels/Level1.tscn",
+	"res://Src/Levels/Level2.tscn",
+	"res://Src/Levels/Level3.tscn"
 ]
 
 var gameState = {
@@ -67,13 +69,15 @@ var userConfig = {
 	"highscore": 0,
 	"soundVolume": 8,
 	"musicVolume": 8,
-
+	"unlocked_level": 0,
 	"fullscreen": false,
 	"brightness": 1.0,
 	"contrast": 1.0,
 	"resolution": {"w": 1280, "h": 720},
 	"language": "en"
 }
+
+var current_level: int = 0
 
 # RNG base
 var rng = RandomNumberGenerator.new()
@@ -174,6 +178,7 @@ func loadConfig():
 	userConfig.brightness = data.brightness
 	userConfig.contrast = data.contrast
 	userConfig.language = data.language
+	userConfig.unlocked_level = data.unlocked_level
 	# When stuck here, the config attributes have been changed.
 	# Delete the Config.cfg to solve this issue.
 	# Project->Open Project Data Folder-> Config.cfg

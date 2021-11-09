@@ -2,12 +2,12 @@ extends Control
 
 var state = Types.GameStates.Menu
 var levelNode = null
-var current_level: int
+
 
 func _ready():
 	# Set Viewport Sizes to Project Settings
 	$gameViewport/Viewport.size = Vector2(ProjectSettings.get_setting("display/window/size/width"), ProjectSettings.get_setting("display/window/size/height"))
-	#$menuViewport/Viewport.size = Vector2(ProjectSettings.get_setting("display/window/size/width"), ProjectSettings.get_setting("display/window/size/height"))
+	$menuViewport/Viewport.size = Vector2(ProjectSettings.get_setting("display/window/size/width"), ProjectSettings.get_setting("display/window/size/height"))
 	
 	Global.debugLabel = $Debug
 
@@ -20,6 +20,7 @@ func _ready():
 	Events.connect("cfg_switch_fullscreen", self, "_switchFullscreen")
 	Events.connect("new_game", self, "_newGame")
 	Events.connect("restart_level", self, "_restartLevel")
+	Events.connect("load_level", self, "_loadLevel")
 	Events.connect("menu_back", self, "_backToMenu")
 
 	switchTo(Types.GameStates.Menu)
@@ -38,7 +39,7 @@ func switchTo(to):
 
 # Load a level to the LevelHolder node
 func loadLevel(number = 0):
-	current_level = number
+	Global.current_level = number
 	levelNode = load(Global.levels[number]).instance()
 	$gameViewport.get_node("Viewport/LevelHolder").add_child(levelNode)
 
@@ -51,7 +52,7 @@ func unloadLevel():
 
 func reloadLevel():
 	unloadLevel()
-	loadLevel(current_level)
+	loadLevel(Global.current_level)
 	get_tree().paused = false
 
 ###############################################################################
@@ -68,10 +69,17 @@ func _newGame():
 	GameData.new_level()
 	_restartLevel()
 
+func _loadLevel(id):
+	GameData.new_level()
+	if levelNode:
+		unloadLevel()
+	loadLevel(id)
+	switchTo(Types.GameStates.Game)
+
 func _restartLevel():
 	if levelNode:
 		unloadLevel()
-	loadLevel(0)
+	loadLevel(Global.current_level)
 	switchTo(Types.GameStates.Game)
 
 # Event Hook: Update user config for sound

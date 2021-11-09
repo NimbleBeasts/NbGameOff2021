@@ -27,6 +27,7 @@ func new_level():
 	data = []
 	timestamp.processing = false
 	timestamp.time = 0.0
+	spawner_id = 0
 
 func get_number_of_ghosts():
 	return data.size()

@@ -1,7 +1,10 @@
 extends Control
 
-enum MenuState {Main, Settings}
+enum MenuState {Main, Selection, Settings}
 const flags = ["en", "fr", "de"]
+
+var selection_page = 0
+
 
 func _ready():
 	# Event Hooks
@@ -15,6 +18,7 @@ func _ready():
 	$Main/ButtonLanguage/Sprite.frame = flags.find(TranslationServer.get_locale())
 
 	switchTo(MenuState.Main)
+	$LevelSelection/ResetWindow.hide()
 
 
 	#Populate Resolution List
@@ -27,9 +31,6 @@ func _ready():
 			$Settings/TabContainer/Graphics/ResolutionList.select(id, true)
 
 
-	
-
-
 # Menu State Transition
 func switchTo(to):
 	hideAllMenuScenes()
@@ -38,17 +39,66 @@ func switchTo(to):
 		MenuState.Main:
 			$Main.show()
 			$Main/ButtonPlay.grab_focus()
+		MenuState.Selection:
+			update_selection()
+			$LevelSelection.show()
 		MenuState.Settings:
 			updateSettings()
 			$Settings.show()
+			# TODO: grab focus
 		_:
 			print("Invalid menu state")
 
+
+
+# Selection Stuff
+func update_selection():
+	var level_count = Global.levels.size()
+	var i = 0
+	
+	
+	for tile in $LevelSelection/SelectionHolder.get_children():
+		var level_id = i + selection_page * 3
+		i += 1
+	
+		if level_id < level_count:
+			if level_id <= Global.userConfig.unlocked_level:
+				tile.set_level(level_id, Types.MenuLevelSelectionType.Normal)
+			else:
+				tile.set_level(level_id, Types.MenuLevelSelectionType.Locked)
+		else:
+			tile.set_level(-1, Types.MenuLevelSelectionType.Void)
+	
+	# this is called, even if we switch language
+	$LevelSelection/ResetWindow/WarningLabel.bbcode_text = tr("M_DELETE_WARNING")
+
+	
+	# De(Activate) buttons
+	$LevelSelection/PastButton.disabled = false
+	$LevelSelection/NextButton.disabled = false
+	if selection_page == 0:
+		$LevelSelection/PastButton.disabled = true
+	if selection_page >= (level_count - 1) / 3:
+		$LevelSelection/NextButton.disabled = true
+
+func _on_PastButton_button_up():
+	selection_page -= 1
+	update_selection()
+
+
+func _on_NextButton_button_up():
+	selection_page += 1
+	update_selection()
+	
+	
+	
 # Helper function for State Transition
 func hideAllMenuScenes():
 	# Add menu scenes here
+	print("hide")
 	$Main.hide()
 	$Settings.hide()
+	$LevelSelection.hide()
 
 # Helper function to update the config labels
 func updateSettings():
@@ -92,7 +142,8 @@ func _back():
 
 
 func _on_ButtonPlay_button_up():
-	Events.emit_signal("new_game")
+	switchTo(MenuState.Selection)
+
 
 
 func _on_ButtonSettings_button_up():
@@ -162,3 +213,38 @@ func _on_ButtonLanguage_button_up():
 	Global.saveConfig()
 	Events.emit_signal("play_sound", "menu_click")
 	print("Language: " + tr("TEST_ENTRY"))
+
+
+
+
+
+func _on_SelectionTile1_button_up():
+	var level = selection_page*3
+	Events.emit_signal("load_level", level)
+
+
+func _on_SelectionTile2_button_up():
+	var level = selection_page*3 + 1
+	Events.emit_signal("load_level", level)
+
+
+func _on_SelectionTile3_button_up():
+	var level = selection_page*3 + 2
+	Events.emit_signal("load_level", level)
+
+
+func _on_ResetButton_button_up():
+	$LevelSelection/ResetWindow.show()
+	$LevelSelection/ResetWindow/ResetBackButton.grab_focus()
+
+
+func _on_ResetDeleteButton_button_up():
+	$LevelSelection/ResetWindow.hide()
+	Global.userConfig.unlocked_level = 0
+	Global.saveConfig()
+	update_selection()
+
+
+func _on_ResetBackButton_button_up():
+	$LevelSelection/ResetWindow.hide()
+	$LevelSelection/SelectionHolder/SelectionTile1/Title.grab_focus()
