@@ -9,7 +9,7 @@
 [ext_resource path="res://Assets/Fonts/MenuFont.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Src/Menu/DevLogViewer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Fonts/DevLog_Mono16.tres" type="DynamicFont" id=9]
-[ext_resource path="res://Assets/Fonts/DevLog_Default16.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Assets/Fonts/default_font.tres" type="DynamicFont" id=10]
 [ext_resource path="res://Assets/Fonts/DevLog_Bold16.tres" type="DynamicFont" id=11]
 [ext_resource path="res://Src/Menu/BaseButton.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Src/Menu/TabContainer.tres" type="Theme" id=13]
@@ -116,23 +116,21 @@ margin_bottom = 160.0
 text = "M_EXIT"
 clip_text = true
 
-[node name="LogWindow" type="ColorRect" parent="Main"]
-margin_left = 88.0
-margin_top = 32.0
-margin_right = 312.0
-margin_bottom = 160.0
-color = Color( 0, 0, 0, 0.388235 )
-
-[node name="DevLogViewer" parent="Main/LogWindow" instance=ExtResource( 8 )]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = -8.0
-margin_bottom = -8.0
-custom_fonts/mono_font = ExtResource( 9 )
-custom_fonts/bold_font = ExtResource( 11 )
-custom_fonts/normal_font = ExtResource( 10 )
+[node name="Copyright" type="RichTextLabel" parent="Main"]
+margin_left = -8.0
+margin_top = 163.0
+margin_right = 328.0
+margin_bottom = 184.0
+custom_fonts/normal_font = ExtResource( 7 )
+bbcode_enabled = true
+bbcode_text = "[center]©2021 by NimbleBeasts [color=#34859d]`[/color]NimbleBeasts[/center]"
+text = "©2021 by NimbleBeasts `NimbleBeasts"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="LevelSelection" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -237,7 +235,6 @@ text = "M_DELETE_WARNING"
 scroll_active = false
 
 [node name="Settings" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -245,6 +242,7 @@ anchor_bottom = 1.0
 margin_right = 320.0
 margin_bottom = 184.0
 theme = ExtResource( 13 )
+custom_constants/side_margin = 0
 tab_align = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -253,13 +251,23 @@ __meta__ = {
 [node name="General" type="Tabs" parent="Settings/TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 21.0
+margin_top = 26.0
+
+[node name="DevLogViewer" parent="Settings/TabContainer/General" instance=ExtResource( 8 )]
+margin_left = 8.0
+margin_top = 3.0
+margin_right = -8.0
+margin_bottom = -40.0
+custom_fonts/mono_font = ExtResource( 9 )
+custom_fonts/bold_font = ExtResource( 11 )
+custom_fonts/normal_font = ExtResource( 10 )
 
 [node name="BrightnessSlider" type="HSlider" parent="Settings/TabContainer/General"]
+visible = false
 margin_left = 80.0
-margin_top = 19.0
+margin_top = 179.0
 margin_right = 200.0
-margin_bottom = 35.0
+margin_bottom = 195.0
 theme = ExtResource( 3 )
 min_value = 0.75
 max_value = 1.25
@@ -289,10 +297,11 @@ custom_fonts/font = ExtResource( 7 )
 text = "1.00"
 
 [node name="ContrastSlider" type="HSlider" parent="Settings/TabContainer/General"]
+visible = false
 margin_left = 80.0
-margin_top = 53.0
+margin_top = 213.0
 margin_right = 200.0
-margin_bottom = 69.0
+margin_bottom = 229.0
 theme = ExtResource( 3 )
 min_value = 0.75
 max_value = 1.25
@@ -325,7 +334,7 @@ text = "1.00"
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 21.0
+margin_top = 26.0
 
 [node name="ApplyButton" parent="Settings/TabContainer/Graphics" instance=ExtResource( 12 )]
 anchor_right = 1.0
@@ -372,7 +381,7 @@ __meta__ = {
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 21.0
+margin_top = 26.0
 
 [node name="SoundSlider" type="HSlider" parent="Settings/TabContainer/Sounds"]
 margin_left = 80.0
@@ -436,25 +445,12 @@ margin_bottom = 14.0
 custom_fonts/font = ExtResource( 7 )
 text = "100%"
 
-[node name="BackButton" parent="Settings" instance=ExtResource( 12 )]
+[node name="BackButton" parent="Settings" instance=ExtResource( 14 )]
 margin_left = 8.0
 margin_top = 152.0
-margin_right = 136.0
+margin_right = 104.0
 margin_bottom = 173.0
-text = "Back"
-
-[node name="Copyright" type="RichTextLabel" parent="."]
-margin_left = -8.0
-margin_top = 163.0
-margin_right = 328.0
-margin_bottom = 184.0
-custom_fonts/normal_font = ExtResource( 7 )
-bbcode_enabled = true
-bbcode_text = "[center]©2021 by NimbleBeasts [color=#34859d]`[/color]NimbleBeasts[/center]"
-text = "©2021 by NimbleBeasts `NimbleBeasts"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "M_BACK"
 
 [node name="Version" type="RichTextLabel" parent="."]
 margin_left = 328.0

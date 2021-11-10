@@ -66,7 +66,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="menuViewport"]
-size = Vector2( 640, 360 )
+size = Vector2( 320, 180 )
 own_world = true
 handle_input_locally = false
 disable_3d = true

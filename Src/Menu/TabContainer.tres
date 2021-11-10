@@ -1,16 +1,19 @@
 [gd_resource type="Theme" load_steps=6 format=2]
 
-[ext_resource path="res://Assets/Fonts/MenuFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Fonts/default_font.tres" type="DynamicFont" id=1]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.337255, 0.423529, 0.52549, 1 )
+bg_color = Color( 0.278431, 0.254902, 0.419608, 1 )
 
 [sub_resource type="StyleBoxFlat" id=2]
 content_margin_left = 6.0
 content_margin_right = 6.0
 content_margin_top = 4.0
 content_margin_bottom = 4.0
-bg_color = Color( 0.2, 0.235294, 0.341176, 1 )
+bg_color = Color( 0.305882, 0.156863, 0.180392, 0 )
+border_width_top = 1
+border_width_right = 1
+border_color = Color( 0.278431, 0.254902, 0.419608, 1 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 content_margin_left = 6.0
@@ -24,7 +27,7 @@ content_margin_left = 6.0
 content_margin_right = 6.0
 content_margin_top = 4.0
 content_margin_bottom = 4.0
-bg_color = Color( 0.337255, 0.423529, 0.52549, 1 )
+bg_color = Color( 0.278431, 0.254902, 0.419608, 1 )
 
 [resource]
 TabContainer/colors/font_color_bg = Color( 0.69, 0.69, 0.69, 1 )

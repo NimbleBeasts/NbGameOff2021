@@ -1,7 +1,7 @@
 [gd_resource type="Environment" format=2]
 
 [resource]
-background_mode = 4
+background_mode = 5
 auto_exposure_max_luma = 2.74
 ssao_radius = 17.62
 ssao_intensity = 36.58

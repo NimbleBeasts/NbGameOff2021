@@ -2,15 +2,30 @@
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.541176, 0.560784, 0.768627, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color( 0.541176, 0.560784, 0.768627, 1 )
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.541176, 0.560784, 0.768627, 1 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.109804, 0.0862745, 0.0941176, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color( 0.278431, 0.254902, 0.419608, 1 )
 
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.278431, 0.254902, 0.419608, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color( 0.541176, 0.560784, 0.768627, 1 )
 
 [node name="DefaultButton" type="Button"]
 margin_right = 12.0
