@@ -1,4 +1,4 @@
-[color=#8a8fc4][b]NimbleBeasts Boilerplate[/b][/color]
+[color=#8a8fc4][b]Game Off[/b][/color]
 This is a simple kickstarter project for Godot projects. It comes with some standard features and little helpers as well as some stuff, no one has time for in a game jam.
 
 [color=#8a8fc4][b]Changelog[/b][/color]

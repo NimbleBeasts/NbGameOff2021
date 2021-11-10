@@ -33,7 +33,7 @@ const NB_PLUGIN_CONFIG = {
 	"gameId": "gameId",
 	"filePassword": "password",
 	"magic": "magiccode",
-	"devlogUrl": "https://raw.githubusercontent.com/NimbleBeasts/NbGodotBoilerplate/master/_Org/devlog/Boilerplate_"+ "%0.1f" % GAME_VERSION +".txt"
+	"devlogUrl": "https://raw.githubusercontent.com/NimbleBeasts/NbGameOff2021/master/_Org/devlog/gameoff_"+ "%0.1f" % GAME_VERSION +".txt"
 }
 
 const supportedResolutions = [
