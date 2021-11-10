@@ -29,8 +29,6 @@ signal test_event()
 # Bullet
 signal shoot_bullet(player, direction, pos, type)
 
-
-
 # Sound
 signal play_sound(sound, volume, pos)
 # Music

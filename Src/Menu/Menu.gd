@@ -31,6 +31,29 @@ func _ready():
 			$Settings/TabContainer/Graphics/ResolutionList.select(id, true)
 
 
+func _process(delta):
+	# Changing window size results in nullptr execption and ugly text glitches - so we overwrite it 
+	# TODO: bug report on github
+	
+	# Main Buttons
+	$Main/ButtonPlay.text = "0"
+	$Main/ButtonPlay.text = tr("M_PLAY")
+	$Main/ButtonSettings.text = "0"
+	$Main/ButtonSettings.text = tr("M_SETTINGS")
+	$Main/ButtonExit.text = "0"
+	$Main/ButtonExit.text = tr("M_EXIT")
+	
+	# Resolution Window
+	$Settings/TabContainer/Graphics/ApplyButton.text = "0"
+	$Settings/TabContainer/Graphics/ApplyButton.text = tr("M_APPLY")
+	var text = $Settings/TabContainer/Graphics/FullscreenButton.text
+	$Settings/TabContainer/Graphics/FullscreenButton.text = "0"
+	$Settings/TabContainer/Graphics/FullscreenButton.text = text
+	
+	$Settings/BackButton.text = "0"
+	$Settings/BackButton.text = tr("M_BACK")
+	
+	
 # Menu State Transition
 func switchTo(to):
 	hideAllMenuScenes()
@@ -178,6 +201,13 @@ func _on_FullscreenButton_button_up():
 func _on_ApplyButton_button_up():
 	var id = $Settings/TabContainer/Graphics/ResolutionList.get_selected_items()[0]
 	Global.setResolution(id)
+	
+	# Glitchy font on resize workaround
+	$Settings/TabContainer/Graphics/ResolutionList.rect_scale = Vector2(1.1, 1.1)
+	yield(get_tree().create_timer(0.001), "timeout")
+	$Settings/TabContainer/Graphics/ResolutionList.rect_scale = Vector2(1.0, 1.0)
+	
+
 
 func _on_SoundSlider_value_changed(value):
 	$Settings/TabContainer/Sounds/SoundSlider/Value.set_text(str(value*10) + "%")
