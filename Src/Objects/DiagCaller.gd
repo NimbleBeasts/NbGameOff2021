@@ -37,7 +37,7 @@ func spawn_message():
 		Events.emit_signal(
 			"dialogue_popup",
 			text_buffer[message_counter].char, # Char talking
-			text_buffer[message_counter].text, # Text
+			tr(text_buffer[message_counter].text), # Text
 			(message_counter == text_buffer.size() - 1), # Last Text?
 			funcref(self, "_callback") # Callback
 		)

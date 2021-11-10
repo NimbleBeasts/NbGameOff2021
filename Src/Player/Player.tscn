@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://Src/Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sounds/player_shoot.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Sounds/player_jump.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 14 )
@@ -93,6 +95,7 @@ script = ExtResource( 2 )
 [node name="SpriteHolder" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="SpriteHolder"]
+scale = Vector2( 1.4, 0.8 )
 z_index = 50
 texture = ExtResource( 1 )
 offset = Vector2( 0, -16 )
@@ -142,5 +145,15 @@ anims/jump = SubResource( 5 )
 anims/walk = SubResource( 6 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+max_distance = 256.0
+bus = "Sound"
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+max_distance = 256.0
+bus = "Sound"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

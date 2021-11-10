@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/enemy_shoot.wav-977036a5b8b354f14af53db1638ab513.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/enemy_shoot.wav"
+dest_files=[ "res://.import/enemy_shoot.wav-977036a5b8b354f14af53db1638ab513.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -19,6 +19,7 @@ func set_active(id):
 
 func play_anim(player_node):
 	player = player_node
+	$TeleportSound.play()
 	$AnimationPlayer.play("beam")
 
 func show_player(): #Called by animation
@@ -30,3 +31,4 @@ func _on_Area2D_body_entered(body):
 		is_active = true
 		Events.emit_signal("ghost_set_spawner", spawner_id)
 		body.spawn_activated(global_position)
+		$CheckPointSound.play()

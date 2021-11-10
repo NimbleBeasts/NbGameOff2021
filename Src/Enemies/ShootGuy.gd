@@ -33,6 +33,7 @@ func shoot():
 	else:
 		direction = Types.Direction.Left
 	
+	$ShootSound.play()
 	Events.emit_signal("shoot_bullet", self, direction, $Position2D.global_position, Types.BulletType.Plasma)
 
 

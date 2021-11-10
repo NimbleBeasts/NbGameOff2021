@@ -1,6 +1,9 @@
 extends Area2D
 
 
+func _ready():
+	$IdleSound.play()
+
 func _on_Portal_body_entered(body):
 	body.hide()
 	body.state.dead = true
@@ -19,5 +22,4 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			
 		else:
 			# Last Level
-			pass
-
+			print("add dialogues here")

@@ -37,6 +37,7 @@ func _on_Bullet_body_entered(body):
 		$Explosion.show()
 		
 		alive = false
+		$HitSound.play()
 		$AnimationPlayer.play("explode")
 
 

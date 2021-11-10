@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Enemies/ShootGuy.png" type="Texture" id=1]
 [ext_resource path="res://Src/Enemies/ShootGuy.gd" type="Script" id=2]
 [ext_resource path="res://Src/Enemies/EnemyHitzone.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Sounds/enemy_shoot.wav" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -161,6 +162,11 @@ one_shot = true
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( -11, -11 )
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+max_distance = 256.0
+bus = "Sound"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

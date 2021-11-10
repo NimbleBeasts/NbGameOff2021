@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Src/Spawner/PlayerSpawn.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Spawner/DummySpawner.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Spawner/DummyBeam.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sounds/checkpoint.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Sounds/teleport.wav" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -94,5 +96,13 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0, 2 )
 shape = SubResource( 3 )
+
+[node name="CheckPointSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+bus = "Sound"
+
+[node name="TeleportSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+bus = "Sound"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

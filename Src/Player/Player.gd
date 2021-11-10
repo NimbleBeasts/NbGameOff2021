@@ -153,6 +153,9 @@ func process_ghost(delta):
 		
 		# Animation frame
 		if data_line.e == RecordEvent.Anim:
+			if data_line.p == "jump":
+				$JumpSound.play()
+			
 			$AnimationPlayer.play(data_line.p)
 			
 			#Read next line to lower delta
@@ -237,7 +240,7 @@ func process_movement(delta, input_direction):
 		state.air_time += 1 # TODO: use delta - anyway do we need air time? xD
 
 	if (Input.is_action_just_pressed("ui_jump") or state.extern_jump ) and on_floor_or_ghost and not state.jumping:
-		
+		$JumpSound.play()
 		if state.extern_jump:
 			state.velocity.y =- JUMP_FORCE_EXTERNAL
 			state.extern_jump = false
@@ -286,6 +289,7 @@ func shoot():
 	else:
 		direction = Types.Direction.Left
 	
+	$ShootSound.play()
 	Events.emit_signal("shoot_bullet", self, direction, $SpriteHolder/Sprite/Pos.global_position, Types.BulletType.Normal)
 	
 	# Add to records if player

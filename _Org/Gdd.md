@@ -31,3 +31,23 @@ Touching this one will result in pushing the player upwards - maybe in spikes ;)
 This guy is shooting a projectile on a specific frequency.
 
 ![](enemy3.png)
+
+# Required sounds
+
+- [ ] Button Click
+- [x] Beam sound
+- [x] Jump / Landing?
+- [x] Shoot Player
+- [x] Checkpoint reached
+- [x] portal idle / close
+- [x] Hit sound
+- [ ] Hit Enemy sound
+- [x] Shoot ShootGuy
+- [ ] Pop Bounceguy
+- [ ] Fallguy
+- [ ] Player Hurt
+- [ ] Dialogue Popup
+- [x] Dialogue letter
+- [ ] door open / close
+- [x] COIN
+- [x] ammo

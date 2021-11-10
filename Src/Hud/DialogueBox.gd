@@ -71,6 +71,7 @@ func _set_popup_state(state):
 func _start_text_anim():
 	if $Box/Text.visible_characters < text_buffer_length:
 		$Box/Text.visible_characters += 1
+		$TypeSound.play()
 	else:
 		_stop_text_anim()
 
