@@ -35,6 +35,7 @@ signal shoot_bullet(player, direction, pos, type)
 signal play_sound(sound, volume, pos)
 # Music
 signal play_music(track)
+signal change_music(track_id)
 # Menu Related
 signal menu_back()
 

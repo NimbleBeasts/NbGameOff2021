@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/06_tutorial-lugn-techno.mp3-74cd58af30c7b091b726c05b9bc61538.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/06_tutorial-lugn-techno.mp3"
+dest_files=[ "res://.import/06_tutorial-lugn-techno.mp3-74cd58af30c7b091b726c05b9bc61538.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

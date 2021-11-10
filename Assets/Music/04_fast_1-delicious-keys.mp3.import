@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/04_fast_1-delicious-keys.mp3-0b9a7f52b5a5974ca07328950163463e.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/04_fast_1-delicious-keys.mp3"
+dest_files=[ "res://.import/04_fast_1-delicious-keys.mp3-0b9a7f52b5a5974ca07328950163463e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

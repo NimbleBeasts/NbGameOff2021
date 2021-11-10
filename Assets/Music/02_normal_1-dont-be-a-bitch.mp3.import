@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/02_normal_1-dont-be-a-bitch.mp3-ed22d8f6e9e0065e0dd671798de078f1.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/02_normal_1-dont-be-a-bitch.mp3"
+dest_files=[ "res://.import/02_normal_1-dont-be-a-bitch.mp3-ed22d8f6e9e0065e0dd671798de078f1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

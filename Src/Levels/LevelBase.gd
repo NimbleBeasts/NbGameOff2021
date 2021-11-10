@@ -2,6 +2,8 @@ extends Node2D
 
 const GHOST_SPAWN_DELAY = 2.0
 
+export(Types.MusicTracks) var music_track = Types.MusicTracks.Normal
+
 var camera_scene = preload("res://Src/Camera/Camera.tscn")
 var player_scene = preload("res://Src/Player/Player.tscn")
 var bullet_scene = preload("res://Src/Bullet/Bullet.tscn")
@@ -9,6 +11,8 @@ var bullet_scene = preload("res://Src/Bullet/Bullet.tscn")
 var camera = null
 
 var spawn_node = null
+
+
 
 func _on_ButtonBack_button_up():
 	Events.emit_signal("play_sound", "menu_click")
@@ -24,6 +28,8 @@ func _ready():
 	Events.connect("shoot_bullet", self, "spawn_bullet")
 	Events.connect("ghost_set_spawner", self, "set_active_spawner")
 	GameData.start_time()
+	
+	Events.emit_signal("change_music", music_track)
 	
 	# Set last spawn
 	set_active_spawner(GameData.spawner_id, false)

@@ -51,3 +51,11 @@ This guy is shooting a projectile on a specific frequency.
 - [ ] door open / close
 - [x] COIN
 - [x] ammo
+
+# Music
+
+Super Secret Tune - Lesser than three (menu?)
+Dont be a bitch remix
+delicious keys
+
+Highway Slaughter - Cor Metallicum
