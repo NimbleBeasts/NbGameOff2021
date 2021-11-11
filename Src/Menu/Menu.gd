@@ -197,6 +197,12 @@ func _on_FullscreenButton_button_up():
 		
 	Events.emit_signal("cfg_switch_fullscreen", !Global.userConfig.fullscreen)
 
+	# Glitchy font on resize workaround
+	$Settings/TabContainer/Graphics/ResolutionList.rect_scale = Vector2(1.1, 1.1)
+	yield(get_tree().create_timer(0.001), "timeout")
+	$Settings/TabContainer/Graphics/ResolutionList.rect_scale = Vector2(1.0, 1.0)
+	
+
 
 func _on_ApplyButton_button_up():
 	var id = $Settings/TabContainer/Graphics/ResolutionList.get_selected_items()[0]
