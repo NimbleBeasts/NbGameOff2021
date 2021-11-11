@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Src/GameManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Menu/nbSplash.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Src/AudioPlayer/AudioPlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://default_environment.tres" type="Environment" id=5]
 [ext_resource path="res://Src/Hud/HUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Shaders/glitch.gdshader" type="Shader" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "start"
@@ -21,6 +22,47 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 7 )
+shader_param/glitch_enabled = false
+shader_param/shake_power = 0.03
+shader_param/shake_rate = 0.2
+shader_param/shake_speed = 5.0
+shader_param/shake_block_size = 30.5
+shader_param/shake_color_rate = 0.01
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shader:material:shader_param/glitch_enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "test"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shader:material:shader_param/glitch_enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
 }
 
 [node name="GameManager" type="Control"]
@@ -105,3 +147,17 @@ autoplay = "start"
 anims/start = SubResource( 1 )
 
 [node name="AudioPlayer" parent="." instance=ExtResource( 4 )]
+
+[node name="Shader" type="ColorRect" parent="."]
+material = SubResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Shader"]
+root_node = NodePath("../..")
+autoplay = "test"
+anims/RESET = SubResource( 4 )
+anims/test = SubResource( 5 )
