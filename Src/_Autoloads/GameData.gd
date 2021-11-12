@@ -4,10 +4,29 @@ var spawner_id = 0
 
 
 const message_data = [
-	{"id": "tut1", "data": [
-		{"char": Types.CharacterType.Tutorial, "text": "TEXT_1", "events": []},
-		{"char": Types.CharacterType.Player, "text": "TEXT_2", "events": ["test_event"]},
-	]}
+	{"id": "TUT1", "data": [
+		{"char": Types.CharacterType.Professor, "text": "TUT1_TEXT_1", "events": []},
+		{"char": Types.CharacterType.Subject, "text": "TUT1_TEXT_2", "events": []},
+		{"char": Types.CharacterType.Professor, "text": "TUT1_TEXT_3", "events": []},
+		{"char": Types.CharacterType.Subject, "text": "TUT1_TEXT_4", "events": []},
+		{"char": Types.CharacterType.Professor, "text": "TUT1_TEXT_5", "events": []},
+	]},
+	{"id": "TUT2", "data": [
+		{"char": Types.CharacterType.Professor, "text": "TUT2_TEXT_1", "events": []},
+		{"char": Types.CharacterType.Subject, "text": "TUT2_TEXT_2", "events": []},
+	]},
+	{"id": "TUT3", "data": [
+		{"char": Types.CharacterType.Professor, "text": "TUT3_TEXT_1", "events": []},
+		{"char": Types.CharacterType.Subject, "text": "TUT3_TEXT_2", "events": ["tutorial_step3_completed"]},
+	]},
+	{"id": "TUT4", "data": [
+		{"char": Types.CharacterType.Professor, "text": "TUT4_TEXT_1", "events": []},
+		{"char": Types.CharacterType.Professor, "text": "TUT4_TEXT_2", "events": []},
+		{"char": Types.CharacterType.Subject, "text": "TUT4_TEXT_3", "events": []},
+		{"char": Types.CharacterType.Professor, "text": "TUT4_TEXT_4", "events": []},
+		{"char": Types.CharacterType.Marc, "text": "TUT4_TEXT_5", "events": []},
+		{"char": Types.CharacterType.Professor, "text": "TUT4_TEXT_6", "events": []},
+	]},
 ]
 
 # Timestamp
@@ -15,6 +34,8 @@ var timestamp = {
 	"processing": false,
 	"time": 0.0,
 }
+
+var tutorial_state_3 = false
 
 # Recorded ghost data
 var data = []
@@ -28,6 +49,7 @@ func new_level():
 	timestamp.processing = false
 	timestamp.time = 0.0
 	spawner_id = 0
+	tutorial_state_3 = false
 
 func get_number_of_ghosts():
 	return data.size()

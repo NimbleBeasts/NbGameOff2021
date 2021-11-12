@@ -10,7 +10,7 @@ var text_anim_done = false
 var active = false
 
 var portraits = [preload("res://Assets/Hud/PortraitTutor.png"), preload("res://Assets/Hud/PortraitPlayer.png")]
-var names = ["Tutor","Player"]
+var names = ["Professor","Subject_3", "Crazy Professor", "Marc"]
 
 func _ready():
 	Events.connect("dialogue_popup", self, "_popup")
@@ -43,7 +43,7 @@ func _popup(character, text, last_diag, callback_function):
 	var char_name = ""
 	# Set Portrait
 	char_name = names[character]
-	$Box/PortraitTexture.texture = portraits[character]
+	$Box/PortraitTexture.texture = portraits[character%2]
 	
 	text_buffer = text
 	last_dialogue = last_diag

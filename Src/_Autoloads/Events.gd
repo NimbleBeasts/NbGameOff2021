@@ -23,6 +23,7 @@ signal ghost_set_spawner(id)
 # Dialogue
 signal dialogue_popup(character, text, last_diag, callback)
 
+signal tutorial_step3_completed()
 signal test_event()
 
 

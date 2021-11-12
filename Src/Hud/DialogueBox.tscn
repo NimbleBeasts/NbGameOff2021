@@ -78,19 +78,24 @@ __meta__ = {
 }
 
 [node name="Text" type="RichTextLabel" parent="Box"]
-margin_left = 48.0
-margin_top = 8.0
-margin_right = 312.0
-margin_bottom = 40.0
+margin_left = 43.0
+margin_top = 3.0
+margin_right = 308.0
+margin_bottom = 48.0
+custom_constants/line_separation = -6
 bbcode_enabled = true
-bbcode_text = "Text: Test"
-text = "Text: Test"
+bbcode_text = "Professor: a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a"
+text = "Professor: a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="NextTexture" type="TextureRect" parent="Box"]
 margin_left = 304.0
-margin_top = 32.0
+margin_top = 33.0
 margin_right = 312.0
-margin_bottom = 40.0
+margin_bottom = 41.0
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -98,9 +103,9 @@ __meta__ = {
 
 [node name="DoneTexture" type="TextureRect" parent="Box"]
 margin_left = 304.0
-margin_top = 32.0
+margin_top = 33.0
 margin_right = 312.0
-margin_bottom = 40.0
+margin_bottom = 41.0
 texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
