@@ -5,12 +5,31 @@ var ghost_indicator_refs = []
 
 var callback = null
 
+var memory_total = 0
+var memory_collected = 0
+
 func _ready():
 	Events.connect("ghost_added", self, "_ghost_added")
 	Events.connect("ghost_clear", self, "_ghost_clear")
 	Events.connect("ghost_spawn", self, "_ghost_spawn")
 	Events.connect("ghost_dialogue_popup", self, "_ghost_dialogue_popup")
 	
+	Events.connect("memory_update_total", self, "_memory_update_total")
+	Events.connect("memory_update_collected", self, "_memory_update_collected")
+	
+
+func _memory_update_total(total):
+	memory_total = total
+	update_memory_label()
+
+func _memory_update_collected(update):
+	memory_collected = update
+	update_memory_label()
+
+func update_memory_label():
+	$MemoryLabel.set_text(str(memory_collected) + "/" + str(memory_total))
+
+
 func _ghost_added():
 	var new_ghost = ghost_indicator_scene.instance()
 	$GhostBox.add_child(new_ghost)

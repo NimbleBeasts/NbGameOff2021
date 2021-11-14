@@ -148,6 +148,17 @@ margin_right = 208.0
 margin_bottom = 144.0
 text = "Remove Ghosts"
 
+[node name="MemoryLabel" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 160.0
+margin_right = 48.0
+margin_bottom = 178.0
+text = "1/1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="button_up" from="DiscardButton" to="." method="_on_DiscardButton_button_up"]
 [connection signal="button_up" from="GhostBox/SaveGhostButton" to="." method="_on_SaveGhostButton_button_up"]

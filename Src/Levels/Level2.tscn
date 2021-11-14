@@ -1,8 +1,7 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Src/Enemies/PathLine.gd" type="Script" id=1]
 [ext_resource path="res://Src/Levels/LevelBase.gd" type="Script" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Src/Spawner/PlayerSpawn.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Src/Door/Door.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Src/Enemies/BounceGuy.tscn" type="PackedScene" id=6]
@@ -15,11 +14,8 @@
 [ext_resource path="res://Src/Objects/Spike.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Src/Objects/Platform.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Src/Buttons/ButtonPressure.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Src/Objects/DiagCaller.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Assets/Tileset/Tileset.tres" type="TileSet" id=17]
 [ext_resource path="res://Src/Portal/Portal.tscn" type="PackedScene" id=18]
-
-[sub_resource type="RectangleShape2D" id=1]
 
 [node name="Level2" type="Node2D"]
 script = ExtResource( 2 )
@@ -79,19 +75,6 @@ position = Vector2( 512, 168 )
 [node name="ButtonPressure" parent="Objects" instance=ExtResource( 15 )]
 position = Vector2( 184, 240 )
 trigger_nodes = [ NodePath("../Door"), NodePath("../Door2") ]
-
-[node name="DiagCaller" parent="Objects" instance=ExtResource( 16 )]
-position = Vector2( 56, 360 )
-delay_timer = 0.2
-text_id = "tut1"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/DiagCaller"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="Objects/DiagCaller"]
-position = Vector2( 0, -1.14441e-05 )
-scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 3 )
 
 [node name="FallGuy" parent="Objects" instance=ExtResource( 10 )]
 position = Vector2( 192, 200 )

@@ -37,7 +37,7 @@ shader_param/screen_size = Vector2( 320, 180 )
 shader_param/aberration_amount = 0.1
 shader_param/move_aberration = true
 shader_param/aberration_speed = 4.85
-shader_param/white_noise_rate = 0.05
+shader_param/white_noise_rate = 0.02
 
 [sub_resource type="Animation" id=4]
 length = 0.001

@@ -50,6 +50,7 @@ tracks/1/keys = {
 [node name="Pickup" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
+z_index = 53
 texture = ExtResource( 1 )
 hframes = 5
 
