@@ -5,7 +5,7 @@ var ghost_sprite = preload("res://Assets/Player/Ghost.png")
 const MAX_RECORD_FRAMES = 120000 # at least -> movement = 60 fps * (5min*60s) + anim changes
 
 const DEFAULT_GRAVITY = Vector2(0, 9)
-const JUMP_FORCE = 180
+const JUMP_FORCE = 200
 const JUMP_FORCE_EXTERNAL = 280
 const STOP_FORCE_FLOOR = 550
 const STOP_FORCE_AIR = 20
