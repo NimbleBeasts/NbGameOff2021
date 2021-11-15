@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Src/Pickups/Memory.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Pickups/Mem.png" type="Texture" id=2]
+[ext_resource path="res://Src/Pickups/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Pickups/Bullet.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Sounds/coin.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -39,7 +39,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, -4 ), Vector2( 0, 4 ) ]
 }
 
-[node name="Memory" type="Area2D"]
+[node name="Bullet" type="Area2D"]
 collision_layer = 0
 collision_mask = 12
 script = ExtResource( 1 )
@@ -61,5 +61,5 @@ autoplay = "idle"
 anims/RESET = SubResource( 2 )
 anims/idle = SubResource( 3 )
 
-[connection signal="body_entered" from="." to="." method="_on_Memory_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_AudioStreamPlayer2D_finished"]

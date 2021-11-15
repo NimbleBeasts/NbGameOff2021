@@ -165,7 +165,8 @@ func process_ghost(delta):
 
 		# Event frame
 		if data_line.e == RecordEvent.Shoot:
-			shoot()
+			if state.has_bullet:
+				shoot()
 			
 			#Read next line to lower delta
 			data_line = data_record.pop_front() 
@@ -281,7 +282,7 @@ func process_movement(delta, input_direction):
 	state.velocity = move_and_slide(state.velocity, Vector2(0, -1))
 
 func shoot():
-	#state.has_bullet = false
+	state.has_bullet = false
 	var direction: int
 	
 	if $SpriteHolder.scale.x == -1:
