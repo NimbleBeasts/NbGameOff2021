@@ -27,6 +27,11 @@ const message_data = [
 		{"char": Types.CharacterType.Marc, "text": "TUT4_TEXT_5", "events": []},
 		{"char": Types.CharacterType.Professor, "text": "TUT4_TEXT_6", "events": []},
 	]},
+	{"id": "TUT5", "data": [
+		{"char": Types.CharacterType.Marc, "text": "TUT4_TEXT_1", "events": []},
+		{"char": Types.CharacterType.Marc, "text": "TUT4_TEXT_2", "events": []},
+		{"char": Types.CharacterType.Marc, "text": "TUT4_TEXT_3", "events": []},
+	]},
 ]
 
 # Timestamp

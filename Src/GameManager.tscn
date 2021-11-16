@@ -26,6 +26,7 @@ tracks/0/keys = {
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 7 )
+shader_param/noise_enabled = false
 shader_param/glitch_enabled = false
 shader_param/shake_power = 0.03
 shader_param/shake_rate = 0.2

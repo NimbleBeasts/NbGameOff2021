@@ -9,7 +9,7 @@ shader_type canvas_item;
 
 
 
-
+uniform bool noise_enabled = true;
 uniform bool glitch_enabled = false;
 
 uniform float shake_power = 0.03;
@@ -89,11 +89,16 @@ void fragment( )
 		,	enable_shift
 		);
 		draw_vignette(color, UV);
-		COLOR.rgb = mix(
-			color.rgb
-		,	vec3( white_noise, white_noise, white_noise )
-		,	white_noise_rate * enable_color
-		);
+		
+		if (noise_enabled) {
+			COLOR.rgb = mix(
+				color.rgb
+			,	vec3( white_noise, white_noise, white_noise )
+			,	white_noise_rate * enable_color
+			);
+		} else {
+			COLOR.rgb = color.rgb;
+		}
 	} else {
 	
 	
@@ -119,11 +124,15 @@ void fragment( )
 	
 	draw_vignette(color, UV);
 	
-	COLOR.rgb = mix(
-		color.rgb
-	,	vec3( white_noise, white_noise, white_noise )
-	,	white_noise_rate * enable_color
-	);
+	if (noise_enabled) {
+		COLOR.rgb = mix(
+			color.rgb
+		,	vec3( white_noise, white_noise, white_noise )
+		,	white_noise_rate * enable_color
+		);
+	} else {
+		COLOR.rgb = color.rgb;
+	}
 	
 	//COLOR = vec4(color, 1.0);
 	

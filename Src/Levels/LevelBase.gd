@@ -56,6 +56,9 @@ func add_memory():
 func pickup_memory():
 	memory_pickup += 1
 	Events.emit_signal("memory_update_collected", memory_pickup)
+	
+	if memory_pickup == memory_total:
+		$Spawns/Portal.open()
 
 func set_active_spawner(id, clear_ghosts = true):
 	GameData.spawner_id = id
