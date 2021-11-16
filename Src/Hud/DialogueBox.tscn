@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Hud/PortraitPlayer.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Hud/dialogue_next.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Hud/dialogue_done.png" type="Texture" id=3]
 [ext_resource path="res://Src/Hud/DialogueBox.gd" type="Script" id=4]
 [ext_resource path="res://Assets/Sounds/Type.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Hud/dialogue_bg.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "pop_in"
@@ -59,13 +60,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Bg" type="ColorRect" parent="Box"]
+[node name="Bg" type="TextureRect" parent="Box"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.278431, 0.254902, 0.419608, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource( 6 )
 
 [node name="PortraitTexture" type="TextureRect" parent="Box"]
 margin_left = 8.0
