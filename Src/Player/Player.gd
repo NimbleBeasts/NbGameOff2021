@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-var ghost_sprite = preload("res://Assets/Player/Ghost.png")
 
 const MAX_RECORD_FRAMES = 120000 # at least -> movement = 60 fps * (5min*60s) + anim changes
 
@@ -38,6 +37,7 @@ var state = {
 var data_record = []
 
 func _ready():
+	$SpriteHolder/Sprite.set_material($SpriteHolder/Sprite.get_material().duplicate())
 	Events.connect("ghost_clear", self, "ghost_clear")
 
 func spawn_activated(pos):
@@ -61,8 +61,8 @@ func setup_and_start(ghost_no):
 		data_record = GameData.data[ghost_no].duplicate()
 		print("data size: " + str(data_record.size()))
 		self.collision_layer = 8
-		#$Sprite.modulate = Color("#aaffffff")
-		$SpriteHolder/Sprite.texture = ghost_sprite
+		#$SpriteHolder/Sprite.modulate = Color("#feffffff")
+		$SpriteHolder/Sprite.material.set_shader_param("ghost_enabled", true)
 	else:
 		self.collision_layer = 4
 
@@ -123,6 +123,9 @@ func update_animation():
 			anim = "falling"
 		elif state.velocity.y < 0:
 			anim = "jump"
+	
+	if $AnimationPlayer.current_animation == "shoot":
+		return
 	
 	if $AnimationPlayer.current_animation != anim:
 		$AnimationPlayer.play(anim)
@@ -292,6 +295,7 @@ func shoot():
 	
 	$ShootSound.play()
 	Events.emit_signal("shoot_bullet", self, direction, $SpriteHolder/Sprite/Pos.global_position, Types.BulletType.Normal)
+	$AnimationPlayer.play("shoot")
 	
 	# Add to records if player
 	if state.ghost_no == -1:
@@ -343,11 +347,14 @@ func restart():
 	Events.emit_signal("restart_level")
 
 func _on_AnimationPlayer_animation_finished(anim_name):
+	print("anim finished")
 	match anim_name:
 		"die":
 			if not is_ghost():
 				restart()
 			else:
 				queue_free()
+		"shoot":
+			$AnimationPlayer.play("idle")
 		_:
 			pass

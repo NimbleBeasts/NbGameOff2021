@@ -146,5 +146,5 @@ quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
 2d/snapping/use_gpu_pixel_snap=true
 2d/options/use_software_skinning=false
-environment/default_clear_color=Color( 0.109804, 0.0862745, 0.0941176, 1 )
+environment/default_clear_color=Color( 0.101961, 0.109804, 0.172549, 1 )
 environment/default_environment="res://default_env.tres"

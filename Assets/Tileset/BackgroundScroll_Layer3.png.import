@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Spike.png-310727b5be310d312570b37eea7eb459.stex"
+path="res://.import/BackgroundScroll_Layer3.png-0d2ba25f33132a105c61295d585aa506.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Objects/Spike.png"
-dest_files=[ "res://.import/Spike.png-310727b5be310d312570b37eea7eb459.stex" ]
+source_file="res://Assets/Tileset/BackgroundScroll_Layer3.png"
+dest_files=[ "res://.import/BackgroundScroll_Layer3.png-0d2ba25f33132a105c61295d585aa506.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false

@@ -17,12 +17,12 @@
 
 [sub_resource type="StyleBoxFlat" id=4]
 content_margin_right = 16.0
-bg_color = Color( 0.541176, 0.560784, 0.768627, 1 )
+bg_color = Color( 0.580392, 0.690196, 0.760784, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=5]
 
 [sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.541176, 0.560784, 0.768627, 1 )
+bg_color = Color( 0.580392, 0.690196, 0.760784, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=7]
 
@@ -93,7 +93,7 @@ margin_right = 328.0
 margin_bottom = 184.0
 custom_fonts/normal_font = ExtResource( 7 )
 bbcode_enabled = true
-bbcode_text = "[center]©2021 by NimbleBeasts [color=#8a8fc4]`[/color]NimbleBeasts[/center]"
+bbcode_text = "[center]©2021 by NimbleBeasts [color=#41a6f6]`[/color]NimbleBeasts[/center]"
 text = "©2021 by NimbleBeasts `NimbleBeasts"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -205,7 +205,6 @@ text = "M_DELETE_WARNING"
 scroll_active = false
 
 [node name="Settings" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
