@@ -133,13 +133,6 @@ texture = ExtResource( 1 )
 centered = false
 hframes = 3
 
-[node name="Label" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 13.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 4 )
 anims/die = SubResource( 2 )

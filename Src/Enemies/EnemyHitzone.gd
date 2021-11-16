@@ -23,6 +23,8 @@ func _on_BaseEnemyHitzone_body_entered(body):
 			# Head first
 			if vulnerable_to_jump:
 				emit_signal("die")
+				body.state.velocity = Vector2(0, 0)
+				body.set_bounce()
 			else:
 				body.die()
 		else:
@@ -32,4 +34,4 @@ func _on_BaseEnemyHitzone_body_entered(body):
 
 func die():
 	if vulnerable_to_bullet:
-		emit_signal("die")
+		emit_signal("die", false)

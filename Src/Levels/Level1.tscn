@@ -1,13 +1,12 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Src/Levels/Level1.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Tileset/BackgroundScroll.png" type="Texture" id=2]
+[ext_resource path="res://Src/ParallaxBackground.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Src/Portal/Portal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Src/Spawner/PlayerSpawn.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Tileset/new_tileset.tres" type="TileSet" id=5]
 [ext_resource path="res://Src/Objects/DiagCaller.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Src/Pickups/Memory.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Shaders/scroll_bg.gdshader" type="Shader" id=8]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 24, 8 )
@@ -17,10 +16,6 @@ extents = Vector2( 24, 8 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
-
-[sub_resource type="ShaderMaterial" id=4]
-shader = ExtResource( 8 )
-shader_param/scroll_spead = 0.5
 
 [node name="Level1" type="Node2D"]
 script = ExtResource( 1 )
@@ -98,15 +93,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.5, 1 )
-motion_mirroring = Vector2( 192, 192 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-material = SubResource( 4 )
-texture = ExtResource( 2 )
-centered = false
+[node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
 
 [connection signal="button_up" from="DummyHud/ButtonBack" to="." method="_on_ButtonBack_button_up"]

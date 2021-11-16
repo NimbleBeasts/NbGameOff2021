@@ -32,7 +32,7 @@ func _process(delta):
 		else:
 			position.x += WALK_SPEED * delta
 		
-		$Label.set_text(str(position.x))
+		#$Label.set_text(str(position.x))
 		
 		if path_points[state.walk_to] - PATH_PRECISION  <= position.x \
 			and path_points[state.walk_to] + PATH_PRECISION  >= position.x:

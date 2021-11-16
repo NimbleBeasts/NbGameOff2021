@@ -5,6 +5,7 @@ const MAX_RECORD_FRAMES = 120000 # at least -> movement = 60 fps * (5min*60s) + 
 
 const DEFAULT_GRAVITY = Vector2(0, 9)
 const JUMP_FORCE = 200
+const BOUNCE_FORCE = 150
 const JUMP_FORCE_EXTERNAL = 280
 const STOP_FORCE_FLOOR = 550
 const STOP_FORCE_AIR = 20
@@ -32,6 +33,7 @@ var state = {
 	"ladder_area": null,
 	"has_bullet": true,
 	"extern_jump": false,
+	"bounce": false,
 }
 
 var data_record = []
@@ -99,10 +101,10 @@ func _physics_process(delta):
 		# Handle restart request
 		process_restart()
 		
-		if state.current_state == PlayerState.Ladder:
-			$Label2.set_text("Ladder")
-		else:
-			$Label2.set_text("Normal")
+#		if state.current_state == PlayerState.Ladder:
+#			$Label2.set_text("Ladder")
+#		else:
+#			$Label2.set_text("Normal")
 
 func check_enter_ladder_state(input):
 	if state.ladder_area and state.current_state != PlayerState.Ladder:
@@ -134,7 +136,7 @@ func update_animation():
 func _add_record(type, payload):
 	if data_record.size() < MAX_RECORD_FRAMES:
 		data_record.append({"e": type, "p": payload, "t": GameData.get_time()})
-		$Label.set_text("Data: " + str(data_record.size()))
+		#$Label.set_text("Data: " + str(data_record.size()))
 
 func add_movement_record():
 	_add_record(RecordEvent.Move, position)
@@ -184,9 +186,9 @@ func process_ghost(delta):
 				$SpriteHolder.scale.x = 1
 			
 			position = data_line.p
-			$Label.set_text("Pos:" + str(position))
-			$Label2.set_text("Timestamp:" + str(data_line.t))
-			$Label3.set_text("Delta:" + str(data_line.t - GameData.get_time()))
+#			$Label.set_text("Pos:" + str(position))
+#			$Label2.set_text("Timestamp:" + str(data_line.t))
+#			$Label3.set_text("Delta:" + str(data_line.t - GameData.get_time()))
 
 			
 	else:
@@ -243,7 +245,11 @@ func process_movement(delta, input_direction):
 	else:
 		state.air_time += 1 # TODO: use delta - anyway do we need air time? xD
 
-	if (Input.is_action_just_pressed("ui_jump") or state.extern_jump ) and on_floor_or_ghost and not state.jumping:
+	if state.bounce:
+		state.velocity.y =- BOUNCE_FORCE
+		state.bounce = false
+
+	if (Input.is_action_just_pressed("ui_jump") or state.extern_jump) and on_floor_or_ghost and not state.jumping:
 		$JumpSound.play()
 		if state.extern_jump:
 			state.velocity.y =- JUMP_FORCE_EXTERNAL
@@ -303,6 +309,9 @@ func shoot():
 
 func set_jump():
 	state.extern_jump = true
+
+func set_bounce():
+	state.bounce = true
 
 func die():
 	state.dead = true
