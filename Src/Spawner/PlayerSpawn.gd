@@ -1,5 +1,7 @@
 extends Position2D
 
+signal spawned(node)
+
 export(int) var spawner_id = 0
 
 var player = null

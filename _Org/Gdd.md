@@ -60,6 +60,31 @@ delicious keys
 
 Highway Slaughter - Cor Metallicum
 
+# TODO:
+
+- [ ] complete sounds
+- [x] Level 1 - ez respawn
+- [ ] Level 2
+
+---
+
+- [x] Portraits
+- [ ] Level 3
+- [ ] Level 4
+
+---
+
+- [ ] Level 5
+- [ ] Hud rework
+- [ ] Notification Popup (ammo, memory pickup; instructions; hints)
+
+---
+
+- [ ] add translations
+- [ ] remove french
+- [ ] Title Design
+- [ ] Itch Page
+
 # Dialogues
 
 Max-size: Professor: a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a

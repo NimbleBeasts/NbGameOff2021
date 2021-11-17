@@ -47,19 +47,26 @@ shape = SubResource( 3 )
 
 [node name="DiagCaller2" parent="Objects" instance=ExtResource( 6 )]
 position = Vector2( 120, 168 )
-delay_timer = 0.5
+delay_timer = 0.05
 text_id = "TUT2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/DiagCaller2"]
+position = Vector2( 8, 1 )
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="DiagCaller3" parent="Objects" instance=ExtResource( 6 )]
-position = Vector2( 368, 200 )
-delay_timer = 0.2
+position = Vector2( 384, 232 )
+delay_timer = 1.0
 text_id = "TUT3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/DiagCaller3"]
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="DiagCaller5" parent="Objects" instance=ExtResource( 6 )]
 position = Vector2( 544, 177 )
@@ -68,6 +75,9 @@ text_id = "TUT5"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/DiagCaller5"]
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Memory" parent="Objects" instance=ExtResource( 7 )]
 position = Vector2( 528, 177 )
@@ -84,27 +94,4 @@ spawner_id = 1
 [node name="Portal" parent="Spawns" instance=ExtResource( 3 )]
 position = Vector2( 592, 184 )
 
-[node name="DummyHud" type="CanvasLayer" parent="."]
-
-[node name="Label" type="Label" parent="DummyHud"]
-margin_right = 72.0
-margin_bottom = 14.0
-text = "Level 1"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ButtonBack" type="Button" parent="DummyHud"]
-visible = false
-margin_left = 248.0
-margin_top = 8.0
-margin_right = 312.0
-margin_bottom = 28.0
-text = "Back"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
-
-[connection signal="button_up" from="DummyHud/ButtonBack" to="." method="_on_ButtonBack_button_up"]

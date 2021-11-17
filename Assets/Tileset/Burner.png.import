@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Horizontal.png-93a271b256b5d8b5d5dab5993096a1ad.stex"
+path="res://.import/Burner.png-4186bed5e47aae6416654f8f5b72246a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Buttons/Horizontal.png"
-dest_files=[ "res://.import/Horizontal.png-93a271b256b5d8b5d5dab5993096a1ad.stex" ]
+source_file="res://Assets/Tileset/Burner.png"
+dest_files=[ "res://.import/Burner.png-4186bed5e47aae6416654f8f5b72246a.stex" ]
 
 [params]
 

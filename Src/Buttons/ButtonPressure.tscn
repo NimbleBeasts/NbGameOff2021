@@ -40,5 +40,10 @@ shape = SubResource( 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/trigger = SubResource( 2 )
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 0, 0, 6, -2, 18, -2, 24, 0 )
+
 [connection signal="body_entered" from="." to="." method="_on_ButtonPressure_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_ButtonPressure_body_exited"]

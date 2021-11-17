@@ -2,6 +2,8 @@ extends Node2D
 
 const GHOST_SPAWN_DELAY = 2.0
 
+signal player_spawned(node)
+
 export(Types.MusicTracks) var music_track = Types.MusicTracks.Normal
 
 var camera_scene = preload("res://Src/Camera/Camera.tscn")
@@ -103,6 +105,7 @@ func spawn_player(ghost_no = -1):
 		remove_child(camera)
 		new_player.add_child(camera)
 		camera.position = Vector2(0,0)
+		emit_signal("player_spawned", new_player)
 
 	# Update HUD
 	Events.emit_signal("ghost_spawn", ghost_no)
