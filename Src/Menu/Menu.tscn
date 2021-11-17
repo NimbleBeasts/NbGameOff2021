@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Src/Menu/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Menu/nbSplash.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Assets/Fonts/DevLog_Mono16.tres" type="DynamicFont" id=9]
 [ext_resource path="res://Assets/Fonts/default_font.tres" type="DynamicFont" id=10]
 [ext_resource path="res://Assets/Fonts/DevLog_Bold16.tres" type="DynamicFont" id=11]
+[ext_resource path="res://Assets/Menu/Title.png" type="Texture" id=12]
 [ext_resource path="res://Src/Menu/TabContainer.tres" type="Theme" id=13]
 [ext_resource path="res://Src/Hud/DefaultButton.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Src/Menu/ScrollBarTheme.tres" type="Theme" id=15]
@@ -98,6 +99,10 @@ text = "©2021 by NimbleBeasts `NimbleBeasts"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Sprite" type="Sprite" parent="Main"]
+position = Vector2( 160, 64 )
+texture = ExtResource( 12 )
 
 [node name="LevelSelection" type="Control" parent="."]
 visible = false
@@ -205,6 +210,7 @@ text = "M_DELETE_WARNING"
 scroll_active = false
 
 [node name="Settings" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -219,7 +225,6 @@ __meta__ = {
 }
 
 [node name="General" type="Tabs" parent="Settings/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 26.0
@@ -303,6 +308,7 @@ custom_fonts/font = ExtResource( 7 )
 text = "1.00"
 
 [node name="Graphics" type="Tabs" parent="Settings/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 26.0
