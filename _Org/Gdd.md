@@ -34,21 +34,19 @@ This guy is shooting a projectile on a specific frequency.
 
 # Required sounds
 
-- [ ] Button Click
+- [x] Button Click
 - [x] Beam sound
 - [x] Jump / Landing?
 - [x] Shoot Player
 - [x] Checkpoint reached
 - [x] portal idle / close
 - [x] Hit sound
-- [ ] Hit Enemy sound
+- [x] Hit Enemy sound
 - [x] Shoot ShootGuy
-- [ ] Pop Bounceguy
-- [ ] Fallguy
-- [ ] Player Hurt
-- [ ] Dialogue Popup
+- [x] Pop Bounceguy
+- [x] Player Hurt
 - [x] Dialogue letter
-- [ ] door open / close
+- [x] door open / close
 - [x] COIN
 - [x] ammo
 
@@ -62,7 +60,7 @@ Highway Slaughter - Cor Metallicum
 
 # TODO:
 
-- [ ] complete sounds
+- [x] complete sounds
 - [x] Level 1 - ez respawn
 - [ ] Level 2
 

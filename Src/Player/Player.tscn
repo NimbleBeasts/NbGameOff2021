@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://Src/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Sounds/player_shoot.wav" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Sounds/player_jump.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Sounds/player_hurt.wav" type="AudioStream" id=5]
 
 [sub_resource type="Shader" id=8]
 code = "shader_type canvas_item;
@@ -266,6 +267,11 @@ bus = "Sound"
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
 max_distance = 256.0
+bus = "Sound"
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+max_distance = 512.0
 bus = "Sound"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -37,6 +37,7 @@ func _physics_process(delta):
 
 func die():
 	state.dead = true
+	$DeathSound.play()
 	$AnimationPlayer.play("die")
 
 

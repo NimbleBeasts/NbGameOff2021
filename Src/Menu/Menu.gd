@@ -1,7 +1,7 @@
 extends Control
 
 enum MenuState {Main, Selection, Settings}
-const flags = ["en", "fr", "de"]
+const flags = ["en","de"]
 
 var selection_page = 0
 
@@ -104,21 +104,10 @@ func update_selection():
 	if selection_page >= (level_count - 1) / 3:
 		$LevelSelection/NextButton.disabled = true
 
-func _on_PastButton_button_up():
-	selection_page -= 1
-	update_selection()
-
-
-func _on_NextButton_button_up():
-	selection_page += 1
-	update_selection()
-	
-	
 	
 # Helper function for State Transition
 func hideAllMenuScenes():
 	# Add menu scenes here
-	print("hide")
 	$Main.hide()
 	$Settings.hide()
 	$LevelSelection.hide()
@@ -162,15 +151,28 @@ func _switchFullscreen(_val):
 # Event Hook
 func _back():
 	switchTo(MenuState.Main)
+	Events.emit_signal("play_sound", "menu_click")
 
+
+func _on_PastButton_button_up():
+	selection_page -= 1
+	update_selection()
+	Events.emit_signal("play_sound", "menu_click")
+
+func _on_NextButton_button_up():
+	selection_page += 1
+	update_selection()
+	Events.emit_signal("play_sound", "menu_click")
+	
 
 func _on_ButtonPlay_button_up():
 	switchTo(MenuState.Selection)
-
+	Events.emit_signal("play_sound", "menu_click")
 
 
 func _on_ButtonSettings_button_up():
 	switchTo(MenuState.Settings)
+	Events.emit_signal("play_sound", "menu_click")
 
 
 func _on_ButtonExit_button_up():
@@ -180,13 +182,7 @@ func _on_ButtonExit_button_up():
 
 func _on_BackButton_button_up():
 	switchTo(MenuState.Main)
-
-func _on_ButtonSound_button_up():
-	Events.emit_signal("switch_sound", !Global.userConfig.sound)
-
-
-func _on_ButtonMusic_button_up():
-	Events.emit_signal("switch_music", !Global.userConfig.music)
+	Events.emit_signal("play_sound", "menu_click")
 
 
 func _on_FullscreenButton_button_up():
@@ -201,7 +197,7 @@ func _on_FullscreenButton_button_up():
 	$Settings/TabContainer/Graphics/ResolutionList.rect_scale = Vector2(1.1, 1.1)
 	yield(get_tree().create_timer(0.001), "timeout")
 	$Settings/TabContainer/Graphics/ResolutionList.rect_scale = Vector2(1.0, 1.0)
-	
+	Events.emit_signal("play_sound", "menu_click")
 
 
 func _on_ApplyButton_button_up():
@@ -212,27 +208,31 @@ func _on_ApplyButton_button_up():
 	$Settings/TabContainer/Graphics/ResolutionList.rect_scale = Vector2(1.1, 1.1)
 	yield(get_tree().create_timer(0.001), "timeout")
 	$Settings/TabContainer/Graphics/ResolutionList.rect_scale = Vector2(1.0, 1.0)
-	
+	Events.emit_signal("play_sound", "menu_click")
 
 
 func _on_SoundSlider_value_changed(value):
 	$Settings/TabContainer/Sounds/SoundSlider/Value.set_text(str(value*10) + "%")
 	Events.emit_signal("cfg_sound_set_volume", value)
+	Events.emit_signal("play_sound", "menu_click")
 
 
 func _on_MusicSlider_value_changed(value):
 	$Settings/TabContainer/Sounds/MusicSlider/Value.set_text(str(value*10) + "%")
 	Events.emit_signal("cfg_music_set_volume", value)
+	Events.emit_signal("play_sound", "menu_click")
 
 
 func _on_BrightnessSlider_value_changed(value):
 	$Settings/TabContainer/General/BrightnessSlider/Value.set_text("%.2f" % value)
 	Events.emit_signal("cfg_change_brightness", value)
+	Events.emit_signal("play_sound", "menu_click")
 
 
 func _on_ContrastSlider_value_changed(value):
 	$Settings/TabContainer/General/ContrastSlider/Value.set_text("%.2f" % value)
 	Events.emit_signal("cfg_change_contrast", value)
+	Events.emit_signal("play_sound", "menu_click")
 
 
 func _on_ButtonLanguage_button_up():
@@ -256,22 +256,27 @@ func _on_ButtonLanguage_button_up():
 
 func _on_SelectionTile1_button_up():
 	var level = selection_page*3
+	Events.emit_signal("play_sound", "menu_click")
 	Events.emit_signal("load_level", level)
 
 
 func _on_SelectionTile2_button_up():
 	var level = selection_page*3 + 1
+	Events.emit_signal("play_sound", "menu_click")
 	Events.emit_signal("load_level", level)
 
 
 func _on_SelectionTile3_button_up():
 	var level = selection_page*3 + 2
+	Events.emit_signal("play_sound", "menu_click")
 	Events.emit_signal("load_level", level)
+
 
 
 func _on_ResetButton_button_up():
 	$LevelSelection/ResetWindow.show()
 	$LevelSelection/ResetWindow/ResetBackButton.grab_focus()
+	Events.emit_signal("play_sound", "menu_click")
 
 
 func _on_ResetDeleteButton_button_up():
@@ -279,8 +284,10 @@ func _on_ResetDeleteButton_button_up():
 	Global.userConfig.unlocked_level = 0
 	Global.saveConfig()
 	update_selection()
+	Events.emit_signal("play_sound", "menu_click")
 
 
 func _on_ResetBackButton_button_up():
 	$LevelSelection/ResetWindow.hide()
 	$LevelSelection/SelectionHolder/SelectionTile1/Title.grab_focus()
+	Events.emit_signal("play_sound", "menu_click")

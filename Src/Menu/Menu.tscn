@@ -85,7 +85,7 @@ __meta__ = {
 show_behind_parent = true
 texture = ExtResource( 5 )
 centered = false
-hframes = 3
+hframes = 2
 
 [node name="Copyright" type="RichTextLabel" parent="Main"]
 margin_left = -8.0

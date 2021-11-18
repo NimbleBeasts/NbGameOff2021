@@ -61,6 +61,7 @@ func update_direction():
 
 func die():
 	state.dead = true
+	$DeathSound.play()
 	$AnimationPlayer.play("die")
 
 func _on_AnimationPlayer_animation_finished(anim_name):

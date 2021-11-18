@@ -136,7 +136,7 @@ ui_shoot={
 
 [locale]
 
-translations=PoolStringArray( "res://Localization/translations.en.translation", "res://Localization/translations.fr.translation", "res://Localization/translations.de.translation" )
+translations=PoolStringArray( "res://Localization/translations.en.translation", "res://Localization/translations.de.translation" )
 
 [rendering]
 

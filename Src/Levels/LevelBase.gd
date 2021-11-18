@@ -14,8 +14,7 @@ var camera = null
 
 var spawn_node = null
 
-var memory_total = 0
-var memory_pickup = 0
+
 
 func _on_ButtonBack_button_up():
 	Events.emit_signal("play_sound", "menu_click")
@@ -45,22 +44,15 @@ func _ready():
 		spawn_player(i)
 	
 	spawn_player()
-	
+
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		Events.emit_signal("menu_back")
 
-func add_memory():
-	memory_total += 1
-	Events.emit_signal("memory_update_total", memory_total)
-
-func pickup_memory():
-	memory_pickup += 1
-	Events.emit_signal("memory_update_collected", memory_pickup)
-	
-	if memory_pickup == memory_total:
-		$Spawns/Portal.open()
+	if GameData.memory_total > 0:
+		if GameData.memory_pickup.size() == GameData.memory_total:
+			$Spawns/Portal.open()
 
 func set_active_spawner(id, clear_ghosts = true):
 	GameData.spawner_id = id

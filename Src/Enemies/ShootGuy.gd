@@ -23,6 +23,7 @@ func die():
 
 func _die():
 	state.dead = true
+	$DeathSound.play()
 	$AnimationPlayer.play("die")
 
 func shoot():

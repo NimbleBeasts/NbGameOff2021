@@ -15,7 +15,9 @@ func _ready():
 func trigger():
 	if opened:
 		$AnimationPlayer.play_backwards("open")
+		$CloseSound.play()
 	else:
 		$AnimationPlayer.play("open")
+		$OpenSound.play()
 	
 	opened = !opened

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Enemies/NormalGuy.png" type="Texture" id=1]
 [ext_resource path="res://Src/Enemies/NormalGuy.gd" type="Script" id=2]
 [ext_resource path="res://Src/Enemies/EnemyHitzone.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Sounds/dead.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -102,5 +103,10 @@ vulnerable_to_bullet = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BaseEnemyHitzone"]
 polygon = PoolVector2Array( -8, 0, 0, -16, 8, 0 )
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+max_distance = 512.0
+bus = "Sound"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

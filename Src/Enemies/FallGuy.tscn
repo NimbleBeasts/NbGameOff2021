@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Enemies/FallGuy.png" type="Texture" id=1]
 [ext_resource path="res://Src/Enemies/FallGuy.gd" type="Script" id=2]
 [ext_resource path="res://Src/Enemies/EnemyHitzone.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Sounds/dead.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -159,6 +160,11 @@ collision_mask = 12
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectPlayerArea"]
 position = Vector2( 0, 16 )
 shape = SubResource( 6 )
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+max_distance = 512.0
+bus = "Sound"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="DetectPlayerArea" to="." method="_on_DetectPlayerArea_body_entered"]

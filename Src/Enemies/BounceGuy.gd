@@ -59,11 +59,15 @@ func update_direction():
 
 func die():
 	state.dead = true
+	$DeathSound.play()
 	$AnimationPlayer.play("die")
 
 func _on_BounceGuy_body_entered(body):
 	if body.has_method("set_jump"):
+		$PopSound.play()
+		
 		body.set_jump()
+
 		$AnimationPlayer.play("pop")
 
 

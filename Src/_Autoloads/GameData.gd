@@ -28,9 +28,21 @@ const message_data = [
 		{"char": Types.CharacterType.Professor, "text": "TUT4_TEXT_6", "events": []},
 	]},
 	{"id": "TUT5", "data": [
-		{"char": Types.CharacterType.Marc, "text": "TUT4_TEXT_1", "events": []},
-		{"char": Types.CharacterType.Marc, "text": "TUT4_TEXT_2", "events": []},
-		{"char": Types.CharacterType.Marc, "text": "TUT4_TEXT_3", "events": []},
+		{"char": Types.CharacterType.Marc, "text": "TUT5_TEXT_1", "events": []},
+		{"char": Types.CharacterType.Marc, "text": "TUT5_TEXT_2", "events": []},
+		{"char": Types.CharacterType.Marc, "text": "TUT5_TEXT_3", "events": []},
+	]},
+	{"id": "L2D1", "data": [
+		{"char": Types.CharacterType.CrazyProfessor, "text": "LEVEL2_TEXT_1", "events": []},
+		{"char": Types.CharacterType.CrazyProfessor, "text": "LEVEL2_TEXT_2", "events": []},
+		{"char": Types.CharacterType.Marc, "text": "LEVEL2_TEXT_3", "events": []},
+		{"char": Types.CharacterType.CrazyProfessor, "text": "LEVEL2_TEXT_4", "events": []},
+		{"char": Types.CharacterType.CrazyProfessor, "text": "LEVEL2_TEXT_5", "events": []},
+		{"char": Types.CharacterType.Marc, "text": "LEVEL2_TEXT_6", "events": []},
+	]},
+	{"id": "L2D2", "data": [
+		{"char": Types.CharacterType.Marc, "text": "LEVEL2_TEXT_7", "events": []},
+		{"char": Types.CharacterType.Marc, "text": "LEVEL2_TEXT_7", "events": []},
 	]},
 ]
 
@@ -41,6 +53,9 @@ var timestamp = {
 }
 
 var tutorial_state_3 = false
+
+var memory_total = 0
+var memory_pickup = []
 
 # Recorded ghost data
 var data = []
@@ -55,6 +70,11 @@ func new_level():
 	timestamp.time = 0.0
 	spawner_id = 0
 	tutorial_state_3 = false
+	memory_total = 0
+	memory_pickup = []
+
+func restart_level():
+	memory_total = 0
 
 func get_number_of_ghosts():
 	return data.size()

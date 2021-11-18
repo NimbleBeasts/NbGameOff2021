@@ -25,6 +25,7 @@ var state = {
 	"last_record_id": 0,
 	"current_state": PlayerState.Normal,
 	"suspend_respawn": false,
+	"pickup": [],
 	
 	# Movement
 	"velocity": Vector2(0,0),
@@ -72,7 +73,7 @@ func setup_and_start(ghost_no):
 
 
 func _physics_process(delta):
-	if global_position.y > 420:
+	if global_position.y > 420 and not state.dead:
 		die()
 		return
 	
@@ -320,6 +321,8 @@ func set_bounce():
 
 func die():
 	state.dead = true
+	check_and_remove_memory()
+	$DeathSound.play()
 	$AnimationPlayer.play("die")
 
 func set_ladder_area(val):
@@ -331,14 +334,27 @@ func set_ladder_area(val):
 
 func process_restart():
 	if Input.is_action_just_pressed('ui_restart') and not state.suspend_respawn:
+		Events.emit_signal("play_sound", "menu_click")
 		add_animation_record("idle") #reset to idle before stopping
 		Events.emit_signal("ghost_dialogue_popup", funcref(self, "restart_callback"))
+		check_and_remove_memory()
+
 
 func restart_callback(result):
 	if result:
 		GameData.add_ghost(data_record)
 	restart()
-		
+
+func check_and_remove_memory():
+		if state.pickup.size() > 0:
+			for pickup in state.pickup:
+				var id = GameData.memory_pickup.find(pickup)
+				if id != -1:
+					GameData.memory_pickup.remove(id)
+				else:
+					printerr("pickup id not found")
+			Events.emit_signal("memory_update_collected", GameData.memory_pickup.size())
+			
 
 func is_on_floor_or_ghost():
 	var collision = is_on_floor()
@@ -358,6 +374,7 @@ func get_direction_input():
 func restart():
 	GameData.stop_time()
 	GameData.clear_time()
+	GameData.restart_level()
 	Events.emit_signal("restart_level")
 
 func _on_AnimationPlayer_animation_finished(anim_name):

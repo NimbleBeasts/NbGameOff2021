@@ -1,5 +1,6 @@
 extends Area2D
 
+var is_opening = false
 var is_open = false
 
 
@@ -7,8 +8,10 @@ func _ready():
 	$AnimationPlayer.play("RESET")
 
 func open():
-	$AnimationPlayer.play("open")
-	$IdleSound.play()
+	if is_opening == false and is_open == false:
+		is_opening = true
+		$AnimationPlayer.play("open")
+		$IdleSound.play()
 
 
 func _on_Portal_body_entered(body):
@@ -22,6 +25,7 @@ func _on_Portal_body_entered(body):
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "open":
 		is_open = true
+		is_opening = false
 		$AnimationPlayer.play("idle")
 	elif anim_name == "close":
 		if Global.current_level < Global.levels.size() - 1:

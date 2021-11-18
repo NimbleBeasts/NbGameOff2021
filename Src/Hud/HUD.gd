@@ -58,14 +58,17 @@ func _on_WipeButton_button_up():
 	GameData.clear_ghosts()
 	callback.call_func(false)
 	$AnimationPlayer.play_backwards("popup")
+	Events.emit_signal("play_sound", "menu_click")
 
 func _on_DiscardButton_button_up():
 	callback.call_func(false)
 	$AnimationPlayer.play_backwards("popup")
+	Events.emit_signal("play_sound", "menu_click")
 
 func _on_SaveGhostButton_button_up():
 	callback.call_func(true)
 	$AnimationPlayer.play_backwards("popup")
+	Events.emit_signal("play_sound", "menu_click")
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if $DiscardButton.visible: # Determine if it was played backwards

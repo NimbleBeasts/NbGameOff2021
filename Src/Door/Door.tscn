@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Door/Door.png" type="Texture" id=1]
 [ext_resource path="res://Src/Door/Door.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sounds/door_close.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Sounds/door_open.wav" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=2]
 resource_name = "open"
@@ -46,3 +48,13 @@ polygon = PoolVector2Array( 0, 0, 8, 48, 16, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/open = SubResource( 2 )
+
+[node name="OpenSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+max_distance = 512.0
+bus = "Sound"
+
+[node name="CloseSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+max_distance = 512.0
+bus = "Sound"

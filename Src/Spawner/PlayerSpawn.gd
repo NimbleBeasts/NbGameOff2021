@@ -31,6 +31,7 @@ func _on_Area2D_body_entered(body):
 	if not is_active:
 		print("spawner_set")
 		is_active = true
+		body.state.pickup = []
 		Events.emit_signal("ghost_set_spawner", spawner_id)
 		body.spawn_activated(global_position)
 		$CheckPointSound.play()
