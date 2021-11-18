@@ -31,7 +31,7 @@ func _on_Memory_body_entered(body):
 		body.state.pickup.append(id)
 		GameData.memory_pickup.append(id)
 		Events.emit_signal("memory_update_collected", GameData.memory_pickup.size())
-
+		Events.emit_signal("notification_popup", "PICKUP_MEMORY")
 
 func _on_AudioStreamPlayer2D_finished():
 	queue_free()

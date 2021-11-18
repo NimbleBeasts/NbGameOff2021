@@ -66,6 +66,7 @@ func _on_BounceGuy_body_entered(body):
 	if body.has_method("set_jump"):
 		$PopSound.play()
 		
+		body.state.velocity.y = 0
 		body.set_jump()
 
 		$AnimationPlayer.play("pop")

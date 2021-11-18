@@ -75,20 +75,21 @@ script = ExtResource( 15 )
 
 [node name="Burner" parent="Objects" instance=ExtResource( 10 )]
 position = Vector2( -16, 208 )
+frame = 2
 
 [node name="Burner2" parent="Objects/Burner" instance=ExtResource( 10 )]
 position = Vector2( 96, 0 )
+frame = 2
 
 [node name="Burner3" parent="Objects/Burner" instance=ExtResource( 10 )]
 position = Vector2( 48, 0 )
-frame = 1
 
 [node name="Burner2" parent="Objects" instance=ExtResource( 10 )]
 position = Vector2( 112, 256 )
-frame = 1
 
 [node name="Burner3" parent="Objects/Burner2" instance=ExtResource( 10 )]
 position = Vector2( 64, 0 )
+frame = 2
 
 [node name="ButtonPressure" parent="Objects" instance=ExtResource( 11 )]
 position = Vector2( 248, 160 )
@@ -105,7 +106,7 @@ opened_at_start = true
 position = Vector2( 376, 144 )
 
 [node name="Bullet2" parent="Objects" instance=ExtResource( 14 )]
-position = Vector2( 832, 136 )
+position = Vector2( 832, 129 )
 
 [node name="Spike" parent="Objects" instance=ExtResource( 13 )]
 position = Vector2( 520, 96 )

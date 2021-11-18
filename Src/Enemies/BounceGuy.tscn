@@ -1,12 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Enemies/BounceGuy.png" type="Texture" id=1]
 [ext_resource path="res://Src/Enemies/BounceGuy.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Sounds/dead.wav" type="AudioStream" id=3]
 [ext_resource path="res://Assets/Sounds/pop.wav" type="AudioStream" id=4]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 4 )
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -120,10 +117,6 @@ texture = ExtResource( 1 )
 offset = Vector2( 0, -12 )
 hframes = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -4 )
-shape = SubResource( 1 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "walk"
 anims/RESET = SubResource( 4 )
@@ -140,6 +133,9 @@ bus = "Sound"
 stream = ExtResource( 4 )
 max_distance = 512.0
 bus = "Sound"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -8, 0, 0, -14, 8, 0 )
 
 [connection signal="area_entered" from="." to="." method="_on_BounceGuy_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_BounceGuy_body_entered"]

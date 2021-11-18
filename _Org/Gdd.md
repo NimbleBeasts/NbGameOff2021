@@ -62,7 +62,7 @@ Highway Slaughter - Cor Metallicum
 
 - [x] complete sounds
 - [x] Level 1 - ez respawn
-- [ ] Level 2
+- [x] Level 2
 
 ---
 
@@ -73,8 +73,8 @@ Highway Slaughter - Cor Metallicum
 ---
 
 - [ ] Level 5
-- [ ] Hud rework
-- [ ] Notification Popup (ammo, memory pickup; instructions; hints)
+- [/] Hud rework
+- [x] Notification Popup (ammo, memory pickup; instructions; hints)
 
 ---
 

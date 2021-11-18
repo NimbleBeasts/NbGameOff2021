@@ -19,7 +19,7 @@ func _ready():
 	Events.connect("tutorial_step3_completed", self, "_tutorial_step3_completed")
 
 	if GameData.tutorial_state_3 == true:
-		_tutorial_step3_completed()
+		set_step3()
 
 func _physics_process(delta):
 	if quick_restart_enabled:
@@ -34,6 +34,11 @@ func _player_spawned(node):
 
 
 func _tutorial_step3_completed():
+	set_step3()
+	Events.emit_signal("notification_popup", "RESTART")
+	
+
+func set_step3():
 	GameData.tutorial_state_3 = true
 	quick_restart_enabled = true
 	

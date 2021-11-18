@@ -69,11 +69,12 @@ func setup_and_start(ghost_no):
 		$SpriteHolder/Sprite.material.set_shader_param("ghost_enabled", true)
 	else:
 		self.collision_layer = 4
+		Events.emit_signal("ammo_update", 1)
 
 
 
 func _physics_process(delta):
-	if global_position.y > 420 and not state.dead:
+	if global_position.y > 666 and not state.dead:
 		die()
 		return
 	
@@ -254,18 +255,20 @@ func process_movement(delta, input_direction):
 	if state.bounce:
 		state.velocity.y =- BOUNCE_FORCE
 		state.bounce = false
-
-	if (Input.is_action_just_pressed("ui_jump") or state.extern_jump) and on_floor_or_ghost and not state.jumping:
+	
+	if state.extern_jump:
 		$JumpSound.play()
-		if state.extern_jump:
-			state.velocity.y =- JUMP_FORCE_EXTERNAL
-			state.extern_jump = false
-		else:
-			state.velocity.y =- JUMP_FORCE
+		state.velocity.y =- JUMP_FORCE_EXTERNAL
+		state.extern_jump = false
+
+	if Input.is_action_just_pressed("ui_jump") and on_floor_or_ghost and not state.jumping:
+		$JumpSound.play()
+		state.velocity.y =- JUMP_FORCE
 		state.jumping = true
 		state.has_jumped = true
 	
 	if Input.is_action_just_pressed("ui_shoot") and state.has_bullet:
+		Events.emit_signal("ammo_update", 0)
 		shoot()
 	
 	# Stop movement

@@ -16,7 +16,17 @@ func _ready():
 	
 	Events.connect("memory_update_total", self, "_memory_update_total")
 	Events.connect("memory_update_collected", self, "_memory_update_collected")
+	Events.connect("notification_popup", self, "_notification_popup")
 	
+	Events.connect("ammo_update", self, "_ammo_update")
+	$AmmoLabel.set_text("0/0")
+
+func _ammo_update(amnt):
+	$AmmoLabel.set_text(str(amnt)+"/1")
+
+func _notification_popup(text):
+	$NotificationLabel.set_text(tr(text))
+	$NotificationLabel/AnimationPlayer.play("popup")
 
 func _memory_update_total(total):
 	memory_total = total

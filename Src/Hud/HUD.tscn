@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Src/Hud/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Src/Hud/HudGhostIndicator.tscn" type="PackedScene" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://Assets/Hud/ghost_click.png" type="Texture" id=6]
 [ext_resource path="res://Src/Hud/DefaultButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Src/Hud/DialogueBox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Hud/ninepatchbg.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Hud/icon_ram.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Hud/icon_ammo.png" type="Texture" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "popup"
@@ -85,6 +88,37 @@ tracks/5/keys = {
 "values": [ false, false, true ]
 }
 
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 48, 194 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "popup"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1.6, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 48, 192 ), Vector2( 48, 120 ), Vector2( 48, 120 ), Vector2( 48, 192 ) ]
+}
+
 [node name="HUD" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -149,15 +183,59 @@ margin_bottom = 144.0
 text = "Remove Ghosts"
 
 [node name="MemoryLabel" type="Label" parent="."]
-margin_left = 8.0
-margin_top = 160.0
+margin_left = 24.0
+margin_top = 161.0
 margin_right = 48.0
-margin_bottom = 178.0
+margin_bottom = 179.0
 text = "1/1"
-align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AmmoLabel" type="Label" parent="."]
+margin_left = 272.0
+margin_top = 161.0
+margin_right = 296.0
+margin_bottom = 179.0
+text = "1/0"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NotificationLabel" type="Label" parent="."]
+margin_left = 48.0
+margin_top = 194.0
+margin_right = 272.0
+margin_bottom = 218.0
+text = "Press 'R' to respawn"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bg" type="NinePatchRect" parent="NotificationLabel"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NotificationLabel"]
+anims/RESET = SubResource( 2 )
+anims/popup = SubResource( 3 )
+
+[node name="Icon" type="Sprite" parent="."]
+position = Vector2( 10, 170 )
+texture = ExtResource( 10 )
+
+[node name="Icon2" type="Sprite" parent="."]
+position = Vector2( 310, 170 )
+texture = ExtResource( 11 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="button_up" from="DiscardButton" to="." method="_on_DiscardButton_button_up"]

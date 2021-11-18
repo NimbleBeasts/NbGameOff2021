@@ -26,9 +26,12 @@ signal dialogue_popup(character, text, last_diag, callback)
 signal tutorial_step3_completed()
 signal test_event()
 
+signal notification_popup(text)
+
 # Memory
 signal memory_update_total(total)
 signal memory_update_collected(found)
+signal ammo_update(amount)
 
 # Bullet
 signal shoot_bullet(player, direction, pos, type)

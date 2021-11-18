@@ -22,4 +22,6 @@ func _on_Bullet_body_entered(body):
 			get_parent().add_child(pickup)
 			pickup.global_position = global_position
 			body.state.has_bullet = true
+			Events.emit_signal("notification_popup", "PICKUP_AMMO")
+			Events.emit_signal("ammo_update", 1)
 
