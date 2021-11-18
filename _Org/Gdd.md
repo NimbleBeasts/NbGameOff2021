@@ -67,7 +67,7 @@ Highway Slaughter - Cor Metallicum
 ---
 
 - [x] Portraits
-- [ ] Level 3
+- [x] Level 3
 - [ ] Level 4
 
 ---
@@ -79,7 +79,7 @@ Highway Slaughter - Cor Metallicum
 ---
 
 - [ ] add translations
-- [ ] remove french
+- [x] remove french
 - [ ] Title Design
 - [ ] Itch Page
 
