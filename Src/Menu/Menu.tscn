@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Src/Menu/Menu.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Menu/nbSplash.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Src/Menu/TabContainer.tres" type="Theme" id=13]
 [ext_resource path="res://Src/Hud/DefaultButton.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Src/Menu/ScrollBarTheme.tres" type="Theme" id=15]
+[ext_resource path="res://Src/ParallaxBackground.tscn" type="PackedScene" id=16]
 
 [sub_resource type="StyleBoxFlat" id=4]
 content_margin_right = 16.0
@@ -433,6 +434,8 @@ custom_fonts/normal_font = ExtResource( 7 )
 bbcode_enabled = true
 bbcode_text = "[right]Version[/right]"
 text = "Version"
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 16 )]
 
 [connection signal="button_up" from="Main/ButtonPlay" to="." method="_on_ButtonPlay_button_up"]
 [connection signal="button_up" from="Main/ButtonSettings" to="." method="_on_ButtonSettings_button_up"]

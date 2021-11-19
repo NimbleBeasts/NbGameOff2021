@@ -58,6 +58,7 @@ position = Vector2( 456, 56 )
 
 [node name="Memory2" parent="Objects" instance=ExtResource( 7 )]
 position = Vector2( 1040, 256 )
+id = 1
 
 [node name="BounceGuy" parent="Objects" instance=ExtResource( 6 )]
 position = Vector2( 144, 224 )
@@ -75,21 +76,20 @@ script = ExtResource( 15 )
 
 [node name="Burner" parent="Objects" instance=ExtResource( 10 )]
 position = Vector2( -16, 208 )
-frame = 2
 
 [node name="Burner2" parent="Objects/Burner" instance=ExtResource( 10 )]
 position = Vector2( 96, 0 )
-frame = 2
 
 [node name="Burner3" parent="Objects/Burner" instance=ExtResource( 10 )]
 position = Vector2( 48, 0 )
+frame = 1
 
 [node name="Burner2" parent="Objects" instance=ExtResource( 10 )]
 position = Vector2( 112, 256 )
+frame = 1
 
 [node name="Burner3" parent="Objects/Burner2" instance=ExtResource( 10 )]
 position = Vector2( 64, 0 )
-frame = 2
 
 [node name="ButtonPressure" parent="Objects" instance=ExtResource( 11 )]
 position = Vector2( 248, 160 )
