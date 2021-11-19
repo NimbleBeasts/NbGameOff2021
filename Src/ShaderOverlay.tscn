@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Shaders/glitch.gdshader" type="Shader" id=1]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 1 )
+shader_param/glitch_enabled = false
+shader_param/shake_power = 0.03
+shader_param/shake_rate = 0.2
+shader_param/shake_speed = 5.0
+shader_param/shake_block_size = 30.5
+shader_param/shake_color_rate = 0.01
+shader_param/vignette_opacity = 0.21
+shader_param/screen_size = Vector2( 320, 180 )
+shader_param/aberration_amount = 0.2
+shader_param/move_aberration = true
+shader_param/aberration_speed = 4.85
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ShaderOverlay:material:shader_param/glitch_enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "test"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ShaderOverlay:material:shader_param/glitch_enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[node name="ShaderOverlay" type="ColorRect"]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+autoplay = "test"
+anims/RESET = SubResource( 3 )
+anims/test = SubResource( 4 )
