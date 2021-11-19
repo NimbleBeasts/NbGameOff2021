@@ -24,7 +24,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 7 )
 shader_param/noise_enabled = false
 shader_param/glitch_enabled = false
@@ -40,7 +40,7 @@ shader_param/move_aberration = true
 shader_param/aberration_speed = 4.85
 shader_param/white_noise_rate = 0.02
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Shader:material:shader_param/glitch_enabled")
@@ -55,7 +55,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "test"
 length = 5.0
 loop = true
@@ -156,7 +156,7 @@ anims/start = SubResource( 1 )
 [node name="AudioPlayer" parent="." instance=ExtResource( 4 )]
 
 [node name="Shader" type="ColorRect" parent="."]
-material = SubResource( 3 )
+material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -166,5 +166,5 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Shader"]
 root_node = NodePath("../..")
 autoplay = "test"
-anims/RESET = SubResource( 4 )
-anims/test = SubResource( 5 )
+anims/RESET = SubResource( 3 )
+anims/test = SubResource( 4 )
