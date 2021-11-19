@@ -7,6 +7,7 @@ const DEFAULT_GRAVITY = Vector2(0, 9)
 const JUMP_FORCE = 200
 const BOUNCE_FORCE = 150
 const JUMP_FORCE_EXTERNAL = 280
+const JUMP_FORCE_JUMPPAD = 450
 const STOP_FORCE_FLOOR = 550
 const STOP_FORCE_AIR = 20
 const STOP_FORCE_LADDER = 800
@@ -26,6 +27,7 @@ var state = {
 	"current_state": PlayerState.Normal,
 	"suspend_respawn": false,
 	"pickup": [],
+
 	
 	# Movement
 	"velocity": Vector2(0,0),
@@ -36,6 +38,7 @@ var state = {
 	"has_bullet": true,
 	"extern_jump": false,
 	"bounce": false,
+	"jumppad": false,
 }
 
 var data_record = []
@@ -256,6 +259,11 @@ func process_movement(delta, input_direction):
 		state.velocity.y =- BOUNCE_FORCE
 		state.bounce = false
 	
+	if state.jumppad:
+		$JumpSound.play()
+		state.velocity.y =- JUMP_FORCE_JUMPPAD
+		state.jumppad = false
+	
 	if state.extern_jump:
 		$JumpSound.play()
 		state.velocity.y =- JUMP_FORCE_EXTERNAL
@@ -315,6 +323,9 @@ func shoot():
 	# Add to records if player
 	if state.ghost_no == -1:
 		add_shoot_record()
+
+func set_jumppad():
+	state.jumppad = true
 
 func set_jump():
 	state.extern_jump = true

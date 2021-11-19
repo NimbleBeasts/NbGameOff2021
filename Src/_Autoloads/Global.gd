@@ -49,7 +49,8 @@ const supportedResolutions = [
 const levels = [
 	"res://Src/Levels/Level1.tscn",
 	"res://Src/Levels/Level2.tscn",
-	"res://Src/Levels/Level3.tscn"
+	"res://Src/Levels/Level3.tscn",
+	"res://Src/Levels/Level4.tscn"
 ]
 
 var gameState = {
