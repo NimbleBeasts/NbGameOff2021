@@ -1,12 +1,10 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Src/Menu/Menu.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Menu/nbSplash.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Menu/Slider/SliderTheme.tres" type="Theme" id=3]
 [ext_resource path="res://Assets/Menu/CountryFlagsHover.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Menu/CountryFlags.png" type="Texture" id=5]
 [ext_resource path="res://Src/Menu/MenuLevelSelectionTile.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/Fonts/MenuFont.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Src/Menu/DevLogViewer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Fonts/DevLog_Mono16.tres" type="DynamicFont" id=9]
 [ext_resource path="res://Assets/Fonts/default_font.tres" type="DynamicFont" id=10]
@@ -35,13 +33,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Bg" type="TextureRect" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 2 )
-expand = true
 
 [node name="Main" type="Control" parent="."]
 anchor_right = 1.0
@@ -88,21 +79,33 @@ texture = ExtResource( 5 )
 centered = false
 hframes = 2
 
+[node name="Version" type="Label" parent="Main"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 72.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 10 )
+text = "0.2"
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Copyright" type="RichTextLabel" parent="Main"]
 margin_left = -8.0
 margin_top = 163.0
 margin_right = 328.0
 margin_bottom = 184.0
-custom_fonts/normal_font = ExtResource( 7 )
+custom_fonts/normal_font = ExtResource( 10 )
 bbcode_enabled = true
-bbcode_text = "[center]©2021 by NimbleBeasts [color=#41a6f6]`[/color]NimbleBeasts[/center]"
-text = "©2021 by NimbleBeasts `NimbleBeasts"
+bbcode_text = "[center]©2021 by NimbleBeasts[/center]"
+text = "©2021 by NimbleBeasts"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Sprite" type="Sprite" parent="Main"]
-position = Vector2( 160, 64 )
+position = Vector2( 160, 72 )
 texture = ExtResource( 12 )
 
 [node name="LevelSelection" type="Control" parent="."]
@@ -240,74 +243,6 @@ custom_fonts/mono_font = ExtResource( 9 )
 custom_fonts/bold_font = ExtResource( 11 )
 custom_fonts/normal_font = ExtResource( 10 )
 
-[node name="BrightnessSlider" type="HSlider" parent="Settings/TabContainer/General"]
-visible = false
-margin_left = 80.0
-margin_top = 179.0
-margin_right = 200.0
-margin_bottom = 195.0
-theme = ExtResource( 3 )
-min_value = 0.75
-max_value = 1.25
-step = 0.05
-value = 1.0
-tick_count = 10
-ticks_on_borders = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Settings/TabContainer/General/BrightnessSlider"]
-margin_left = -72.0
-margin_right = -9.0
-margin_bottom = 14.0
-custom_fonts/font = ExtResource( 7 )
-text = "Brightness"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Value" type="Label" parent="Settings/TabContainer/General/BrightnessSlider"]
-margin_left = 128.0
-margin_right = 160.0
-margin_bottom = 14.0
-custom_fonts/font = ExtResource( 7 )
-text = "1.00"
-
-[node name="ContrastSlider" type="HSlider" parent="Settings/TabContainer/General"]
-visible = false
-margin_left = 80.0
-margin_top = 213.0
-margin_right = 200.0
-margin_bottom = 229.0
-theme = ExtResource( 3 )
-min_value = 0.75
-max_value = 1.25
-step = 0.05
-value = 1.0
-tick_count = 10
-ticks_on_borders = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Settings/TabContainer/General/ContrastSlider"]
-margin_left = -72.0
-margin_right = -9.0
-margin_bottom = 14.0
-custom_fonts/font = ExtResource( 7 )
-text = "Contrast"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Value" type="Label" parent="Settings/TabContainer/General/ContrastSlider"]
-margin_left = 128.0
-margin_right = 160.0
-margin_bottom = 14.0
-custom_fonts/font = ExtResource( 7 )
-text = "1.00"
-
 [node name="Graphics" type="Tabs" parent="Settings/TabContainer"]
 visible = false
 anchor_right = 1.0
@@ -325,6 +260,7 @@ text = "M_OFF"
 margin_left = -232.0
 margin_right = -168.0
 margin_bottom = 18.0
+custom_fonts/font = ExtResource( 10 )
 text = "M_FULLSCREEN"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -336,6 +272,7 @@ margin_top = 38.0
 margin_right = 312.0
 margin_bottom = 123.0
 theme = ExtResource( 15 )
+custom_fonts/font = ExtResource( 10 )
 custom_styles/selected_focus = SubResource( 4 )
 custom_styles/bg_focus = SubResource( 5 )
 custom_styles/selected = SubResource( 6 )
@@ -352,7 +289,6 @@ margin_bottom = 147.0
 text = "M_APPLY"
 
 [node name="Sounds" type="Tabs" parent="Settings/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 26.0
@@ -376,6 +312,7 @@ margin_left = -72.0
 margin_top = -2.0
 margin_right = -9.0
 margin_bottom = 16.0
+custom_fonts/font = ExtResource( 10 )
 text = "M_SOUND"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -386,6 +323,7 @@ margin_left = 128.0
 margin_top = -2.0
 margin_right = 160.0
 margin_bottom = 16.0
+custom_fonts/font = ExtResource( 10 )
 text = "100%"
 
 [node name="MusicSlider" type="HSlider" parent="Settings/TabContainer/Sounds"]
@@ -407,6 +345,7 @@ margin_left = -72.0
 margin_top = -2.0
 margin_right = -9.0
 margin_bottom = 16.0
+custom_fonts/font = ExtResource( 10 )
 text = "M_MUSIC"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -417,6 +356,7 @@ margin_left = 128.0
 margin_top = -2.0
 margin_right = 160.0
 margin_bottom = 16.0
+custom_fonts/font = ExtResource( 10 )
 text = "100%"
 
 [node name="BackButton" parent="Settings" instance=ExtResource( 14 )]
@@ -425,15 +365,6 @@ margin_top = 152.0
 margin_right = 104.0
 margin_bottom = 173.0
 text = "M_BACK"
-
-[node name="Version" type="RichTextLabel" parent="."]
-margin_left = 328.0
-margin_right = 388.0
-margin_bottom = 16.0
-custom_fonts/normal_font = ExtResource( 7 )
-bbcode_enabled = true
-bbcode_text = "[right]Version[/right]"
-text = "Version"
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 16 )]
 
@@ -450,8 +381,6 @@ text = "Version"
 [connection signal="button_up" from="LevelSelection/ResetButton" to="." method="_on_ResetButton_button_up"]
 [connection signal="button_up" from="LevelSelection/ResetWindow/ResetBackButton" to="." method="_on_ResetBackButton_button_up"]
 [connection signal="button_up" from="LevelSelection/ResetWindow/ResetDeleteButton" to="." method="_on_ResetDeleteButton_button_up"]
-[connection signal="value_changed" from="Settings/TabContainer/General/BrightnessSlider" to="." method="_on_BrightnessSlider_value_changed"]
-[connection signal="value_changed" from="Settings/TabContainer/General/ContrastSlider" to="." method="_on_ContrastSlider_value_changed"]
 [connection signal="button_up" from="Settings/TabContainer/Graphics/FullscreenButton" to="." method="_on_FullscreenButton_button_up"]
 [connection signal="button_up" from="Settings/TabContainer/Graphics/ApplyButton" to="." method="_on_ApplyButton_button_up"]
 [connection signal="value_changed" from="Settings/TabContainer/Sounds/SoundSlider" to="." method="_on_SoundSlider_value_changed"]

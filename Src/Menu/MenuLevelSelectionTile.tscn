@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Src/Menu/MenuLevelSelectionTile.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Menu/LevelScreenshots/Screenshots.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Assets/Menu/LevelButtons_Hover.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Menu/LevelButtons_Focus.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Menu/LevelButtons_Disabled.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Fonts/default_font.tres" type="DynamicFont" id=7]
 
 [node name="MenuLevelSelectionTile" type="TextureButton"]
 margin_right = 64.0
@@ -35,4 +36,5 @@ anchor_right = 1.0
 margin_left = 4.0
 margin_right = -4.0
 margin_bottom = 18.0
+custom_fonts/font = ExtResource( 7 )
 text = "Level 1"

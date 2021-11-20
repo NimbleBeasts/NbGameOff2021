@@ -53,7 +53,7 @@ _global_script_class_icons={
 config/name="NbGameOff2021"
 config/description="This is a simple kickstarter project for NimbleBeasts projects. It comes with some standard features and little helpers as well as a some stuff, no one has time for in a game jam.
 "
-run/main_scene="res://src/GameManager.tscn"
+run/main_scene="res://Src/GameManager.tscn"
 boot_splash/image="res://Assets/Menu/nbSplash.png"
 config/icon="res://icon.png"
 
@@ -76,10 +76,6 @@ window/size/width=320
 window/size/height=180
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
-
-[gui]
-
-theme/custom_font="res://Assets/Fonts/default_font.tres"
 
 [importer_defaults]
 
@@ -168,11 +164,9 @@ translations=PoolStringArray( "res://Localization/translations.en.translation", 
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 2d/options/use_nvidia_rect_flicker_workaround=true
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
 2d/snapping/use_gpu_pixel_snap=true
 2d/options/use_software_skinning=false
 environment/default_clear_color=Color( 0.101961, 0.109804, 0.172549, 1 )
-environment/default_environment="res://default_env.tres"
