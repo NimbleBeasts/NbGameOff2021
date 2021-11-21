@@ -3,7 +3,7 @@ extends Node
 enum Direction { Top, Right, Down, Left }
 enum GameStates {Menu, Game, Settings} 
 
-enum CharacterType {Professor, Subject, CrazyProfessor, Marc}
+enum CharacterType {Professor, Subject, CrazyProfessor, Marc, NimbleBeasts}
 
 enum BulletType {Normal = 0, Plasma = 1}
 

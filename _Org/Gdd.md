@@ -132,3 +132,18 @@ MARC: ...
 (Trigger: before double door)
 MARC: hm, looks like the bug has not been fixed.
 MARC: I should really make use of my ghosts.
+
+NB: Wake up Neo.. the MATRIX is calling you!
+MARC: Lol. Not funny. Who are you?
+NB: Oh yes, we are just the developers of this simulation.
+PROFESSOR: Stop stop! That would still be me.
+NB: All right. Imagine that we are the sinister force that created all this.
+MARC: So, like a God?
+NB: Exactly
+MARC: So, I'm free now?
+PROFESSOR: NOOOOOOO!
+NB: No. There are many more challenges waiting for you.
+NB: But we didn't have time to create more levels.
+NB: Thanks for playing, we hope you had fun.
+MARC: Wait! No!
+PROFFESOR: Hell yes!

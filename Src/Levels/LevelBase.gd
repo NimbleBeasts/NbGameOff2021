@@ -44,6 +44,7 @@ func _ready():
 		spawn_player(i)
 	
 	spawn_player()
+	Events.emit_signal("memory_update_collected", GameData.memory_pickup.size())
 
 
 func _physics_process(delta):

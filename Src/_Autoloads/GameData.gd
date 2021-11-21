@@ -42,7 +42,23 @@ const message_data = [
 	]},
 	{"id": "L2D2", "data": [
 		{"char": Types.CharacterType.Marc, "text": "LEVEL2_TEXT_7", "events": []},
-		{"char": Types.CharacterType.Marc, "text": "LEVEL2_TEXT_7", "events": []},
+		{"char": Types.CharacterType.Marc, "text": "LEVEL2_TEXT_8", "events": []},
+	]},
+	{"id": "LEVEL_END", "data": [
+		{"char": Types.CharacterType.NimbleBeasts, "text": "LEVEL4_TEXT_1", "events": []},
+		{"char": Types.CharacterType.Marc, "text": "LEVEL4_TEXT_2", "events": []},
+		{"char": Types.CharacterType.NimbleBeasts, "text": "LEVEL4_TEXT_3", "events": []},
+		{"char": Types.CharacterType.Professor, "text": "LEVEL4_TEXT_4", "events": []},
+		{"char": Types.CharacterType.NimbleBeasts, "text": "LEVEL4_TEXT_5", "events": []},
+		{"char": Types.CharacterType.Marc, "text": "LEVEL4_TEXT_6", "events": []},
+		{"char": Types.CharacterType.NimbleBeasts, "text": "LEVEL4_TEXT_7", "events": []},
+		{"char": Types.CharacterType.Marc, "text": "LEVEL4_TEXT_8", "events": []},
+		{"char": Types.CharacterType.Professor, "text": "LEVEL4_TEXT_9", "events": []},
+		{"char": Types.CharacterType.NimbleBeasts, "text": "LEVEL4_TEXT_10", "events": []},
+		{"char": Types.CharacterType.NimbleBeasts, "text": "LEVEL4_TEXT_11", "events": []},
+		{"char": Types.CharacterType.NimbleBeasts, "text": "LEVEL4_TEXT_12", "events": []},
+		{"char": Types.CharacterType.Marc, "text": "LEVEL4_TEXT_13", "events": []},
+		{"char": Types.CharacterType.Professor, "text": "LEVEL4_TEXT_14", "events": []},
 	]},
 ]
 

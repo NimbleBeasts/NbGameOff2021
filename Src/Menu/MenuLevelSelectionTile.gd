@@ -5,6 +5,7 @@ var textures_screenshots = [
 	load("res://Assets/Menu/LevelScreenshots/Screenshots.png"),
 	load("res://Assets/Menu/LevelScreenshots/Screenshots.png"),
 	load("res://Assets/Menu/LevelScreenshots/Screenshots.png"),
+	load("res://Assets/Menu/LevelScreenshots/Screenshots.png"),
 	load("res://Assets/Menu/LevelScreenshots/Screenshots.png")
 ]
 
