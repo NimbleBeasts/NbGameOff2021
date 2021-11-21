@@ -2,11 +2,11 @@ extends TextureButton
 
 
 var textures_screenshots = [
-	load("res://Assets/Menu/LevelScreenshots/Screenshots.png"),
-	load("res://Assets/Menu/LevelScreenshots/Screenshots.png"),
-	load("res://Assets/Menu/LevelScreenshots/Screenshots.png"),
-	load("res://Assets/Menu/LevelScreenshots/Screenshots.png"),
-	load("res://Assets/Menu/LevelScreenshots/Screenshots.png")
+	load("res://Assets/Menu/LevelScreenshots/ss1.png"),
+	load("res://Assets/Menu/LevelScreenshots/ss2.png"),
+	load("res://Assets/Menu/LevelScreenshots/ss3.png"),
+	load("res://Assets/Menu/LevelScreenshots/ss4.png"),
+	load("res://Assets/Menu/LevelScreenshots/ss5.png")
 ]
 
 var texture_locked = preload("res://Assets/Menu/LevelScreenshots/Locked.png")

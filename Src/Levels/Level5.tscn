@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Src/Levels/LevelBase.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Tileset/Burner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Src/Portal/Portal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Src/Spawner/PlayerSpawn.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Src/Door/Door.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Src/ParallaxBackground.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Src/Pickups/Memory.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Src/Objects/DiagCaller.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Assets/Tileset/new_tileset.tres" type="TileSet" id=12]
@@ -47,6 +48,7 @@ tracks/0/keys = {
 
 [node name="Level5" type="Node2D"]
 script = ExtResource( 1 )
+music_track = 0
 
 [node name="TileMapNew" type="TileMap" parent="."]
 tile_set = ExtResource( 12 )
@@ -104,3 +106,5 @@ position = Vector2( 48, 144 )
 
 [node name="Portal" parent="Spawns" instance=ExtResource( 3 )]
 position = Vector2( 240, 168 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
