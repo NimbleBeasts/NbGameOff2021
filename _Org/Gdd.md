@@ -68,19 +68,19 @@ Highway Slaughter - Cor Metallicum
 
 - [x] Portraits
 - [x] Level 3
-- [ ] Level 4
+- [x] Level 4
 
 ---
 
-- [ ] Level 5
-- [/] Hud rework
+- [x] Level 5
+- [x] Hud rework
 - [x] Notification Popup (ammo, memory pickup; instructions; hints)
 
 ---
 
 - [ ] add translations
 - [x] remove french
-- [ ] Title Design
+- [x] Title Design
 - [ ] Itch Page
 
 # Dialogues

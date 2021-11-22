@@ -176,7 +176,7 @@ margin_left = 112.0
 margin_top = 40.0
 margin_right = 208.0
 margin_bottom = 64.0
-text = "Discard Record"
+text = "M_DISCARD"
 
 [node name="GhostBox" type="HBoxContainer" parent="."]
 modulate = Color( 0.654902, 0.941176, 0.439216, 1 )
@@ -210,7 +210,7 @@ margin_left = 112.0
 margin_top = 120.0
 margin_right = 208.0
 margin_bottom = 144.0
-text = "Remove Ghosts"
+text = "M_WIPE"
 
 [node name="MemoryLabel" type="Label" parent="."]
 margin_left = 24.0
