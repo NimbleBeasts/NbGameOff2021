@@ -100,7 +100,6 @@ func add_ghost(blob):
 	Events.emit_signal("ghost_added")
 
 func clear_ghosts():
-	print("GameData.clear_ghosts")
 	data = []
 	Events.emit_signal("ghost_clear")
 

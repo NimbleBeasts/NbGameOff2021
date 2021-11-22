@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Src/Levels/LevelBase.gd" type="Script" id=1]
 [ext_resource path="res://Src/Buttons/ButtonVertical.tscn" type="PackedScene" id=2]
@@ -12,7 +12,10 @@
 [ext_resource path="res://Src/ParallaxBackground.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Src/Buttons/ButtonPressure.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/Tileset/new_tileset.tres" type="TileSet" id=12]
+[ext_resource path="res://Src/Enemies/NormalGuy.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Src/Enemies/ShootGuy.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Src/Enemies/PathLine.gd" type="Script" id=15]
+[ext_resource path="res://Src/Enemies/FallGuy.tscn" type="PackedScene" id=16]
 
 [node name="Level4" type="Node2D"]
 script = ExtResource( 1 )
@@ -123,13 +126,46 @@ position = Vector2( 888, 176 )
 position = Vector2( 1000, 216 )
 id = 1
 
+[node name="FallGuy" parent="Objects" instance=ExtResource( 16 )]
+position = Vector2( 232, 96 )
+
+[node name="FallGuy2" parent="Objects" instance=ExtResource( 16 )]
+position = Vector2( 232, 208 )
+
+[node name="FallGuy3" parent="Objects" instance=ExtResource( 16 )]
+position = Vector2( 464, 320 )
+
+[node name="NormalGuy" parent="Objects" instance=ExtResource( 13 )]
+position = Vector2( 392, 176 )
+
+[node name="PathLine" type="Line2D" parent="Objects/NormalGuy"]
+points = PoolVector2Array( -72, 0, 96, 0 )
+script = ExtResource( 15 )
+
+[node name="NormalGuy2" parent="Objects" instance=ExtResource( 13 )]
+position = Vector2( 384, 288 )
+
+[node name="PathLine" type="Line2D" parent="Objects/NormalGuy2"]
+points = PoolVector2Array( -48, 0, 64, 0 )
+script = ExtResource( 15 )
+
+[node name="NormalGuy3" parent="Objects" instance=ExtResource( 13 )]
+position = Vector2( 608, 288 )
+
+[node name="PathLine" type="Line2D" parent="Objects/NormalGuy3"]
+points = PoolVector2Array( -48, 0, 56, 0 )
+script = ExtResource( 15 )
+
+[node name="ShootGuy" parent="Objects" instance=ExtResource( 14 )]
+position = Vector2( 256, 400 )
+
 [node name="Spawns" type="Node2D" parent="."]
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="PlayerSpawn" parent="Spawns" instance=ExtResource( 4 )]
-position = Vector2( 48, 144 )
+position = Vector2( 88, 144 )
 
 [node name="PlayerSpawn2" parent="Spawns" instance=ExtResource( 4 )]
 position = Vector2( 1056, 304 )

@@ -195,7 +195,7 @@ __meta__ = {
 }
 
 [node name="PlayerSpawn" parent="Spawns" instance=ExtResource( 4 )]
-position = Vector2( 32, 144 )
+position = Vector2( 8, 144 )
 
 [node name="PlayerSpawn2" parent="Spawns" instance=ExtResource( 4 )]
 position = Vector2( 776, 448 )

@@ -29,7 +29,8 @@ func show_player(): #Called by animation
 
 func _on_Area2D_body_entered(body):
 	if not is_active:
-		print("spawner_set")
+		#print("Checkpoint Reached")
+		Events.emit_signal("notification_popup", "CHECKPOINT")
 		is_active = true
 		body.state.pickup = []
 		Events.emit_signal("ghost_set_spawner", spawner_id)

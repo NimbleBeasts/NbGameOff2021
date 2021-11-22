@@ -35,7 +35,10 @@ func _physics_process(delta):
 					get_tree().paused = false
 
 				active = false
-				callback.call_func()
+				if callback:
+					callback.call_func()
+				else:
+					printerr("player was too fast")
 
 
 func _popup(character, text, last_diag, callback_function):

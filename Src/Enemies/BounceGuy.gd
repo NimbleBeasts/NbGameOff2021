@@ -79,3 +79,5 @@ func _on_BounceGuy_area_entered(area):
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "die":
 		state.dead_falling = true
+	elif anim_name == "pop":
+		$AnimationPlayer.play("walk")

@@ -78,7 +78,7 @@ Highway Slaughter - Cor Metallicum
 
 ---
 
-- [ ] add translations
+- [x] add translations
 - [x] remove french
 - [x] Title Design
 - [ ] Itch Page

@@ -344,7 +344,7 @@ func set_ladder_area(val):
 		state.ladder_area = val
 	else:
 		state.ladder_area = null
-	print(state.ladder_area)
+	#print(state.ladder_area)
 
 func process_restart():
 	if Input.is_action_just_pressed('ui_restart') and not state.suspend_respawn:
@@ -392,7 +392,7 @@ func restart():
 	Events.emit_signal("restart_level")
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	print("anim finished")
+	#print("anim finished")
 	match anim_name:
 		"die":
 			if not is_ghost():
