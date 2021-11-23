@@ -19,7 +19,11 @@ Play it in the browser or get a build for your pc here https://nimblebeastscolle
 | Shoot    | Z/C         | Y         |
 | Restart  | R           | -         |
 
-# Credits
+## Godot
+
+This game was made using Godot 3.4
+
+## Credits
 
 Font: "Pixel UniCode" by ivancr72
 
