@@ -1,5 +1,5 @@
-[color=#8a8fc4][b]Game Off[/b][/color]
-This is a simple kickstarter project for Godot projects. It comes with some standard features and little helpers as well as some stuff, no one has time for in a game jam.
+[color=#8a8fc4][b]Game Off 2021[/b][/color]
+We hope you enjoy playing our small game. We are looking forward to your comments.
 
 [color=#8a8fc4][b]Changelog[/b][/color]
 [b]Release 0.2 [/b][code]2021-07-30[/code]
