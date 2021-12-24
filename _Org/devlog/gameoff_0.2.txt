@@ -2,10 +2,6 @@
 We hope you enjoy playing our small game. We are looking forward to your comments.
 
 [color=#8a8fc4][b]Changelog[/b][/color]
-[b]Release 0.2 [/b][code]2021-07-30[/code]
+[b]Release 0.2 [/b][code]2021-11-30[/code]
 
-- Added: DevLogViewer
-- Added: New window management
-- Added: Music & sound volumes
-[b]Release 0.1 [/b][code]2021-04-11[/code]
-- First release
+- First public release
