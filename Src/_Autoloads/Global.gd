@@ -23,8 +23,8 @@
 extends Node
 
 # Version
-const GAME_VERSION = 0.2
-const CONFIG_VERSION = 0 # Used for config migration
+const GAME_VERSION = 0.3
+const CONFIG_VERSION = 1 # Used for config migration
 # Debug Options
 const DEBUG = true
 
@@ -76,7 +76,9 @@ var userConfig = {
 	"brightness": 1.0,
 	"contrast": 1.0,
 	"resolution": {"w": 1280, "h": 720},
-	"language": "en"
+	"language": "en",
+	"moving_bg": true,
+	"glitch": true,
 }
 
 var current_level: int = 0
@@ -172,16 +174,7 @@ func loadConfig():
 		saveConfig()
 
 	# Copy over userConfig
-	userConfig.highscore = data.highscore
-	userConfig.fullscreen = data.fullscreen
-	userConfig.musicVolume = data.musicVolume
-	userConfig.soundVolume = data.soundVolume
-	userConfig.resolution = data.resolution
-	userConfig.brightness = data.brightness
-	userConfig.contrast = data.contrast
-	userConfig.language = data.language
-	userConfig.unlocked_level = data.unlocked_level
-	# When stuck here, the config attributes have been changed.
+	userConfig = data.duplicate()
 	# Delete the Config.cfg to solve this issue.
 	# Project->Open Project Data Folder-> Config.cfg
 	#
@@ -191,13 +184,14 @@ func loadConfig():
 
 # Config Migration
 func migrateConfig(data):
-#	for i in range(data.configVersion, CONFIG_VERSION):
-#		match data.configVersion:
-#			0:
-#				update config here
-#				data.configVersion = 1
-#			_:
-#				print("error: migration variant not found")
+	for i in range(data.configVersion, CONFIG_VERSION):
+		match int(data.configVersion):
+			0:
+				data.glitch = true
+				data.moving_bg = true
+				data.configVersion = 1
+			_:
+				print("error: migration variant not found: " + str(data.configVersion))
 	return data
 
 

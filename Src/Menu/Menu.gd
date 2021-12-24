@@ -120,6 +120,9 @@ func updateSettings():
 	$Settings/TabContainer/Sounds/MusicSlider.value = Global.userConfig.musicVolume
 	$Settings/TabContainer/Sounds/MusicSlider/Value.set_text(str(Global.userConfig.musicVolume*10) + "%")
 
+	$Settings/TabContainer/Shader/GlitchShader.pressed = Global.userConfig.glitch
+	$Settings/TabContainer/Shader/MatrixShader.pressed = Global.userConfig.moving_bg
+	
 #	$Settings/TabContainer/General/BrightnessSlider.value = Global.userConfig.brightness
 #	$Settings/TabContainer/General/BrightnessSlider/Value.set_text("%.2f" % Global.userConfig.brightness)
 #
@@ -291,3 +294,15 @@ func _on_ResetBackButton_button_up():
 	$LevelSelection/ResetWindow.hide()
 	$LevelSelection/SelectionHolder/SelectionTile1/Title.grab_focus()
 	Events.emit_signal("play_sound", "menu_click")
+
+
+func _on_GlitchShader_toggled(button_pressed):
+	Global.userConfig.glitch = button_pressed
+	Global.saveConfig()
+	Events.emit_signal("shader_glitch", button_pressed)
+
+
+func _on_MatrixShader_toggled(button_pressed):
+	Global.userConfig.moving_bg = button_pressed
+	Global.saveConfig()
+	Events.emit_signal("shader_matrix", button_pressed)

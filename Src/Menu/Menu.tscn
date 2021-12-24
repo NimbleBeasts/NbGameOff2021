@@ -1,10 +1,12 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Src/Menu/Menu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Menu/unchecked.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Menu/Slider/SliderTheme.tres" type="Theme" id=3]
 [ext_resource path="res://Assets/Menu/CountryFlagsHover.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Menu/CountryFlags.png" type="Texture" id=5]
 [ext_resource path="res://Src/Menu/MenuLevelSelectionTile.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Menu/checked.png" type="Texture" id=7]
 [ext_resource path="res://Src/Menu/DevLogViewer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Assets/Fonts/DevLog_Mono16.tres" type="DynamicFont" id=9]
 [ext_resource path="res://Assets/Fonts/default_font.tres" type="DynamicFont" id=10]
@@ -14,6 +16,8 @@
 [ext_resource path="res://Src/Hud/DefaultButton.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Src/Menu/ScrollBarTheme.tres" type="Theme" id=15]
 [ext_resource path="res://Src/ParallaxBackground.tscn" type="PackedScene" id=16]
+
+[sub_resource type="StyleBoxEmpty" id=8]
 
 [sub_resource type="StyleBoxFlat" id=4]
 content_margin_right = 16.0
@@ -214,7 +218,6 @@ text = "M_DELETE_WARNING"
 scroll_active = false
 
 [node name="Settings" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -242,6 +245,63 @@ theme = ExtResource( 15 )
 custom_fonts/mono_font = ExtResource( 9 )
 custom_fonts/bold_font = ExtResource( 11 )
 custom_fonts/normal_font = ExtResource( 10 )
+
+[node name="Shader" type="Tabs" parent="Settings/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 26.0
+
+[node name="MatrixShader" type="CheckBox" parent="Settings/TabContainer/Shader"]
+margin_left = 64.0
+margin_top = 14.0
+margin_right = 88.0
+margin_bottom = 38.0
+custom_icons/checked = ExtResource( 7 )
+custom_icons/unchecked = ExtResource( 2 )
+custom_styles/focus = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Settings/TabContainer/Shader/MatrixShader"]
+anchor_left = -2.333
+anchor_right = -2.333
+margin_left = -0.00799561
+margin_right = 57.992
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 10 )
+text = "Matrix"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GlitchShader" type="CheckBox" parent="Settings/TabContainer/Shader"]
+margin_left = 64.0
+margin_top = 38.0
+margin_right = 88.0
+margin_bottom = 62.0
+custom_icons/checked = ExtResource( 7 )
+custom_icons/unchecked = ExtResource( 2 )
+custom_styles/focus = SubResource( 8 )
+pressed = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Settings/TabContainer/Shader/GlitchShader"]
+anchor_left = -2.333
+anchor_right = -2.333
+margin_left = -0.00799561
+margin_right = 57.992
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 10 )
+text = "Glitch"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Graphics" type="Tabs" parent="Settings/TabContainer"]
 visible = false
@@ -382,6 +442,8 @@ text = "M_BACK"
 [connection signal="button_up" from="LevelSelection/ResetButton" to="." method="_on_ResetButton_button_up"]
 [connection signal="button_up" from="LevelSelection/ResetWindow/ResetBackButton" to="." method="_on_ResetBackButton_button_up"]
 [connection signal="button_up" from="LevelSelection/ResetWindow/ResetDeleteButton" to="." method="_on_ResetDeleteButton_button_up"]
+[connection signal="toggled" from="Settings/TabContainer/Shader/MatrixShader" to="." method="_on_MatrixShader_toggled"]
+[connection signal="toggled" from="Settings/TabContainer/Shader/GlitchShader" to="." method="_on_GlitchShader_toggled"]
 [connection signal="button_up" from="Settings/TabContainer/Graphics/FullscreenButton" to="." method="_on_FullscreenButton_button_up"]
 [connection signal="button_up" from="Settings/TabContainer/Graphics/ApplyButton" to="." method="_on_ApplyButton_button_up"]
 [connection signal="value_changed" from="Settings/TabContainer/Sounds/SoundSlider" to="." method="_on_SoundSlider_value_changed"]

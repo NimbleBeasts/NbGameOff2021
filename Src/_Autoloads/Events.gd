@@ -44,6 +44,9 @@ signal change_music(track_id)
 # Menu Related
 signal menu_back()
 
+signal shader_matrix(state)
+signal shader_glitch(state)
+
 ###########################################################################
 # Config Changes
 ###########################################################################

@@ -1,23 +1,25 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Shaders/scroll_bg.gdshader" type="Shader" id=1]
 [ext_resource path="res://Assets/Tileset/BackgroundScroll_Layer2.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Tileset/BackgroundScroll_Layer1.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Tileset/BackgroundScroll_Layer3.png" type="Texture" id=4]
+[ext_resource path="res://Src/ParallaxBackground.gd" type="Script" id=5]
 
 [sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 1 )
-shader_param/scroll_spead = 0.3
+shader_param/scroll_speed = 0.3
 
 [sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 1 )
-shader_param/scroll_spead = 0.5
+shader_param/scroll_speed = 0.4
 
 [sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 1 )
-shader_param/scroll_spead = 0.7
+shader_param/scroll_speed = 0.6
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource( 5 )
 
 [node name="Layer1" type="ParallaxLayer" parent="."]
 motion_scale = Vector2( 0.8, 1 )

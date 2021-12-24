@@ -24,6 +24,8 @@ func _ready():
 	Events.connect("menu_back", self, "_backToMenu")
 
 	switchTo(Types.GameStates.Menu)
+	
+	#print(Global.userConfig.glitch)
 
 # State Transition Function
 func switchTo(to):
