@@ -39,6 +39,7 @@ __meta__ = {
 }
 
 [node name="Main" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -113,7 +114,6 @@ position = Vector2( 160, 72 )
 texture = ExtResource( 12 )
 
 [node name="LevelSelection" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -129,9 +129,9 @@ text = "M_BACK"
 
 [node name="PastButton" parent="LevelSelection" instance=ExtResource( 14 )]
 margin_left = 32.0
-margin_top = 80.0
+margin_top = 64.0
 margin_right = 48.0
-margin_bottom = 99.0
+margin_bottom = 85.0
 text = "<"
 
 [node name="SelectionHolder" type="Control" parent="LevelSelection"]
@@ -144,28 +144,54 @@ __meta__ = {
 
 [node name="SelectionTile1" parent="LevelSelection/SelectionHolder" instance=ExtResource( 6 )]
 margin_left = 56.0
-margin_top = 56.0
+margin_top = 40.0
 margin_right = 120.0
-margin_bottom = 120.0
+margin_bottom = 104.0
 
 [node name="SelectionTile2" parent="LevelSelection/SelectionHolder" instance=ExtResource( 6 )]
 margin_left = 128.0
-margin_top = 56.0
+margin_top = 40.0
 margin_right = 192.0
-margin_bottom = 120.0
+margin_bottom = 104.0
 
 [node name="SelectionTile3" parent="LevelSelection/SelectionHolder" instance=ExtResource( 6 )]
 margin_left = 200.0
-margin_top = 56.0
+margin_top = 40.0
 margin_right = 264.0
-margin_bottom = 120.0
+margin_bottom = 104.0
 
 [node name="NextButton" parent="LevelSelection" instance=ExtResource( 14 )]
 margin_left = 272.0
-margin_top = 80.0
+margin_top = 64.0
 margin_right = 288.0
-margin_bottom = 99.0
+margin_bottom = 85.0
 text = ">"
+
+[node name="TutorialSkip" type="CheckBox" parent="LevelSelection"]
+margin_left = 56.0
+margin_top = 112.0
+margin_right = 80.0
+margin_bottom = 136.0
+custom_icons/checked = ExtResource( 7 )
+custom_icons/unchecked = ExtResource( 2 )
+custom_styles/focus = SubResource( 8 )
+pressed = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="LevelSelection/TutorialSkip"]
+anchor_left = -2.333
+anchor_right = -2.333
+margin_left = 79.992
+margin_right = 175.992
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 10 )
+text = "M_SKIP_TUTORIAL"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ResetButton" parent="LevelSelection" instance=ExtResource( 14 )]
 margin_left = 160.0
@@ -218,6 +244,7 @@ text = "M_DELETE_WARNING"
 scroll_active = false
 
 [node name="Settings" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 

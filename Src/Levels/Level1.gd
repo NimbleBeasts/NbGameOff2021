@@ -18,8 +18,15 @@ func _ready():
 	
 	Events.connect("tutorial_step3_completed", self, "_tutorial_step3_completed")
 
+	# Enable reload key if tutorial is disabled
+	if Global.tutorials_disabled:
+		set_step3()
+
+	# Enable reload key if tutorial step 3 was completed
 	if GameData.tutorial_state_3 == true:
 		set_step3()
+		
+
 
 func _physics_process(delta):
 	if quick_restart_enabled:

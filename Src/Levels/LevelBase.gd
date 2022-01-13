@@ -49,7 +49,8 @@ func _ready():
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
-		Events.emit_signal("menu_back")
+		print(get_tree().paused)
+		Events.emit_signal("menu_popup")
 
 	if GameData.memory_total > 0:
 		if GameData.memory_pickup.size() == GameData.memory_total:

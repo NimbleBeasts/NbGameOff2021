@@ -42,6 +42,7 @@ signal play_sound(sound, volume, pos)
 signal play_music(track)
 signal change_music(track_id)
 # Menu Related
+signal menu_popup()
 signal menu_back()
 
 signal shader_matrix(state)

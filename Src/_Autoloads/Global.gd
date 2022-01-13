@@ -54,6 +54,9 @@ const levels = [
 	"res://Src/Levels/Level5.tscn",
 ]
 
+# Disable tutorial dialogues 
+var tutorials_disabled = false
+
 var gameState = {
 	date = 0
 } setget setGameState

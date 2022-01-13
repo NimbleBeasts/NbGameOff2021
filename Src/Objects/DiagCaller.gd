@@ -52,15 +52,16 @@ func _callback():
 
 
 func _on_DiagCaller_body_entered(body):
-	if GameData.dialogue_nodes.find(text_id) != -1:
-		pass
-	else:
-		GameData.dialogue_nodes.append(text_id)
-	
-		if delay_timer > 0.0:
-			$DelayTimer.start()
+	if not Global.tutorials_disabled:
+		if GameData.dialogue_nodes.find(text_id) != -1:
+			pass
 		else:
-			spawn_message()
+			GameData.dialogue_nodes.append(text_id)
+		
+			if delay_timer > 0.0:
+				$DelayTimer.start()
+			else:
+				spawn_message()
 
 
 func _on_DelayTimer_timeout():

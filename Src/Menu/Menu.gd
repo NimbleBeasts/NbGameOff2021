@@ -254,26 +254,22 @@ func _on_ButtonLanguage_button_up():
 	print("Language: " + tr("TEST_ENTRY"))
 
 
-
-
-
 func _on_SelectionTile1_button_up():
-	var level = selection_page*3
-	Events.emit_signal("play_sound", "menu_click")
-	Events.emit_signal("load_level", level)
+	_load_level(selection_page*3)
 
 
 func _on_SelectionTile2_button_up():
-	var level = selection_page*3 + 1
-	Events.emit_signal("play_sound", "menu_click")
-	Events.emit_signal("load_level", level)
+	_load_level(selection_page*3 + 1)
 
 
 func _on_SelectionTile3_button_up():
-	var level = selection_page*3 + 2
+	_load_level(selection_page*3 + 2)
+
+
+func _load_level(level):
+	Global.tutorials_disabled = $LevelSelection/TutorialSkip.pressed
 	Events.emit_signal("play_sound", "menu_click")
 	Events.emit_signal("load_level", level)
-
 
 
 func _on_ResetButton_button_up():
