@@ -105,16 +105,19 @@ func _on_WipeButton_button_up():
 	callback.call_func(false)
 	$AnimationPlayer.play_backwards("popup")
 	Events.emit_signal("play_sound", "menu_click")
+	_ghost_dialogue_visible = false
 
 func _on_DiscardButton_button_up():
 	callback.call_func(false)
 	$AnimationPlayer.play_backwards("popup")
 	Events.emit_signal("play_sound", "menu_click")
+	_ghost_dialogue_visible = false
 
 func _on_SaveGhostButton_button_up():
 	callback.call_func(true)
 	$AnimationPlayer.play_backwards("popup")
 	Events.emit_signal("play_sound", "menu_click")
+	_ghost_dialogue_visible = false
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "popup":
@@ -129,7 +132,6 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			_menu_popup_visible = false
 
 func _menu_popup():
-	$AnimationPlayer.play("RESET")
 	get_tree().paused = true
 	_menu_popup_visible = true
 	$AnimationPlayer.play("menu")

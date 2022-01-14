@@ -322,4 +322,11 @@ bus = "Sound"
 anims/RESET = SubResource( 11 )
 anims/beam = SubResource( 12 )
 
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

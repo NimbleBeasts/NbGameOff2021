@@ -19,6 +19,7 @@ const LADDER_CORRECTION_SPEED = 120
 enum PlayerState {Normal, Ladder}
 enum RecordEvent {Move, Anim, Shoot}
 
+
 var counter = 0
 var state = {
 	"ghost_no": -1,
@@ -110,6 +111,17 @@ func _physics_process(delta):
 		
 		# Handle restart request
 		process_restart()
+		
+		# Check if the player is stuck - unfortunately most of tiles will be detected as walls which may cause issues with falling and stick to walls
+		if $AnimationPlayer.is_playing() && $AnimationPlayer.current_animation == "falling":
+			$Label.set_text(str(counter))
+			if is_on_floor() or is_on_ceiling() or is_on_wall():
+				counter += 1
+				if counter > 96:
+					die()
+		else:
+			counter = 0
+	
 		
 #		if state.current_state == PlayerState.Ladder:
 #			$Label2.set_text("Ladder")
