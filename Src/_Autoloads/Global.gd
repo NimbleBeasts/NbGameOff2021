@@ -47,6 +47,7 @@ const supportedResolutions = [
 	]
 # Level Array
 const levels = [
+	"res://Src/Levels/LevelTest.tscn",
 	"res://Src/Levels/Level1.tscn",
 	"res://Src/Levels/Level2.tscn",
 	"res://Src/Levels/Level3.tscn",
@@ -82,6 +83,7 @@ var userConfig = {
 	"language": "en",
 	"moving_bg": true,
 	"glitch": true,
+	"glow": true,
 }
 
 var current_level: int = 0
@@ -192,6 +194,7 @@ func migrateConfig(data):
 			0:
 				data.glitch = true
 				data.moving_bg = true
+				data.glow = true
 				data.configVersion = 1
 			_:
 				print("error: migration variant not found: " + str(data.configVersion))

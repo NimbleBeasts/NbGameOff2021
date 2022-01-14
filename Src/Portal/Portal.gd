@@ -16,8 +16,9 @@ func open():
 
 func _on_Portal_body_entered(body):
 	if is_open:
-		body.hide()
+		body.beam(true)
 		body.state.dead = true
+		Events.emit_signal("ghost_clear")
 		$AnimationPlayer.play("close")
 
 

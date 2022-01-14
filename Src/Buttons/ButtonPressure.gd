@@ -7,7 +7,8 @@ var bodies_on_button = []
 
 var triggered = false
 
-
+func _ready():
+	$Light2D.color = Color("#b13e53")
 
 func add_body(body):
 	if bodies_on_button.find(body) == -1:

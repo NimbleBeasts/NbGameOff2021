@@ -18,6 +18,7 @@ signal ghost_added()
 signal ghost_clear()
 signal ghost_spawn(id)
 signal ghost_dialogue_popup(callback)
+signal ghost_dialogue_popup_force_close()
 signal ghost_set_spawner(id)
 
 # Dialogue
@@ -47,6 +48,7 @@ signal menu_back()
 
 signal shader_matrix(state)
 signal shader_glitch(state)
+signal shader_glow(state)
 
 ###########################################################################
 # Config Changes

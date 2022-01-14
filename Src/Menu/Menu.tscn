@@ -39,7 +39,6 @@ __meta__ = {
 }
 
 [node name="Main" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -114,6 +113,7 @@ position = Vector2( 160, 72 )
 texture = ExtResource( 12 )
 
 [node name="LevelSelection" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -259,6 +259,7 @@ __meta__ = {
 }
 
 [node name="General" type="Tabs" parent="Settings/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 26.0
@@ -274,7 +275,6 @@ custom_fonts/bold_font = ExtResource( 11 )
 custom_fonts/normal_font = ExtResource( 10 )
 
 [node name="Shader" type="Tabs" parent="Settings/TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 26.0
@@ -325,6 +325,32 @@ margin_right = 57.992
 margin_bottom = 24.0
 custom_fonts/font = ExtResource( 10 )
 text = "Glitch"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GlowShader" type="CheckBox" parent="Settings/TabContainer/Shader"]
+margin_left = 64.0
+margin_top = 62.0
+margin_right = 88.0
+margin_bottom = 86.0
+custom_icons/checked = ExtResource( 7 )
+custom_icons/unchecked = ExtResource( 2 )
+custom_styles/focus = SubResource( 8 )
+pressed = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Settings/TabContainer/Shader/GlowShader"]
+anchor_left = -2.333
+anchor_right = -2.333
+margin_left = -0.00799561
+margin_right = 57.992
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 10 )
+text = "Glow"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -471,6 +497,7 @@ text = "M_BACK"
 [connection signal="button_up" from="LevelSelection/ResetWindow/ResetDeleteButton" to="." method="_on_ResetDeleteButton_button_up"]
 [connection signal="toggled" from="Settings/TabContainer/Shader/MatrixShader" to="." method="_on_MatrixShader_toggled"]
 [connection signal="toggled" from="Settings/TabContainer/Shader/GlitchShader" to="." method="_on_GlitchShader_toggled"]
+[connection signal="toggled" from="Settings/TabContainer/Shader/GlowShader" to="." method="_on_GlowShader_toggled"]
 [connection signal="button_up" from="Settings/TabContainer/Graphics/FullscreenButton" to="." method="_on_FullscreenButton_button_up"]
 [connection signal="button_up" from="Settings/TabContainer/Graphics/ApplyButton" to="." method="_on_ApplyButton_button_up"]
 [connection signal="value_changed" from="Settings/TabContainer/Sounds/SoundSlider" to="." method="_on_SoundSlider_value_changed"]

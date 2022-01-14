@@ -116,6 +116,14 @@ func _physics_process(delta):
 #		else:
 #			$Label2.set_text("Normal")
 
+func beam(reverse = false):
+	print("bea")
+	show()
+	if reverse:
+		$ShaderAnimationPlayer.play_backwards("beam")
+	else:
+		$ShaderAnimationPlayer.play("beam")
+
 func check_enter_ladder_state(input):
 	if state.ladder_area and state.current_state != PlayerState.Ladder:
 		if input.y != 0:

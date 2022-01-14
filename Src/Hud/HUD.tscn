@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Src/Hud/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Src/Hud/HudGhostIndicator.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Assets/Hud/icon_ram.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Hud/icon_ammo.png" type="Texture" id=11]
 [ext_resource path="res://Assets/Fonts/default_font.tres" type="DynamicFont" id=12]
+[ext_resource path="res://Assets/Menu/Slider/SliderTheme.tres" type="Theme" id=13]
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -246,8 +247,8 @@ text = "M_DISCARD"
 [node name="GhostBox" type="HBoxContainer" parent="."]
 modulate = Color( 0.654902, 0.941176, 0.439216, 1 )
 anchor_right = 1.0
-margin_top = 80.0
-margin_bottom = 104.0
+margin_top = 154.0
+margin_bottom = 178.0
 custom_constants/separation = 2
 alignment = 1
 __meta__ = {
@@ -255,7 +256,6 @@ __meta__ = {
 }
 
 [node name="HudPlayerIndicator" parent="GhostBox" instance=ExtResource( 2 )]
-visible = false
 margin_left = 148.0
 margin_right = 172.0
 texture = ExtResource( 3 )
@@ -363,9 +363,58 @@ margin_right = 120.0
 margin_bottom = 64.0
 text = "M_EXIT"
 
+[node name="DebugPanel" type="Panel" parent="."]
+anchor_right = 1.0
+margin_bottom = 16.0
+
+[node name="Fps" type="Label" parent="DebugPanel"]
+margin_top = -1.0
+margin_right = 40.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 12 )
+text = "60 FPS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeSlider" type="HSlider" parent="DebugPanel"]
+margin_left = 70.0
+margin_top = 1.0
+margin_right = 142.0
+margin_bottom = 17.0
+theme = ExtResource( 13 )
+max_value = 2.0
+step = 0.1
+value = 1.0
+tick_count = 10
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="DebugPanel/TimeSlider"]
+margin_left = -24.0
+margin_top = -2.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 12 )
+text = "Time"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="DebugPanel/TimeSlider"]
+margin_left = 73.0
+margin_top = -2.0
+margin_right = 89.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 12 )
+text = "1.0"
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="button_up" from="DiscardButton" to="." method="_on_DiscardButton_button_up"]
 [connection signal="button_up" from="GhostBox/SaveGhostButton" to="." method="_on_SaveGhostButton_button_up"]
 [connection signal="button_up" from="WipeButton" to="." method="_on_WipeButton_button_up"]
 [connection signal="button_up" from="Menu/ContinueButton" to="." method="_on_ContinueButton_button_up"]
 [connection signal="button_up" from="Menu/ExitButton" to="." method="_on_ExitButton_button_up"]
+[connection signal="value_changed" from="DebugPanel/TimeSlider" to="." method="_on_TimeSlider_value_changed"]

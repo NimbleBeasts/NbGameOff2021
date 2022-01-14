@@ -1,0 +1,123 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Src/Levels/LevelBase.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Tileset/Burner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Src/Portal/Portal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Src/Spawner/PlayerSpawn.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Src/Door/Door.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Src/ParallaxBackground.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Src/Buttons/ButtonVertical.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Src/Objects/JumpPad.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Src/Pickups/Memory.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Src/Objects/DiagCaller.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Src/TestSprite.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/Tileset/new_tileset.tres" type="TileSet" id=12]
+[ext_resource path="res://Assets/Objects/terminal.png" type="Texture" id=13]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 10 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[node name="LevelTest" type="Node2D"]
+script = ExtResource( 1 )
+music_track = 0
+
+[node name="TileMapNew" type="TileMap" parent="."]
+tile_set = ExtResource( 12 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -262145, 0, 0, -327680, 0, 0, -327679, 0, 0, -327678, 0, 0, -327677, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0, 393217, 68, 0, 393218, 68, 0, 393219, 68, 0, 393220, 68, 0, 393221, 68, 0, 393222, 68, 0, 393223, 68, 0, 393224, 36, 0, 393225, 37, 0, 393226, 38, 0, 393227, 36, 0, 393228, 37, 0, 393229, 38, 0, 393230, 34, 0, 393231, 36, 0, 393232, 38, 0, 524280, 0, 0, 524281, 28, 0, 524282, 28, 0, 524283, 28, 0, 524284, 28, 0, 524285, 28, 0, 524286, 28, 0, 524287, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 68, 0, 458755, 68, 0, 458756, 68, 0, 458757, 68, 0, 458758, 68, 0, 458759, 68, 0, 458760, 36, 0, 458761, 37, 0, 458762, 38, 0, 458763, 36, 0, 458764, 37, 0, 458765, 38, 0, 458766, 34, 0, 458767, 36, 0, 458768, 38, 0, 458770, 48, 0, 458771, 53, 0, 458772, 49, 0, 589816, 0, 0, 589817, 28, 0, 589818, 28, 0, 589819, 28, 0, 589820, 28, 0, 589821, 28, 0, 589822, 28, 0, 589823, 28, 0, 524288, 28, 0, 524289, 68, 0, 524290, 68, 0, 524291, 68, 0, 524292, 68, 0, 524293, 69, 0, 524294, 70, 0, 524295, 68, 0, 524296, 36, 0, 524297, 37, 0, 524298, 38, 0, 524299, 36, 0, 524300, 37, 0, 524301, 38, 0, 524302, 34, 0, 524303, 36, 0, 524304, 38, 0, 524306, 48, 0, 524307, 53, 0, 524308, 49, 0, 524309, 15, 0, 655352, 0, 0, 655353, 28, 0, 655354, 28, 0, 655355, 28, 0, 655356, 28, 0, 655357, 28, 0, 655358, 28, 0, 655359, 28, 0, 589824, 28, 0, 589825, 68, 0, 589826, 68, 0, 589827, 68, 0, 589828, 68, 0, 589829, 73, 0, 589830, 68, 0, 589831, 68, 0, 589832, 36, 0, 589834, 38, 0, 589835, 67, 0, 589836, 35, 0, 589837, 67, 0, 589838, 34, 0, 589839, 67, 0, 589840, 35, 0, 589842, 48, 0, 589843, 53, 0, 589844, 49, 0, 589845, 15, 0, 589846, 21, 0, 720888, 0, 0, 720889, 28, 0, 720890, 28, 0, 720891, 28, 0, 720892, 28, 0, 720893, 28, 0, 720894, 28, 0, 720895, 28, 0, 655360, 28, 0, 655361, 28, 0, 655362, 68, 0, 655363, 68, 0, 655364, 68, 0, 655365, 73, 0, 655366, 68, 0, 655367, 68, 0, 655368, 36, 0, 655370, 38, 0, 655371, 45, 0, 655372, 46, 0, 655373, 47, 0, 655374, 34, 0, 655375, 45, 0, 655376, 47, 0, 655378, 50, 0, 655379, 51, 0, 655380, 52, 0, 655381, 15, 0, 655382, 21, 0, 786424, 0, 0, 786425, 0, 0, 786426, 0, 0, 786427, 0, 0, 786428, 0, 0, 786429, 0, 0, 786430, 0, 0, 786431, 0, 0, 720896, 0, 0, 720897, 11, 0, 720898, 9, 0, 720899, 9, 0, 720900, 10, 0, 720901, 9, 0, 720902, 9, 0, 720903, 9, 0, 720904, 10, 0, 720905, 9, 0, 720906, 9, 0, 720907, 11, 0, 720908, 11, 0, 720909, 9, 0, 720910, 10, 0, 720911, 9, 0, 720912, 9, 0, 720913, 9, 0, 720914, 10, 0, 720915, 9, 0, 720916, 9, 0, 720917, 8, 0, 720918, 21, 0, 851960, 0, 0, 851967, 21, 0, 786432, 21, 0, 786433, 19, 0, 786434, 20, 0, 786435, 18, 0, 786436, 19, 0, 786437, 20, 0, 786438, 27, 0, 786439, 27, 0, 786440, 31, 0, 786441, 65, 0, 786442, 66, 0, 786443, 31, 0, 786444, 27, 0, 786445, 22, 0, 786446, 22, 0, 786447, 22, 0, 786448, 23, 0, 786449, 24, 0, 786450, 25, 0, 786451, 22, 0, 786452, 22, 0, 786453, 21, 0, 786454, 21, 0, 917503, 21, 0, 851968, 21, 0, 851969, 21, 0, 851970, 21, 0, 851971, 21, 0, 851972, 21, 0, 851973, 21, 0, 851974, 21, 0, 851975, 21, 0, 851976, 21, 0, 851977, 21, 0, 851978, 21, 0, 851979, 21, 0, 851980, 21, 0, 851981, 21, 0, 851982, 21, 0, 851983, 21, 0, 851984, 21, 0, 851985, 21, 0, 851986, 21, 0, 851987, 21, 0, 851988, 21, 0, 851989, 21, 0, 851990, 21, 0 )
+
+[node name="Objects" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Memory" parent="Objects" instance=ExtResource( 9 )]
+position = Vector2( 176, 160 )
+
+[node name="DiagCaller" parent="Objects" instance=ExtResource( 10 )]
+position = Vector2( 152, 160 )
+delay_timer = 0.1
+text_id = "LEVEL_END"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/DiagCaller"]
+position = Vector2( 0, 8 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Objects/DiagCaller"]
+texture = ExtResource( 13 )
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Objects/DiagCaller/Sprite"]
+autoplay = "idle"
+anims/RESET = SubResource( 2 )
+anims/idle = SubResource( 3 )
+
+[node name="Door" parent="Objects" instance=ExtResource( 5 )]
+position = Vector2( 272, 128 )
+
+[node name="Burner" parent="Objects" instance=ExtResource( 2 )]
+position = Vector2( 0, 224 )
+frame = 1
+
+[node name="Burner2" parent="Objects" instance=ExtResource( 2 )]
+position = Vector2( 336, 224 )
+
+[node name="Burner3" parent="Objects" instance=ExtResource( 2 )]
+position = Vector2( 176, 224 )
+frame = 2
+
+[node name="JumpPad" parent="Objects" instance=ExtResource( 8 )]
+position = Vector2( -40, 176 )
+
+[node name="ButtonVertical" parent="Objects" instance=ExtResource( 7 )]
+position = Vector2( -112, 144 )
+scale = Vector2( -1, 1 )
+
+[node name="Sprite" parent="Objects" instance=ExtResource( 11 )]
+position = Vector2( 104, 152 )
+
+[node name="Spawns" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PlayerSpawn" parent="Spawns" instance=ExtResource( 4 )]
+position = Vector2( 48, 144 )
+
+[node name="Portal" parent="Spawns" instance=ExtResource( 3 )]
+position = Vector2( 240, 168 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]

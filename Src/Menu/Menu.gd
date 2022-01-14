@@ -122,6 +122,7 @@ func updateSettings():
 
 	$Settings/TabContainer/Shader/GlitchShader.pressed = Global.userConfig.glitch
 	$Settings/TabContainer/Shader/MatrixShader.pressed = Global.userConfig.moving_bg
+	$Settings/TabContainer/Shader/GlowShader.pressed = Global.userConfig.glow
 	
 #	$Settings/TabContainer/General/BrightnessSlider.value = Global.userConfig.brightness
 #	$Settings/TabContainer/General/BrightnessSlider/Value.set_text("%.2f" % Global.userConfig.brightness)
@@ -302,3 +303,9 @@ func _on_MatrixShader_toggled(button_pressed):
 	Global.userConfig.moving_bg = button_pressed
 	Global.saveConfig()
 	Events.emit_signal("shader_matrix", button_pressed)
+
+
+func _on_GlowShader_toggled(button_pressed):
+	Global.userConfig.glow = button_pressed
+	Global.saveConfig()
+	Events.emit_signal("shader_glow", button_pressed)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Src/Spawner/PlayerSpawn.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Spawner/DummySpawner.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Spawner/DummyBeam.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Sounds/checkpoint.wav" type="AudioStream" id=4]
 [ext_resource path="res://Assets/Sounds/teleport.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Lights/Spawn.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -19,6 +20,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Light2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -44,12 +57,24 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.25 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "show_player"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Light2D:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.25, 0.55 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.1, 0.0 ]
 }
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -104,5 +129,10 @@ bus = "Sound"
 [node name="TeleportSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
 bus = "Sound"
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 6 )
+color = Color( 1, 0.803922, 0.458824, 1 )
+energy = 0.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -12,10 +12,12 @@ var _ghost_dialogue_visible = false
 var _menu_popup_visible = false
 
 func _ready():
+	$AnimationPlayer.play("RESET")
 	Events.connect("ghost_added", self, "_ghost_added")
 	Events.connect("ghost_clear", self, "_ghost_clear")
 	Events.connect("ghost_spawn", self, "_ghost_spawn")
 	Events.connect("ghost_dialogue_popup", self, "_ghost_dialogue_popup")
+	Events.connect("ghost_dialogue_popup_force_close", self, "_ghost_dialogue_popup_force_close")
 	
 	Events.connect("memory_update_total", self, "_memory_update_total")
 	Events.connect("memory_update_collected", self, "_memory_update_collected")
@@ -25,6 +27,9 @@ func _ready():
 	
 	Events.connect("ammo_update", self, "_ammo_update")
 	$AmmoLabel.set_text("0/0")
+	
+	# Hide Debugpanel by default
+	$DebugPanel.hide()
 
 func _process(delta):
 	if _ghost_dialogue_visible:
@@ -37,6 +42,14 @@ func _process(delta):
 		if Input.is_action_just_pressed("ui_cancel"):
 			print("esc hud")
 			_on_ContinueButton_button_up()
+	
+	if Global.DEBUG:
+		$DebugPanel/Fps.set_text(str(Engine.get_frames_per_second()) + " FPS")
+		if Input.is_action_just_released("ui_debugpanel"):
+			if $DebugPanel.visible:
+				$DebugPanel.hide()
+			else:
+				$DebugPanel.show()
 
 func _ghost_dialogue_popup(callback_ref):
 	callback = callback_ref
@@ -44,6 +57,11 @@ func _ghost_dialogue_popup(callback_ref):
 	get_tree().paused = true
 	$GhostBox.move_child($GhostBox/SaveGhostButton, $GhostBox.get_child_count())
 	$AnimationPlayer.play("popup")
+
+func _ghost_dialogue_popup_force_close():
+	if $DiscardButton.visible:
+		$AnimationPlayer.play_backwards("popup")
+		get_tree().paused = false
 
 func _ammo_update(amnt):
 	$AmmoLabel.set_text(str(amnt)+"/1")
@@ -111,6 +129,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			_menu_popup_visible = false
 
 func _menu_popup():
+	$AnimationPlayer.play("RESET")
 	get_tree().paused = true
 	_menu_popup_visible = true
 	$AnimationPlayer.play("menu")
@@ -128,3 +147,8 @@ func _on_ExitButton_button_up():
 	get_tree().paused = false
 	_ghost_clear()
 	Events.emit_signal("menu_back")
+
+
+func _on_TimeSlider_value_changed(value):
+	Engine.time_scale = value
+	$DebugPanel/TimeSlider/Value.set_text(str(value))

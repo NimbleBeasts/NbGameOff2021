@@ -1,10 +1,26 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Src/Buttons/ButtonPressure.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Buttons/Horizontal.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Lights/PressureButton.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 3 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Light2D:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.694118, 0.243137, 0.32549, 1 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "trigger"
@@ -21,6 +37,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Light2D:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.694118, 0.243137, 0.32549, 1 ), Color( 0.219608, 0.717647, 0.392157, 1 ) ]
+}
 
 [node name="ButtonPressure" type="Area2D"]
 collision_layer = 0
@@ -34,16 +62,24 @@ centered = false
 hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 12, -3 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
 anims/trigger = SubResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PoolVector2Array( 0, 0, 6, -2, 18, -2, 24, 0 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 12, -8 )
+texture = ExtResource( 4 )
+color = Color( 0.694118, 0.243137, 0.32549, 1 )
 
 [connection signal="body_entered" from="." to="." method="_on_ButtonPressure_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_ButtonPressure_body_exited"]

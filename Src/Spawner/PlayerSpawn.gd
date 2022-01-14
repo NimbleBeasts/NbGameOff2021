@@ -25,7 +25,7 @@ func play_anim(player_node):
 	$AnimationPlayer.play("beam")
 
 func show_player(): #Called by animation
-	player.show()
+	player.beam()
 
 func _on_Area2D_body_entered(body):
 	if not is_active:

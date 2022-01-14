@@ -22,6 +22,9 @@ func _ready():
 	Events.connect("restart_level", self, "_restartLevel")
 	Events.connect("load_level", self, "_loadLevel")
 	Events.connect("menu_back", self, "_backToMenu")
+	
+	Events.connect("shader_glow", self, "_shader_toggle")
+	_shader_toggle(Global.userConfig.glow)
 
 	switchTo(Types.GameStates.Menu)
 	
@@ -60,6 +63,16 @@ func reloadLevel():
 ###############################################################################
 # Callbacks
 ###############################################################################
+
+func _shader_toggle(state):
+	var world = $gameViewport/Viewport/WorldEnvironment.environment
+	if state:
+		world.glow_enabled = true
+	else:
+		world.glow_enabled = false
+	
+	$gameViewport/Viewport/WorldEnvironment.environment = world
+	$menuViewport/Viewport/WorldEnvironment.environment = world
 
 # Event Hook: Back from Game to Menu
 func _backToMenu():
