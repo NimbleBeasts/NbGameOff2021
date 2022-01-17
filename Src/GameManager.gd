@@ -72,7 +72,7 @@ func _shader_toggle(state):
 		world.glow_enabled = false
 	
 	$gameViewport/Viewport/WorldEnvironment.environment = world
-	$menuViewport/Viewport/WorldEnvironment.environment = world
+	#$menuViewport/Viewport/WorldEnvironment.environment = world
 
 # Event Hook: Back from Game to Menu
 func _backToMenu():

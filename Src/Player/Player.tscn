@@ -323,6 +323,7 @@ anims/RESET = SubResource( 11 )
 anims/beam = SubResource( 12 )
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 14.0
 __meta__ = {

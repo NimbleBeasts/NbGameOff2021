@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Src/GameManager.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Menu/nbSplash.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://default_environment.tres" type="Environment" id=5]
 [ext_resource path="res://Src/Hud/HUD.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Src/ShaderOverlay.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Environment" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "start"
@@ -78,7 +80,7 @@ audio_listener_enable_2d = true
 [node name="Menu" parent="menuViewport/Viewport" instance=ExtResource( 3 )]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="menuViewport/Viewport"]
-environment = ExtResource( 5 )
+environment = SubResource( 2 )
 
 [node name="Debug" type="Label" parent="."]
 margin_right = 40.0
