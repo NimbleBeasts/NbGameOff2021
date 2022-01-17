@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Src/Levels/LevelBase.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Tileset/Burner.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Src/TestSprite.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/Tileset/new_tileset.tres" type="TileSet" id=12]
 [ext_resource path="res://Assets/Objects/terminal.png" type="Texture" id=13]
+[ext_resource path="res://Src/Pickups/Bullet.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 10 )
@@ -95,6 +96,9 @@ frame = 2
 [node name="Burner2" parent="Objects" instance=ExtResource( 2 )]
 position = Vector2( 336, 224 )
 frame = 1
+
+[node name="Bullet" parent="Objects" instance=ExtResource( 14 )]
+position = Vector2( 136, 160 )
 
 [node name="Burner3" parent="Objects" instance=ExtResource( 2 )]
 position = Vector2( 176, 224 )

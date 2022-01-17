@@ -1,1 +1,1 @@
-- When ghost record is done, jump pad is not active on ghost
+ghost doesnt die somethimes

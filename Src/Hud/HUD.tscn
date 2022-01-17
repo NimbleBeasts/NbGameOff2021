@@ -11,7 +11,7 @@
 [ext_resource path="res://Assets/Hud/ninepatchbg.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Hud/icon_ram.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Hud/icon_ammo.png" type="Texture" id=11]
-[ext_resource path="res://Assets/Fonts/default_font.tres" type="DynamicFont" id=12]
+[ext_resource path="res://Assets/Fonts/HudBorder.tres" type="DynamicFont" id=12]
 [ext_resource path="res://Assets/Menu/Slider/SliderTheme.tres" type="Theme" id=13]
 
 [sub_resource type="Animation" id=4]
@@ -321,6 +321,7 @@ modulate = Color( 0.654902, 0.941176, 0.439216, 1 )
 anchor_right = 1.0
 margin_top = 154.0
 margin_bottom = 178.0
+grow_vertical = 2
 custom_constants/separation = 2
 alignment = 1
 __meta__ = {
@@ -358,6 +359,7 @@ margin_bottom = 179.0
 custom_colors/font_color = Color( 0.654902, 0.941176, 0.439216, 1 )
 custom_fonts/font = ExtResource( 12 )
 text = "1/1"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -370,7 +372,7 @@ margin_bottom = 179.0
 custom_colors/font_color = Color( 0.654902, 0.941176, 0.439216, 1 )
 custom_fonts/font = ExtResource( 12 )
 text = "1/0"
-align = 2
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

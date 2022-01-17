@@ -1,0 +1,8 @@
+[gd_resource type="DynamicFont" load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Fonts/Pixel-UniCode.ttf" type="DynamicFontData" id=1]
+
+[resource]
+outline_size = 1
+outline_color = Color( 0.101961, 0.109804, 0.172549, 1 )
+font_data = ExtResource( 1 )

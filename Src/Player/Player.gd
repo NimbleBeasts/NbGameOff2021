@@ -28,6 +28,7 @@ var state = {
 	"current_state": PlayerState.Normal,
 	"suspend_respawn": false,
 	"pickup": [],
+	"ghost_anim_end": false,
 
 	
 	# Movement
@@ -129,7 +130,6 @@ func _physics_process(delta):
 #			$Label2.set_text("Normal")
 
 func beam(reverse = false):
-	print("bea")
 	show()
 	if reverse:
 		$ShaderAnimationPlayer.play_backwards("beam")
@@ -222,10 +222,20 @@ func process_ghost(delta):
 
 			
 	else:
-		state.velocity.y += DEFAULT_GRAVITY.y
-		state.velocity = move_and_slide(state.velocity, Vector2(0, -1))
-		self.collision_layer = 8 #collide like player
+		
+		if state.ghost_anim_end == false:
+			self.collision_layer = 8 #collide like player
+			$AnimationPlayer.play("idle")
+			state.ghost_anim_end = true
 
+		state.velocity.y += DEFAULT_GRAVITY.y
+
+		if state.jumppad:
+			$JumpSound.play()
+			state.velocity.y =- JUMP_FORCE_JUMPPAD
+			state.jumppad = false
+			
+		state.velocity = move_and_slide(state.velocity, Vector2(0, -1))
 
 func process_ladder(delta, input_direction):
 	var on_floor_or_ghost = is_on_floor_or_ghost()

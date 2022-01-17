@@ -14,7 +14,8 @@ func _ready():
 	
 	# Check if already looted
 	if GameData.memory_pickup.find(id) != -1:
-		queue_free()
+		picked_up = true
+		$Sprite.frame = 1
 	
 	
 
@@ -22,8 +23,8 @@ func _on_Memory_body_entered(body):
 	if not picked_up:
 		picked_up = true
 		$AudioStreamPlayer2D.play()
-		$Sprite.hide()
-
+		#$Sprite.hide()
+		$Sprite.z_index = 49
 		var pickup = pickup_scene.instance()
 		get_parent().add_child(pickup)
 		pickup.global_position = global_position
@@ -34,4 +35,4 @@ func _on_Memory_body_entered(body):
 		Events.emit_signal("notification_popup", "PICKUP_MEMORY")
 
 func _on_AudioStreamPlayer2D_finished():
-	queue_free()
+	$Sprite.frame = 1
