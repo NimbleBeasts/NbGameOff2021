@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Door/DoorVertical.png" type="Texture" id=1]
+[ext_resource path="res://Src/Door/Door.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sounds/door_close.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Sounds/door_open.wav" type="AudioStream" id=4]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("StaticBody2D/CollisionPolygon2D:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, 0, 22, 0, 24, 8, 22, 15, 0, 15 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("StaticBody2D2/CollisionPolygon2D:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 24, 8, 26, 16, 48, 16, 48, 0, 26, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "open"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("StaticBody2D/CollisionPolygon2D:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ PoolVector2Array( 0, 0, 22, 0, 24, 8, 22, 16, 0, 16 ), PoolVector2Array( 0, 0, 5, 0, 6, 8, 5, 16, 0, 16 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("StaticBody2D2/CollisionPolygon2D:polygon")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ PoolVector2Array( 24, 8, 26, 16, 48, 16, 48, 0, 26, 0 ), PoolVector2Array( 42, 8, 43, 16, 48, 16, 48, 0, 43, 0 ) ]
+}
+
+[node name="DoorVertical" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+hframes = 4
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 0, 0, 22, 0, 24, 8, 22, 15, 0, 15 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+polygon = PoolVector2Array( 24, 8, 26, 16, 48, 16, 48, 0, 26, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+anims/open = SubResource( 2 )
+
+[node name="OpenSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+max_distance = 512.0
+bus = "Sound"
+
+[node name="CloseSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+max_distance = 512.0
+bus = "Sound"

@@ -26,7 +26,7 @@ extends Node
 const GAME_VERSION = 0.3
 const CONFIG_VERSION = 1 # Used for config migration
 # Debug Options
-const DEBUG = true
+const DEBUG = false
 
 # Nb Plugin Config
 const NB_PLUGIN_CONFIG = {
@@ -47,12 +47,13 @@ const supportedResolutions = [
 	]
 # Level Array
 const levels = [
-	"res://Src/Levels/LevelTest.tscn",
+	#"res://Src/Levels/LevelTest.tscn",
 	"res://Src/Levels/Level1.tscn",
 	"res://Src/Levels/Level2.tscn",
 	"res://Src/Levels/Level3.tscn",
 	"res://Src/Levels/Level4.tscn",
 	"res://Src/Levels/Level5.tscn",
+	"res://Src/Levels/Level6.tscn",
 ]
 
 # Disable tutorial dialogues 

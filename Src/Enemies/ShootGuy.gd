@@ -2,6 +2,8 @@ extends Node2D
 
 const FALL_SPEED = 400
 
+export(float) var initial_wait_time = 2.5
+
 var state = {
 	"dead": false,
 	"dead_falling": false,
@@ -12,7 +14,9 @@ func _ready():
 	$AnimationPlayer.play("RESET")
 	$BaseEnemyHitzone.connect("die", self, "_die")
 	
-	$ShootTimer.start()
+	$DelayTimer.wait_time = initial_wait_time
+	$DelayTimer.start()
+	
 
 func _physics_process(delta):
 	if state.dead_falling:
@@ -49,3 +53,7 @@ func _on_ShootTimer_timeout():
 	if not state.dead:
 		$AnimationPlayer.play("preshoot")
 		$ShootTimer.start()
+
+
+func _on_DelayTimer_timeout():
+	$ShootTimer.start()

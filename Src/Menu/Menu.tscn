@@ -50,7 +50,6 @@ margin_left = 8.0
 margin_top = 136.0
 margin_right = 96.0
 margin_bottom = 157.0
-custom_fonts/font = ExtResource( 10 )
 text = "M_PLAY"
 
 [node name="ButtonSettings" parent="Main" instance=ExtResource( 14 )]
@@ -58,7 +57,6 @@ margin_left = 116.0
 margin_top = 136.0
 margin_right = 204.0
 margin_bottom = 157.0
-custom_fonts/font = ExtResource( 10 )
 text = "M_SETTINGS"
 
 [node name="ButtonExit" parent="Main" instance=ExtResource( 14 )]
@@ -66,7 +64,6 @@ margin_left = 224.0
 margin_top = 136.0
 margin_right = 312.0
 margin_bottom = 157.0
-custom_fonts/font = ExtResource( 10 )
 text = "M_EXIT"
 
 [node name="ButtonLanguage" type="TextureButton" parent="Main"]
@@ -128,7 +125,6 @@ margin_left = 56.0
 margin_top = 144.0
 margin_right = 152.0
 margin_bottom = 163.0
-custom_fonts/font = ExtResource( 10 )
 text = "M_BACK"
 
 [node name="PastButton" parent="LevelSelection" instance=ExtResource( 14 )]
@@ -136,7 +132,6 @@ margin_left = 32.0
 margin_top = 64.0
 margin_right = 48.0
 margin_bottom = 85.0
-custom_fonts/font = ExtResource( 10 )
 text = "<"
 
 [node name="SelectionHolder" type="Control" parent="LevelSelection"]
@@ -180,7 +175,6 @@ margin_bottom = 136.0
 custom_icons/checked = ExtResource( 7 )
 custom_icons/unchecked = ExtResource( 2 )
 custom_styles/focus = SubResource( 8 )
-pressed = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -203,7 +197,6 @@ margin_left = 160.0
 margin_top = 144.0
 margin_right = 264.0
 margin_bottom = 163.0
-custom_fonts/font = ExtResource( 10 )
 text = "M_RESET"
 
 [node name="ResetWindow" type="Control" parent="LevelSelection"]
@@ -373,7 +366,6 @@ margin_left = 240.0
 margin_top = 14.0
 margin_right = 312.0
 margin_bottom = 35.0
-custom_fonts/font = ExtResource( 10 )
 text = "M_OFF"
 
 [node name="Label" type="Label" parent="Settings/TabContainer/Graphics/FullscreenButton"]
@@ -406,7 +398,6 @@ margin_left = 216.0
 margin_top = 126.0
 margin_right = 312.0
 margin_bottom = 147.0
-custom_fonts/font = ExtResource( 10 )
 text = "M_APPLY"
 
 [node name="Sounds" type="Tabs" parent="Settings/TabContainer"]
@@ -486,7 +477,6 @@ margin_left = 8.0
 margin_top = 152.0
 margin_right = 104.0
 margin_bottom = 173.0
-custom_fonts/font = ExtResource( 10 )
 text = "M_BACK"
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 16 )]

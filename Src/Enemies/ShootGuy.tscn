@@ -154,6 +154,10 @@ polygon = PoolVector2Array( -8, 0, 0, -24, 8, 0 )
 wait_time = 2.5
 one_shot = true
 
+[node name="DelayTimer" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( -11, -11 )
 
@@ -169,3 +173,4 @@ bus = "Sound"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
+[connection signal="timeout" from="DelayTimer" to="." method="_on_DelayTimer_timeout"]

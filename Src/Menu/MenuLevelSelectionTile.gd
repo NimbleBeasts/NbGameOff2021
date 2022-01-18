@@ -1,13 +1,7 @@
 extends TextureButton
 
 
-var textures_screenshots = [
-	load("res://Assets/Menu/LevelScreenshots/ss1.png"),
-	load("res://Assets/Menu/LevelScreenshots/ss2.png"),
-	load("res://Assets/Menu/LevelScreenshots/ss3.png"),
-	load("res://Assets/Menu/LevelScreenshots/ss4.png"),
-	load("res://Assets/Menu/LevelScreenshots/ss5.png")
-]
+
 
 var texture_locked = preload("res://Assets/Menu/LevelScreenshots/Locked.png")
 var texture_void = preload("res://Assets/Menu/LevelScreenshots/Void.png")
@@ -19,7 +13,6 @@ func set_level(id, state):
 	match state:
 		Types.MenuLevelSelectionType.Normal:
 			$Title.show()
-			$BgTexture.texture = textures_screenshots[id]
 			disabled = false
 		Types.MenuLevelSelectionType.Locked:
 			$Title.show()
