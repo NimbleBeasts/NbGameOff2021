@@ -320,7 +320,6 @@ text = "M_DISCARD"
 modulate = Color( 0.654902, 0.941176, 0.439216, 1 )
 anchor_right = 1.0
 margin_top = 154.0
-margin_right = 640.0
 margin_bottom = 178.0
 grow_vertical = 2
 custom_constants/separation = 2
@@ -330,8 +329,8 @@ __meta__ = {
 }
 
 [node name="HudPlayerIndicator" parent="GhostBox" instance=ExtResource( 2 )]
-margin_left = 308.0
-margin_right = 332.0
+margin_left = 148.0
+margin_right = 172.0
 texture = ExtResource( 3 )
 
 [node name="SaveGhostButton" type="TextureButton" parent="GhostBox"]

@@ -30,6 +30,8 @@ func _ready():
 	
 	# Hide Debugpanel by default
 	$DebugPanel.hide()
+	
+	$GhostBox.margin_right = 0 # Not sure why this is resized from time to time..
 
 func _process(delta):
 	if _ghost_dialogue_visible:
