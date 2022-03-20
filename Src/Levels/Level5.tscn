@@ -50,14 +50,14 @@ position = Vector2( 336, 320 )
 
 [node name="Burner" parent="Objects" instance=ExtResource( 2 )]
 position = Vector2( 0, 224 )
+frame = 1
 
 [node name="Burner2" parent="Objects" instance=ExtResource( 2 )]
 position = Vector2( 96, 224 )
-frame = 2
 
 [node name="Burner3" parent="Objects" instance=ExtResource( 2 )]
 position = Vector2( 176, 224 )
-frame = 1
+frame = 2
 
 [node name="ButtonPressure" parent="Objects" instance=ExtResource( 7 )]
 position = Vector2( 188, 176 )

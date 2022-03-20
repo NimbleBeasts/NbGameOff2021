@@ -13,13 +13,16 @@ func set_level(id, state):
 	match state:
 		Types.MenuLevelSelectionType.Normal:
 			$Title.show()
+			$BgTexture.hide()
 			disabled = false
 		Types.MenuLevelSelectionType.Locked:
 			$Title.show()
+			$BgTexture.show()
 			$BgTexture.texture = texture_locked
 			disabled = true
 		Types.MenuLevelSelectionType.Void:
 			$Title.hide()
+			$BgTexture.show()
 			$BgTexture.texture = texture_void
 			disabled = true
 		_:

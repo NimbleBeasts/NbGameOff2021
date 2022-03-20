@@ -1,7 +1,7 @@
 extends ColorRect
 
 
-# 
+#
 func _ready():
 	Events.connect("shader_glitch", self, "_shader_toggle")
 	_shader_toggle(Global.userConfig.glitch)
