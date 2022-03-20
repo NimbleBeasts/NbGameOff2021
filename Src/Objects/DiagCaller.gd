@@ -28,7 +28,7 @@ func _ready():
 
 	if delay_timer > 0.0:
 		$DelayTimer.wait_time = delay_timer
-	
+
 	Events.connect("test_event", self, "TEST_EVENT")
 
 
@@ -46,7 +46,7 @@ func spawn_message():
 func _callback():
 	for event in text_buffer[message_counter].events:
 		Events.emit_signal(event)
-	
+
 	message_counter += 1
 	spawn_message()
 
@@ -57,7 +57,7 @@ func _on_DiagCaller_body_entered(body):
 			pass
 		else:
 			GameData.dialogue_nodes.append(text_id)
-		
+
 			if delay_timer > 0.0:
 				$DelayTimer.start()
 			else:

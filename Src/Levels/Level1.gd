@@ -13,9 +13,9 @@ var player = null
 
 
 func _ready():
-	
+
 	connect("player_spawned", self, "_player_spawned")
-	
+
 	Events.connect("tutorial_step3_completed", self, "_tutorial_step3_completed")
 
 	# Enable reload key if tutorial is disabled
@@ -25,7 +25,7 @@ func _ready():
 	# Enable reload key if tutorial step 3 was completed
 	if GameData.tutorial_state_3 == true:
 		set_step3()
-		
+
 
 
 func _physics_process(delta):
@@ -43,12 +43,12 @@ func _player_spawned(node):
 func _tutorial_step3_completed():
 	set_step3()
 	Events.emit_signal("notification_popup", "RESTART")
-	
+
 
 func set_step3():
 	GameData.tutorial_state_3 = true
 	quick_restart_enabled = true
-	
+
 	$Objects/DiagCaller1.monitoring = false
 	$Objects/DiagCaller4.monitoring = true
-	
+

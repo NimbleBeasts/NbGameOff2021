@@ -8,7 +8,7 @@ func _ready():
 	# Set Viewport Sizes to Project Settings
 	$gameViewport/Viewport.size = Vector2(ProjectSettings.get_setting("display/window/size/width"), ProjectSettings.get_setting("display/window/size/height"))
 	$menuViewport/Viewport.size = Vector2(ProjectSettings.get_setting("display/window/size/width"), ProjectSettings.get_setting("display/window/size/height"))
-	
+
 	Global.debugLabel = $Debug
 
 	# Event Hooks
@@ -22,12 +22,12 @@ func _ready():
 	Events.connect("restart_level", self, "_restartLevel")
 	Events.connect("load_level", self, "_loadLevel")
 	Events.connect("menu_back", self, "_backToMenu")
-	
+
 	Events.connect("shader_glow", self, "_shader_toggle")
 	_shader_toggle(Global.userConfig.glow)
 
 	switchTo(Types.GameStates.Menu)
-	
+
 	#print(Global.userConfig.glitch)
 
 # State Transition Function
@@ -70,7 +70,7 @@ func _shader_toggle(state):
 		world.glow_enabled = true
 	else:
 		world.glow_enabled = false
-	
+
 	$gameViewport/Viewport/WorldEnvironment.environment = world
 	#$menuViewport/Viewport/WorldEnvironment.environment = world
 

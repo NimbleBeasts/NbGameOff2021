@@ -11,13 +11,13 @@ func _ready():
 	# Memory total is resetted every time the level reloads
 	GameData.memory_total += 1
 	Events.emit_signal("memory_update_total", GameData.memory_total)
-	
+
 	# Check if already looted
 	if GameData.memory_pickup.find(id) != -1:
 		picked_up = true
 		$Sprite.frame = 1
-	
-	
+
+
 
 func _on_Memory_body_entered(body):
 	if not picked_up:

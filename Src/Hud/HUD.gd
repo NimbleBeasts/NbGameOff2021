@@ -18,19 +18,19 @@ func _ready():
 	Events.connect("ghost_spawn", self, "_ghost_spawn")
 	Events.connect("ghost_dialogue_popup", self, "_ghost_dialogue_popup")
 	Events.connect("ghost_dialogue_popup_force_close", self, "_ghost_dialogue_popup_force_close")
-	
+
 	Events.connect("memory_update_total", self, "_memory_update_total")
 	Events.connect("memory_update_collected", self, "_memory_update_collected")
 	Events.connect("notification_popup", self, "_notification_popup")
-	
+
 	Events.connect("menu_popup", self, "_menu_popup")
-	
+
 	Events.connect("ammo_update", self, "_ammo_update")
 	$AmmoLabel.set_text("0/0")
-	
+
 	# Hide Debugpanel by default
 	$DebugPanel.hide()
-	
+
 	$GhostBox.margin_right = 0 # Not sure why this is resized from time to time..
 
 func _process(delta):
@@ -44,7 +44,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("ui_cancel"):
 			print("esc hud")
 			_on_ContinueButton_button_up()
-	
+
 	if Global.DEBUG:
 		$DebugPanel/Fps.set_text(str(Engine.get_frames_per_second()) + " FPS")
 		if Input.is_action_just_released("ui_debugpanel"):
@@ -89,7 +89,7 @@ func _ghost_added():
 	$GhostBox.add_child(new_ghost)
 	ghost_indicator_refs.append(new_ghost)
 	$GhostBox.move_child($GhostBox/HudPlayerIndicator, $GhostBox.get_child_count())
-	
+
 func _ghost_clear():
 	for ghost in ghost_indicator_refs:
 		ghost.queue_free()
@@ -137,7 +137,7 @@ func _menu_popup():
 	get_tree().paused = true
 	_menu_popup_visible = true
 	$AnimationPlayer.play("menu")
-	
+
 
 func _on_ContinueButton_button_up():
 	$AnimationPlayer.play_backwards("menu")

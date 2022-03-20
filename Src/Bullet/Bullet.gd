@@ -22,7 +22,7 @@ func shoot(player, direction, pos, type = Types.BulletType.Normal):
 		inc = 1
 	position = pos
 	$Projectile.texture = bullet_texture[type]
-	
+
 	$Projectile.show()
 	$Explosion.hide()
 
@@ -32,10 +32,10 @@ func _on_Bullet_body_entered(body):
 	else:
 		if body.has_method("die"):
 			body.die()
-		
+
 		$Projectile.hide()
 		$Explosion.show()
-		
+
 		alive = false
 		$HitSound.play()
 		$AnimationPlayer.play("explode")

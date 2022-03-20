@@ -1,6 +1,6 @@
 extends Node2D
 
-export(Array, NodePath) var trigger_nodes = null 
+export(Array, NodePath) var trigger_nodes = null
 
 var triggered = false
 

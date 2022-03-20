@@ -1,16 +1,16 @@
 ###############################################################################
 # Copyright (c) 2020 NimbleBeasts
-# 
+#
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
 # in the Software without restriction, including without limitation the rights
 # to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
-# 
+#
 # The above copyright notice and this permission notice shall be included in all
 # copies or substantial portions of the Software.
-# 
+#
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -56,7 +56,7 @@ const levels = [
 	"res://Src/Levels/Level6.tscn",
 ]
 
-# Disable tutorial dialogues 
+# Disable tutorial dialogues
 var tutorials_disabled = false
 
 var gameState = {
@@ -105,7 +105,7 @@ func _ready():
 	rng.randomize()
 	loadConfig()
 	switchFullscreen()
-	
+
 func getDateTimeStringFromUnixTime(unixTime):
 	var dict = OS.get_datetime_from_unix_time(unixTime)
 	return "%0*d" % [2, dict.day] + "/"  + "%0*d" % [2, dict.month] + "/" + str(dict.year) + " - " + "%0*d" % [2, dict.hour] + ":" + "%0*d" % [2, dict.minute]
@@ -151,7 +151,7 @@ func loadSave(slotId):
 	var saveFile = File.new()
 	if not saveFile.file_exists("user://save_"+ str(slotId) + ".cfg"):
 		print("Save Game Not Found")
-	
+
 	saveFile.open("user://save_"+ str(slotId) + ".cfg", File.READ)
 	var data = parse_json(saveFile.get_line())
 	gameState = data.duplicate()
@@ -169,11 +169,11 @@ func loadConfig():
 	if not cfgFile.file_exists("user://config.cfg"):
 		saveConfig()
 		return
-	
+
 	cfgFile.open("user://config.cfg", File.READ)
 	var data = parse_json(cfgFile.get_line())
 	cfgFile.close()
-	
+
 	# Check if the user has an old config, so update it
 	if data.configVersion < CONFIG_VERSION:
 		userConfig = migrateConfig(data)
@@ -206,7 +206,7 @@ func migrateConfig(data):
 func setFullscreen(val: bool):
 	userConfig.fullscreen = val
 	saveConfig()
-	
+
 	switchFullscreen()
 
 func setResolution(val: int):
@@ -215,7 +215,7 @@ func setResolution(val: int):
 		"h": supportedResolutions[val].y
 	}
 	saveConfig()
-	
+
 	switchResolution()
 
 
@@ -230,7 +230,7 @@ func switchFullscreen():
 	if not userConfig.fullscreen:
 		OS.window_fullscreen = false
 		switchResolution()
-		
+
 	else:
 		OS.window_fullscreen = true
 
@@ -249,11 +249,11 @@ func prngByChance(chanceInPercent):
 # Get Version
 func getVersion():
 	return GAME_VERSION
-	
+
 # Get Version String
 func getVersionString():
-	var versionString = "%2.1f" % (GAME_VERSION) 
-	
+	var versionString = "%2.1f" % (GAME_VERSION)
+
 	if DEBUG:
 		versionString += "-debug"
 

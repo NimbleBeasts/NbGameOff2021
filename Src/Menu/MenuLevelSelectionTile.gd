@@ -7,9 +7,9 @@ var texture_locked = preload("res://Assets/Menu/LevelScreenshots/Locked.png")
 var texture_void = preload("res://Assets/Menu/LevelScreenshots/Void.png")
 
 func set_level(id, state):
-	
+
 	$Title.set_text("Level " + str(id + 1))
-	
+
 	match state:
 		Types.MenuLevelSelectionType.Normal:
 			$Title.show()

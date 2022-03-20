@@ -30,7 +30,7 @@ var state = {
 	"pickup": [],
 	"ghost_anim_end": false,
 
-	
+
 	# Movement
 	"velocity": Vector2(0,0),
 	"jumping": false,
@@ -65,7 +65,7 @@ func is_ghost():
 func setup_and_start(ghost_no):
 	print("spawn_player: " + str(ghost_no))
 	state.ghost_no = ghost_no
-	
+
 	if is_ghost():
 		data_record = GameData.data[ghost_no].duplicate()
 		print("data size: " + str(data_record.size()))
@@ -82,21 +82,21 @@ func _physics_process(delta):
 	if global_position.y > 666 and not state.dead:
 		die()
 		return
-	
+
 	if is_ghost():
 		# Ghost-Mode
 		process_ghost(delta)
 	elif not state.dead:
 		# Player-Mode
 		var input_direction = get_direction_input()
-		
-		
+
+
 		# Update Animation
 		update_animation()
-		
+
 		# State Checks
 		#check_enter_ladder_state(input_direction) # TODO: I hate ladders - maybe Ill never implement this :D
-		
+
 		# Process State
 		match state.current_state:
 			PlayerState.Normal:
@@ -105,14 +105,14 @@ func _physics_process(delta):
 				process_ladder(delta, input_direction)
 			_:
 				pass
-		
-		
+
+
 		# Record movement
 		add_movement_record()
-		
+
 		# Handle restart request
 		process_restart()
-		
+
 		# Check if the player is stuck - unfortunately most of tiles will be detected as walls which may cause issues with falling and stick to walls
 		if $AnimationPlayer.is_playing() && $AnimationPlayer.current_animation == "falling":
 			$Label.set_text(str(counter))
@@ -122,8 +122,8 @@ func _physics_process(delta):
 					die()
 		else:
 			counter = 0
-	
-		
+
+
 #		if state.current_state == PlayerState.Ladder:
 #			$Label2.set_text("Ladder")
 #		else:
@@ -143,7 +143,7 @@ func check_enter_ladder_state(input):
 
 func update_animation():
 	var anim = ""
-	
+
 	if state.current_state == PlayerState.Ladder:
 		pass
 	else:
@@ -155,10 +155,10 @@ func update_animation():
 			anim = "falling"
 		elif state.velocity.y < 0:
 			anim = "jump"
-	
+
 	if $AnimationPlayer.current_animation == "shoot":
 		return
-	
+
 	if $AnimationPlayer.current_animation != anim:
 		$AnimationPlayer.play(anim)
 		add_animation_record(anim)
@@ -180,21 +180,21 @@ func add_shoot_record():
 
 func process_ghost(delta):
 	# TODO: make this timestamp based
-	
+
 	var data_line = data_record.pop_front()
 
 	if data_line and state.dead == false:
 		#{"e": type, "p": payload, "t": GameData.get_time()}
-		
+
 		# Animation frame
 		if data_line.e == RecordEvent.Anim:
 			if data_line.p == "jump":
 				$JumpSound.play()
-			
+
 			$AnimationPlayer.play(data_line.p)
-			
+
 			#Read next line to lower delta
-			data_line = data_record.pop_front() 
+			data_line = data_record.pop_front()
 			if not data_line:
 				return
 
@@ -202,9 +202,9 @@ func process_ghost(delta):
 		if data_line.e == RecordEvent.Shoot:
 			if state.has_bullet:
 				shoot()
-			
+
 			#Read next line to lower delta
-			data_line = data_record.pop_front() 
+			data_line = data_record.pop_front()
 			if not data_line:
 				return
 
@@ -214,15 +214,15 @@ func process_ghost(delta):
 				$SpriteHolder.scale.x = -1
 			elif position.x < data_line.p.x:
 				$SpriteHolder.scale.x = 1
-			
+
 			position = data_line.p
 #			$Label.set_text("Pos:" + str(position))
 #			$Label2.set_text("Timestamp:" + str(data_line.t))
 #			$Label3.set_text("Delta:" + str(data_line.t - GameData.get_time()))
 
-			
+
 	else:
-		
+
 		if state.ghost_anim_end == false:
 			self.collision_layer = 8 #collide like player
 			$AnimationPlayer.play("idle")
@@ -234,19 +234,19 @@ func process_ghost(delta):
 			$JumpSound.play()
 			state.velocity.y =- JUMP_FORCE_JUMPPAD
 			state.jumppad = false
-			
+
 		state.velocity = move_and_slide(state.velocity, Vector2(0, -1))
 
 func process_ladder(delta, input_direction):
 	var on_floor_or_ghost = is_on_floor_or_ghost()
-	
+
 	if state.ladder_area:
 		if position.x != state.ladder_area.global_position.x:
 			if position.x < state.ladder_area.global_position.x:
 				position.x += LADDER_CORRECTION_SPEED*delta
 			else:
 				position.x -= LADDER_CORRECTION_SPEED*delta
-			
+
 			if abs(state.ladder_area.global_position.x - position.x) < 2:
 				position.x = state.ladder_area.global_position.x
 			return
@@ -255,7 +255,7 @@ func process_ladder(delta, input_direction):
 	if Input.is_action_just_pressed("ui_jump"):
 		state.current_state = PlayerState.Normal
 		return
-	
+
 	# Stop movement
 	if input_direction.y == 0.0:
 		var stop_force = STOP_FORCE_LADDER*delta
@@ -270,12 +270,12 @@ func process_ladder(delta, input_direction):
 			state.velocity.y = MAX_SPEED
 		elif state.velocity.y < -MAX_SPEED:
 			state.velocity.y = -MAX_SPEED
-	
+
 	state.velocity = move_and_slide(state.velocity, Vector2(0, -1))
 
 func process_movement(delta, input_direction):
 	var on_floor_or_ghost = is_on_floor_or_ghost()
-	
+
 	# Jumping
 	if on_floor_or_ghost:
 		# Reset Jump state
@@ -288,12 +288,12 @@ func process_movement(delta, input_direction):
 	if state.bounce:
 		state.velocity.y =- BOUNCE_FORCE
 		state.bounce = false
-	
+
 	if state.jumppad:
 		$JumpSound.play()
 		state.velocity.y =- JUMP_FORCE_JUMPPAD
 		state.jumppad = false
-	
+
 	if state.extern_jump:
 		$JumpSound.play()
 		state.velocity.y =- JUMP_FORCE_EXTERNAL
@@ -304,11 +304,11 @@ func process_movement(delta, input_direction):
 		state.velocity.y =- JUMP_FORCE
 		state.jumping = true
 		state.has_jumped = true
-	
+
 	if Input.is_action_just_pressed("ui_shoot") and state.has_bullet:
 		Events.emit_signal("ammo_update", 0)
 		shoot()
-	
+
 	# Stop movement
 	if input_direction == Vector2(0.0, 0.0):
 		var stop_force = delta
@@ -316,7 +316,7 @@ func process_movement(delta, input_direction):
 			stop_force *= STOP_FORCE_FLOOR
 		else:
 			stop_force *= STOP_FORCE_AIR
-			
+
 		if state.velocity.x > 0:
 			state.velocity.x = max(state.velocity.x - stop_force, 0)
 		elif state.velocity.x < 0:
@@ -328,28 +328,28 @@ func process_movement(delta, input_direction):
 			state.velocity.x = MAX_SPEED
 		elif state.velocity.x < -MAX_SPEED:
 			state.velocity.x = -MAX_SPEED
-	
+
 	if input_direction.x == -1:
 		$SpriteHolder.scale.x = -1
 	elif input_direction.x == 1:
 		$SpriteHolder.scale.x = 1
-	
+
 	state.velocity.y += DEFAULT_GRAVITY.y
 	state.velocity = move_and_slide(state.velocity, Vector2(0, -1))
 
 func shoot():
 	state.has_bullet = false
 	var direction: int
-	
+
 	if $SpriteHolder.scale.x == -1:
 		direction = Types.Direction.Right
 	else:
 		direction = Types.Direction.Left
-	
+
 	$ShootSound.play()
 	Events.emit_signal("shoot_bullet", self, direction, $SpriteHolder/Sprite/Pos.global_position, Types.BulletType.Normal)
 	$AnimationPlayer.play("shoot")
-	
+
 	# Add to records if player
 	if state.ghost_no == -1:
 		add_shoot_record()
@@ -398,11 +398,11 @@ func check_and_remove_memory():
 				else:
 					printerr("pickup id not found")
 			Events.emit_signal("memory_update_collected", GameData.memory_pickup.size())
-			
+
 
 func is_on_floor_or_ghost():
 	var collision = is_on_floor()
-	
+
 	if not collision:
 		# TODO: Check for ghost collision here
 		pass

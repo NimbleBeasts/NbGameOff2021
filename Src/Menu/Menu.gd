@@ -24,7 +24,7 @@ func _ready():
 	#Populate Resolution List
 	for res in Global.supportedResolutions:
 		$Settings/TabContainer/Graphics/ResolutionList.add_item(" " + str(res.x) + "x" + str(res.y))
-		
+
 		var resolution = Vector2(Global.userConfig.resolution.w, Global.userConfig.resolution.h)
 		if resolution == res:
 			var id = $Settings/TabContainer/Graphics/ResolutionList.get_item_count() - 1
@@ -32,7 +32,7 @@ func _ready():
 
 
 #func _process(delta):
-#	# Changing window size results in nullptr execption and ugly text glitches - so we overwrite it 
+#	# Changing window size results in nullptr execption and ugly text glitches - so we overwrite it
 #	# TODO: bug report on github
 #
 #	# Main Buttons
@@ -52,8 +52,8 @@ func _ready():
 #
 #	$Settings/BackButton.text = "0"
 #	$Settings/BackButton.text = tr("M_BACK")
-	
-	
+
+
 # Menu State Transition
 func switchTo(to):
 	hideAllMenuScenes()
@@ -78,12 +78,12 @@ func switchTo(to):
 func update_selection():
 	var level_count = Global.levels.size()
 	var i = 0
-	
-	
+
+
 	for tile in $LevelSelection/SelectionHolder.get_children():
 		var level_id = i + selection_page * 3
 		i += 1
-	
+
 		if level_id < level_count:
 			if level_id <= Global.userConfig.unlocked_level:
 				tile.set_level(level_id, Types.MenuLevelSelectionType.Normal)
@@ -91,11 +91,11 @@ func update_selection():
 				tile.set_level(level_id, Types.MenuLevelSelectionType.Locked)
 		else:
 			tile.set_level(-1, Types.MenuLevelSelectionType.Void)
-	
+
 	# this is called, even if we switch language
 	$LevelSelection/ResetWindow/WarningLabel.bbcode_text = tr("M_DELETE_WARNING")
 
-	
+
 	# De(Activate) buttons
 	$LevelSelection/PastButton.disabled = false
 	$LevelSelection/NextButton.disabled = false
@@ -104,7 +104,7 @@ func update_selection():
 	if selection_page >= (level_count - 1) / 3:
 		$LevelSelection/NextButton.disabled = true
 
-	
+
 # Helper function for State Transition
 func hideAllMenuScenes():
 	# Add menu scenes here
@@ -123,7 +123,7 @@ func updateSettings():
 	$Settings/TabContainer/Shader/GlitchShader.pressed = Global.userConfig.glitch
 	$Settings/TabContainer/Shader/MatrixShader.pressed = Global.userConfig.moving_bg
 	$Settings/TabContainer/Shader/GlowShader.pressed = Global.userConfig.glow
-	
+
 #	$Settings/TabContainer/General/BrightnessSlider.value = Global.userConfig.brightness
 #	$Settings/TabContainer/General/BrightnessSlider/Value.set_text("%.2f" % Global.userConfig.brightness)
 #
@@ -167,7 +167,7 @@ func _on_NextButton_button_up():
 	selection_page += 1
 	update_selection()
 	Events.emit_signal("play_sound", "menu_click")
-	
+
 
 func _on_ButtonPlay_button_up():
 	switchTo(MenuState.Selection)
@@ -194,7 +194,7 @@ func _on_FullscreenButton_button_up():
 		$Settings/TabContainer/Graphics/FullscreenButton.text = "On"
 	else:
 		$Settings/TabContainer/Graphics/FullscreenButton.text = "Off"
-		
+
 	Events.emit_signal("cfg_switch_fullscreen", !Global.userConfig.fullscreen)
 
 #	# Glitchy font on resize workaround
@@ -207,7 +207,7 @@ func _on_FullscreenButton_button_up():
 func _on_ApplyButton_button_up():
 	var id = $Settings/TabContainer/Graphics/ResolutionList.get_selected_items()[0]
 	Global.setResolution(id)
-	
+
 #	# Glitchy font on resize workaround
 #	$Settings/TabContainer/Graphics/ResolutionList.rect_scale = Vector2(1.1, 1.1)
 #	yield(get_tree().create_timer(0.001), "timeout")
@@ -242,13 +242,13 @@ func _on_ContrastSlider_value_changed(value):
 func _on_ButtonLanguage_button_up():
 	var availableLocale = TranslationServer.get_loaded_locales()
 	var id = availableLocale.find(TranslationServer.get_locale()) + 1
-	
+
 	if id >= availableLocale.size():
 		id = 0
-	
+
 	TranslationServer.set_locale(availableLocale[id])
 	$Main/ButtonLanguage/Sprite.frame = flags.find(TranslationServer.get_locale())
-	
+
 	Global.userConfig.language = TranslationServer.get_locale()
 	Global.saveConfig()
 	Events.emit_signal("play_sound", "menu_click")

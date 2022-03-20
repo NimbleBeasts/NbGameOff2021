@@ -19,5 +19,5 @@ func trigger():
 	else:
 		$AnimationPlayer.play("open")
 		$OpenSound.play()
-	
+
 	opened = !opened

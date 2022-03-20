@@ -87,14 +87,14 @@ position = Vector2( 272, 128 )
 
 [node name="Burner" parent="Objects" instance=ExtResource( 2 )]
 position = Vector2( 0, 224 )
+frame = 2
 
 [node name="Burner2" parent="Objects" instance=ExtResource( 2 )]
 position = Vector2( 336, 224 )
-frame = 2
+frame = 1
 
 [node name="Burner3" parent="Objects" instance=ExtResource( 2 )]
 position = Vector2( 176, 224 )
-frame = 1
 
 [node name="Spawns" type="Node2D" parent="."]
 __meta__ = {

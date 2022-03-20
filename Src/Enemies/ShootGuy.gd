@@ -13,10 +13,10 @@ var state = {
 func _ready():
 	$AnimationPlayer.play("RESET")
 	$BaseEnemyHitzone.connect("die", self, "_die")
-	
+
 	$DelayTimer.wait_time = initial_wait_time
 	$DelayTimer.start()
-	
+
 
 func _physics_process(delta):
 	if state.dead_falling:
@@ -32,12 +32,12 @@ func _die():
 
 func shoot():
 	var direction: int
-	
+
 	if self.scale.x == 1:
 		direction = Types.Direction.Right
 	else:
 		direction = Types.Direction.Left
-	
+
 	$ShootSound.play()
 	Events.emit_signal("shoot_bullet", self, direction, $Position2D.global_position, Types.BulletType.Plasma)
 

@@ -46,8 +46,8 @@ func _popup(character, text, last_diag, callback_function):
 	var char_name = ""
 	# Set Portrait
 	char_name = names[character]
-	
-	var portrait 
+
+	var portrait
 	match character:
 		#Professor, Subject, CrazyProfessor, Marc, NimbleBeasts
 		Types.CharacterType.Professor:
@@ -60,29 +60,29 @@ func _popup(character, text, last_diag, callback_function):
 			portrait = portraits[1]
 		_:
 			portrait = portraits[2]
-		
+
 	$Box/PortraitTexture.texture = portrait
-	
+
 	text_buffer = text
 	last_dialogue = last_diag
 	callback = callback_function
 	text_anim_done = false
-	
+
 	$Box/Text.bbcode_text = "[color=#8a8fc4]"+ char_name + ":[/color] " + text_buffer
 	$Box/Text.visible_characters = char_name.length() + 2
-	
+
 	text_buffer_length = text_buffer.length() + char_name.length() + 2
-	
+
 	$Box/NextTexture.hide()
 	$Box/DoneTexture.hide()
-	
+
 	if not popup_state:
 		$AnimationPlayer.play("pop_in")
 	else:
 		_on_AnimationPlayer_animation_finished("")
-	
+
 	get_tree().paused = true
-	
+
 func _set_popup_state(state):
 	popup_state = state
 

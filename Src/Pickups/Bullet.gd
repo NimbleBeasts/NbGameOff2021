@@ -13,7 +13,7 @@ func _on_AudioStreamPlayer2D_finished():
 
 func _on_Bullet_body_entered(body):
 	if not picked_up:
-		
+
 		if not body.state.has_bullet:
 			picked_up = true
 			$AudioStreamPlayer2D.play()

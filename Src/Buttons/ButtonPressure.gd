@@ -1,7 +1,7 @@
 extends Area2D
 
 
-export(Array, NodePath) var trigger_nodes = null 
+export(Array, NodePath) var trigger_nodes = null
 
 var bodies_on_button = []
 
@@ -13,7 +13,7 @@ func _ready():
 func add_body(body):
 	if bodies_on_button.find(body) == -1:
 		bodies_on_button.append(body)
-	
+
 	if not triggered:
 		triggered = true
 		$AnimationPlayer.play("trigger")
@@ -22,7 +22,7 @@ func add_body(body):
 
 func remove_body(body):
 	var id = bodies_on_button.find(body)
-	
+
 	if id != -1:
 		bodies_on_button.remove(id)
 
