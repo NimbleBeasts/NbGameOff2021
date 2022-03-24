@@ -127,15 +127,17 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			$DiscardButton.grab_focus()
 		else:
 			get_tree().paused = false
-	else:
-		if $Menu.visible: # Backwards?
+	elif anim_name == "menu":
+		if $Menu.visible:
 			$Menu/ContinueButton.grab_focus()
+			_menu_popup_visible = true
 		else:
 			_menu_popup_visible = false
+	else:
+		print("unknown animation finished")
 
 func _menu_popup():
 	get_tree().paused = true
-	_menu_popup_visible = true
 	$AnimationPlayer.play("menu")
 
 
