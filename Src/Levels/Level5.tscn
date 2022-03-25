@@ -40,7 +40,7 @@ id = 1
 
 [node name="Memory3" parent="Objects" instance=ExtResource( 9 )]
 position = Vector2( 816, -40 )
-id = 1
+id = 2
 
 [node name="Door" parent="Objects" instance=ExtResource( 5 )]
 position = Vector2( 272, 128 )
