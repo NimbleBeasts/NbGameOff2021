@@ -151,7 +151,7 @@ func update_animation():
 			anim = "walk"
 		else:
 			anim = "idle"
-		if state.velocity.y > 16:
+		if state.velocity.y > 32:
 			anim = "falling"
 		elif state.velocity.y < 0:
 			anim = "jump"
@@ -160,6 +160,7 @@ func update_animation():
 		return
 
 	if $AnimationPlayer.current_animation != anim:
+		print("play: " + str(anim))
 		$AnimationPlayer.play(anim)
 		add_animation_record(anim)
 

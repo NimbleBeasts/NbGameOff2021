@@ -6,10 +6,11 @@ func _ready():
 	_shader_toggle(Global.userConfig.moving_bg)
 
 func _shader_toggle(state):
+	state = false
 	if state:
-		$Layer1/Sprite.material.set_shader_param("scroll_speed", 0.3)
-		$Layer2/Sprite.material.set_shader_param("scroll_speed", 0.4)
-		$Layer3/Sprite.material.set_shader_param("scroll_speed", 0.5)
+		$Layer1/Sprite.material.set_shader_param("scroll_speed", 0.01)
+		$Layer2/Sprite.material.set_shader_param("scroll_speed", 0.02)
+		$Layer3/Sprite.material.set_shader_param("scroll_speed", 0.03)
 	else:
 		$Layer1/Sprite.material.set_shader_param("scroll_speed", 0.0)
 		$Layer2/Sprite.material.set_shader_param("scroll_speed", 0.0)
